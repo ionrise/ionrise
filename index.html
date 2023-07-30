@@ -3,7 +3,7 @@
      <meta charset="UTF-8"> 
      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
      <title>Official page</title>
-     <meta name="Ionrise One" content="This is the official page of Ionrise. We're launching soon!">
+     <!--<meta name="Ionrise One" content="This is the official page of Ionrise. We're launching soon!">-->
  </head> 
  <body style="background-color: black;"> 
      <h1 style="color: white; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 70px; margin-top: 15%;">COMING SOON</h1> 
@@ -12,5 +12,16 @@
  </p> 
   
  </body> 
-  
+ <script>
+    var meta = document.querySelector('meta[name="Ionrise One"]');
+    if (meta) {
+        meta.setAttribute('content', 'This is the official page of Ionrise. We´re launching soon!');
+    } else {
+    meta = document.createElement('meta');
+    meta.name = 'Ionrise One';
+    meta.content = 'This is the official page of Ionrise. We´re launching soon!';
+    document.getElementsByTagName('head')[0].appendChild(meta);
+}
+
+ </script>
  </html>
