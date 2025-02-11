@@ -1,6 +1,7 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -8,13 +9,13 @@
             color: white;
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Adds space between sections */
+            justify-content: space-between;
             align-items: center;
             text-align: center;
-            padding: 40px 0; /* Adds padding to top and bottom */
+            padding: 20px 0; /* Adjusted padding */
         }
 
         .big-text {
@@ -34,7 +35,7 @@
         }
 
         .price-line {
-            display: block; /* Ensures each price is on its own line */
+            display: block;
             margin: 5px 0;
         }
 
@@ -45,11 +46,49 @@
         }
 
         .cenik-section {
-            margin-top: 20px; /* Positions ceník section higher */
+            margin-top: 20px;
         }
 
         .vymena-section {
-            margin-bottom: 20px; /* Positions výměna section lower */
+            margin-bottom: 40px; /* Added more margin to prevent overlap */
+        }
+
+        .phone-number {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 20px; /* Added margin to separate from content */
+            position: sticky;
+            bottom: 10px; /* Sticks to the bottom */
+            width: 100%;
+        }
+
+        .phone-number a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .big-text {
+                font-size: 2em; /* Smaller font size for mobile */
+            }
+
+            .medium-text {
+                font-size: 1.2em;
+            }
+
+            .small-text {
+                font-size: 0.9em;
+            }
+
+            body {
+                padding: 10px 0; /* Less padding on mobile */
+            }
+
+            .vymena-section {
+                margin-bottom: 60px; /* More space for the phone number */
+            }
         }
     </style>
 </head>
@@ -70,15 +109,9 @@
         </div>
         <div class="small-text">1000,-</div>
     </div>
+
+    <div class="phone-number">
+        <a href="tel:720958340">720 958 340</a>
+    </div>
 </body>
-     <p style="color: white; font-family: Arial, Helvetica, sans-serif; position: absolute; bottom: 0; width: 99%; text-align: center;"> 
-     <a href="Tel:720 958 340" style="color: white; text-decoration: none;">720 958 340</a>
-</p> 
-  
- </body> 
- <noscript>
-    This is the official website of Ionrise. We're launching soon!
-  </noscript>
-  
- <script src="script.js"></script>
- </html>
+</html>
