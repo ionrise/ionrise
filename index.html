@@ -1,12 +1,76 @@
-<html lang="en"> 
- <head> 
-     <meta charset="UTF-8"> 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-     <title>Official page</title>
-     <!--<meta name="Ionrise One" content="This is the official website of Ionrise. We're launching soon!">-->
- </head> 
- <body style="background-color: black;"> 
-     <h1 style="color: white; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 70px; margin-top: 15%;">COMING SOON</h1> 
+ <!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Adds space between sections */
+            align-items: center;
+            text-align: center;
+            padding: 40px 0; /* Adds padding to top and bottom */
+        }
+
+        .big-text {
+            font-size: 2.5em;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .medium-text {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .small-text {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        .price-line {
+            display: block; /* Ensures each price is on its own line */
+            margin: 5px 0;
+        }
+
+        .multi-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cenik-section {
+            margin-top: 20px; /* Positions ceník section higher */
+        }
+
+        .vymena-section {
+            margin-bottom: 20px; /* Positions výměna section lower */
+        }
+    </style>
+</head>
+<body>
+    <div class="cenik-section">
+        <div class="big-text">Ceník repase baterií</div>
+        <div class="big-text">36V</div>
+        
+        <div class="price-line">13Ah - 6500,-</div>
+        <div class="price-line">14Ah - 7500,-</div>
+        <div class="price-line small-text">17Ah - 8500,-</div>
+    </div>
+
+    <div class="vymena-section">
+        <div class="medium-text multi-line">
+            <div>výměna BMS</div>
+            <div>za Bluetooth verzi</div>
+        </div>
+        <div class="small-text">1000,-</div>
+    </div>
+</body>
      <p style="color: white; font-family: Arial, Helvetica, sans-serif; position: absolute; bottom: 0; width: 99%; text-align: center;"> 
      <a href="Tel:720 958 340" style="color: white; text-decoration: none;">720 958 340</a>
 </p> 
