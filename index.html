@@ -17,6 +17,7 @@
             align-items: center;
             text-align: center;
             padding: 20px 0; /* Adjusted padding */
+            position: relative; /* Needed for absolute positioning of icons */
         }
 
         .big-text {
@@ -55,11 +56,8 @@
         }
 
         .contact-icons {
-            display: flex;
-            gap: 20px; /* Space between icons */
-            margin-top: 20px;
-            position: sticky;
-            bottom: 20px; /* Sticks to the bottom */
+            position: absolute;
+            bottom: 20px; /* Distance from the bottom */
         }
 
         .contact-icons a {
@@ -67,10 +65,19 @@
             text-decoration: none;
             font-size: 1.5em;
             transition: color 0.3s ease; /* Smooth hover effect */
+            padding: 10px; /* Padding for better click area */
         }
 
         .contact-icons a:hover {
             color: #007BFF; /* Change color on hover */
+        }
+
+        .phone-icon {
+            left: 20px; /* Position in the bottom-left corner */
+        }
+
+        .email-icon {
+            right: 20px; /* Position in the bottom-right corner */
         }
 
         /* Responsive adjustments */
@@ -95,9 +102,16 @@
                 margin-bottom: 60px; /* More space for the icons */
             }
 
-            .contact-icons {
+            .contact-icons a {
                 font-size: 1.2em; /* Smaller icons on mobile */
-                gap: 15px;
+            }
+
+            .phone-icon {
+                left: 10px; /* Adjust position for mobile */
+            }
+
+            .email-icon {
+                right: 10px; /* Adjust position for mobile */
             }
         }
     </style>
@@ -120,10 +134,15 @@
         <div class="small-text">1000,-</div>
     </div>
 
-    <div class="contact-icons">
+    <!-- Phone icon in the bottom-left corner -->
+    <div class="contact-icons phone-icon">
         <a href="tel:720958340" aria-label="Call us">
             <i class="fas fa-phone"></i> <!-- Phone icon -->
         </a>
+    </div>
+
+    <!-- Email icon in the bottom-right corner -->
+    <div class="contact-icons email-icon">
         <a href="mailto:info@ionrise.one" aria-label="Email us">
             <i class="fas fa-envelope"></i> <!-- Email icon -->
         </a>
