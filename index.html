@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome -->
     <style>
         body {
             background-color: black;
@@ -53,19 +54,23 @@
             margin-bottom: 40px; /* Added more margin to prevent overlap */
         }
 
-        .phone-number {
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-            margin-top: 20px; /* Added margin to separate from content */
+        .contact-icons {
+            display: flex;
+            gap: 20px; /* Space between icons */
+            margin-top: 20px;
             position: sticky;
-            bottom: 10px; /* Sticks to the bottom */
-            width: 100%;
+            bottom: 20px; /* Sticks to the bottom */
         }
 
-        .phone-number a {
+        .contact-icons a {
             color: white;
             text-decoration: none;
+            font-size: 1.5em;
+            transition: color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .contact-icons a:hover {
+            color: #007BFF; /* Change color on hover */
         }
 
         /* Responsive adjustments */
@@ -87,7 +92,12 @@
             }
 
             .vymena-section {
-                margin-bottom: 60px; /* More space for the phone number */
+                margin-bottom: 60px; /* More space for the icons */
+            }
+
+            .contact-icons {
+                font-size: 1.2em; /* Smaller icons on mobile */
+                gap: 15px;
             }
         }
     </style>
@@ -110,8 +120,13 @@
         <div class="small-text">1000,-</div>
     </div>
 
-    <div class="phone-number">
-        <a href="tel:720958340">720 958 340</a>
+    <div class="contact-icons">
+        <a href="tel:720958340" aria-label="Call us">
+            <i class="fas fa-phone"></i> <!-- Phone icon -->
+        </a>
+        <a href="mailto:info@ionrise.one" aria-label="Email us">
+            <i class="fas fa-envelope"></i> <!-- Email icon -->
+        </a>
     </div>
 </body>
 </html>
