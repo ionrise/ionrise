@@ -13,32 +13,32 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start; /* Align content to the top */
             align-items: center;
             text-align: center;
-            padding: 20px 0; /* Adjusted padding */
-            position: relative; /* Needed for absolute positioning of icons */
+            padding: 10px 0; /* Reduced padding */
+            position: relative;
         }
 
         .big-text {
             font-size: 2.5em;
-            margin: 10px 0;
+            margin: 5px 0; /* Reduced margin */
             font-weight: bold;
         }
 
         .medium-text {
             font-size: 1.5em;
-            margin: 10px 0;
+            margin: 5px 0; /* Reduced margin */
         }
 
         .small-text {
             font-size: 1em;
-            margin: 10px 0;
+            margin: 5px 0; /* Reduced margin */
         }
 
         .price-line {
             display: block;
-            margin: 5px 0;
+            margin: 3px 0; /* Reduced margin */
         }
 
         .multi-line {
@@ -48,58 +48,62 @@
         }
 
         .cenik-section {
-            margin-top: 20px;
+            margin-top: 10px; /* Reduced margin */
         }
 
         .vymena-section {
-            margin-bottom: 20px; /* Reduced margin to minimize spacing */
+            margin-bottom: 10px; /* Reduced margin */
         }
 
         .contact-icons {
-            position: fixed; /* Changed to fixed */
-            bottom: 20px; /* Distance from the bottom */
+            position: fixed; /* Keep icons fixed at the bottom */
+            bottom: 10px; /* Reduced distance from the bottom */
         }
 
         .contact-icons a {
             color: white;
             text-decoration: none;
             font-size: 1.5em;
-            transition: color 0.3s ease; /* Smooth hover effect */
-            padding: 10px; /* Padding for better click area */
+            transition: color 0.3s ease;
+            padding: 5px; /* Reduced padding */
         }
 
         .contact-icons a:hover {
-            color: #007BFF; /* Change color on hover */
+            color: #007BFF;
         }
 
         .phone-icon {
-            left: 20px; /* Position in the bottom-left corner */
+            left: 10px; /* Adjusted position */
         }
 
         .email-icon {
-            right: 20px; /* Position in the bottom-right corner */
+            right: 10px; /* Adjusted position */
         }
 
         /* Responsive adjustments */
         @media (max-width: 600px) {
             .big-text {
-                font-size: 2em; /* Smaller font size for mobile */
+                font-size: 1.8em; /* Smaller font size for mobile */
             }
 
             .medium-text {
-                font-size: 1.2em;
+                font-size: 1.1em; /* Smaller font size for mobile */
             }
 
             .small-text {
-                font-size: 0.9em;
+                font-size: 0.9em; /* Smaller font size for mobile */
             }
 
             body {
-                padding: 10px 0; /* Less padding on mobile */
+                padding: 5px 0; /* Further reduced padding */
+            }
+
+            .cenik-section {
+                margin-top: 5px; /* Further reduced margin */
             }
 
             .vymena-section {
-                margin-bottom: 20px; /* Reduced margin for mobile */
+                margin-bottom: 5px; /* Further reduced margin */
             }
 
             .contact-icons a {
@@ -107,11 +111,11 @@
             }
 
             .phone-icon {
-                left: 10px; /* Adjust position for mobile */
+                left: 5px; /* Adjusted position for mobile */
             }
 
             .email-icon {
-                right: 10px; /* Adjust position for mobile */
+                right: 5px; /* Adjusted position for mobile */
             }
         }
     </style>
@@ -147,15 +151,14 @@
             <i class="fas fa-envelope"></i> <!-- Email icon -->
         </a>
     </div>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T54176C62K">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-T54176C62K');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T54176C62K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T54176C62K');
+    </script>
 </body>
 </html>
