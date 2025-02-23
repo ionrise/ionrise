@@ -196,9 +196,11 @@
         .floating-icons {
             position: fixed;
             bottom: 2rem;
+            right: 2rem;
             display: flex;
             gap: 1.5rem;
             z-index: 100;
+            flex-direction: column;
         }
 
         .icon-link {
@@ -217,6 +219,17 @@
         .icon-link:hover {
             background: var(--white);
             transform: translateY(-3px);
+        }
+
+        .icon-link[href="#contact-form"] {
+            background: rgb(8, 8,24);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         @keyframes float {
@@ -248,9 +261,9 @@
             }
 
             .floating-icons {
-                width: 100%;
-                justify-content: center;
+                right: 1rem;
                 bottom: 1rem;
+                gap: 1rem;
             }
         }
     </style>
@@ -335,7 +348,7 @@
         </div>
 
         <!-- Contact Form Section -->
-        <section class="form-section">
+        <section class="form-section" id="contact-form">
             <form class="contact-form" action="https://formspree.io/f/xbldproq" method="POST">
                 <input type="text" name="contact" class="form-input" placeholder="Váš kontakt" required>
                 <textarea name="message" class="form-input" placeholder="Vaše poptávka" rows="4" required></textarea>
@@ -352,6 +365,9 @@
         <a href="mailto:info@ionrise.one" class="icon-link">
             <i class="fas fa-envelope" style="color: white;"></i>
         </a>
+        <a href="#contact-form" class="icon-link">
+            <i class="fas fa-comment-dots" style="color: white;"></i>
+        </a>
     </div>
 
     <!-- Scripts -->
@@ -360,9 +376,18 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.querySelector(anchor.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+                const target = document.querySelector(anchor.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
+
+                // Add focus to the first input when reaching the form
+                if (anchor.getAttribute('href') === '#contact-form') {
+                    setTimeout(() => {
+                        document.querySelector('.form-input').focus();
+                    }, 800);
+                }
             });
         });
 
@@ -394,4 +419,4 @@
   gtag('js', new Date());
 
   gtag('config', 'G-T54176C62K');
-</script>
+</script>0
