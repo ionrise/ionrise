@@ -1,14 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="cs">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <meta name="description" content="IONRISE - Profesionální repase baterií pro elektrokola a koloběžky. Široký výběr kvalitních baterií Samsung, BAK, LG, Tenpower.">
     <title>IONRISE | Profesionální repase baterií</title>  
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">  
     <style>  
         :root {  
             --neon-blue: #00f3ff;  
@@ -16,908 +14,407 @@
             --stellar-purple: #6366f1;  
             --electric-pink: #ec4899;  
             --white: #ffffff;  
-            --grey: #cccccc;
-            --accent: #3498db;
-            --card-bg: rgba(20, 20, 35, 0.7);
-            --glow: 0 0 15px rgba(0, 243, 255, 0.2);
-        }  
-        
-        * {  
-            margin: 0;  
-            padding: 0;  
-            box-sizing: border-box;  
-        }  
+            --grey: #cccccc;  
+        }  * {  
+        margin: 0;  
+        padding: 0;  
+        box-sizing: border-box;  
+    }  
 
-        body {  
-            background: var(--deep-space);  
-            color: white;  
-            font-family: 'Inter', sans-serif;  
-            line-height: 1.6;  
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }  
+    body {  
+        background: var(--deep-space);  
+        color: white;  
+        font-family: 'Inter', sans-serif;  
+        line-height: 1.6;  
+        overflow-x: hidden;  
+    }  
 
-        .gradient-bg {  
-            position: fixed;  
-            top: -50%;  
-            left: -50%;  
-            width: 200%;  
-            height: 200%;  
-            background: radial-gradient(circle at 50% 50%,   
-                rgba(99, 102, 241, 0.08) 0%,   
-                rgba(10, 10, 18, 0.9) 50%);  
-            z-index: -1;  
-        }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
+    .gradient-bg {  
+        position: fixed;  
+        top: -50%;  
+        left: -50%;  
+        width: 200%;  
+        height: 200%;  
+        background: radial-gradient(circle at 50% 50%,   
+            rgba(255, 255, 255, 0.05) 0%,   
+            rgba(16, 16, 24, 0.8) 50%);  
+        z-index: -1;  
+    }  
 
+    .container {  
+        max-width: 1200px;  
+        margin: 0 auto;  
+        padding: 2rem;  
+    }  
+
+    .hero {  
+        text-align: center;  
+        padding: 4rem 0;  
+        position: relative;  
+        overflow: hidden;  
+    }  
+
+    .hero::after {  
+        content: '';  
+        position: absolute;  
+        bottom: 0;  
+        left: 50%;  
+        transform: translateX(-50%);  
+        width: 80%;  
+        height: 2px;  
+        background: linear-gradient(90deg,   
+            transparent,   
+            var(--white),   
+            transparent);  
+    }  
+
+    .hero-title {  
+        font-size: 3.5rem;  
+        background: linear-gradient(45deg, var(--white), var(--grey));  
+        -webkit-background-clip: text;  
+        -webkit-text-fill-color: transparent;  
+        margin-bottom: 1rem;  
+        letter-spacing: -2px;  
+        animation: float 3s ease-in-out infinite;  
+    }  
+
+    .hero-subtitle {  
+        font-size: 1.2rem;  
+        color: var(--grey);  
+        margin-top: 0.5rem;  
+    }  
+
+    .pricing-grid {  
+        display: grid;  
+        gap: 2rem;  
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
+        margin: 4rem 0;  
+    }  
+
+    .price-card {  
+        background: rgba(255, 255, 255, 0.05);  
+        border-radius: 16px;  
+        padding: 2rem;  
+        backdrop-filter: blur(10px);  
+        border: 1px solid rgba(255, 255, 255, 0.1);  
+        transition: transform 0.3s ease, box-shadow 0.3s ease;  
+        cursor: pointer;  
+    }  
+
+    .price-card:hover {  
+        transform: translateY(-5px);  
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);  
+    }  
+
+    .price-card h3 {  
+        font-size: 2rem;  
+        margin-bottom: 1rem;  
+        color: var(--white);  
+    }  
+
+    .price-list {  
+        list-style: none;  
+        margin: 1.5rem 0;  
+    }  
+
+    .price-list li {  
+        padding: 0.8rem 0;  
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);  
+        display: flex;  
+        justify-content: space-between;  
+        align-items: center;  
+    }  
+
+    .form-section {  
+        background: linear-gradient(160deg,   
+            rgba(255, 255, 255, 0.05) 0%,   
+            rgba(16, 16, 24, 0.8) 100%);  
+        border-radius: 20px;  
+        padding: 3rem;  
+        margin: 4rem 0;  
+        position: relative;  
+        overflow: hidden;  
+    }  
+
+    .form-section::before {  
+        content: '';  
+        position: absolute;  
+        top: -50%;  
+        left: -50%;  
+        width: 200%;  
+        height: 200%;  
+        background: conic-gradient(  
+            transparent 20deg,   
+            var(--white) 180deg,   
+            transparent 220deg  
+        );  
+        animation: rotate 20s linear infinite;  
+        opacity: 0.1;  
+    }  
+
+    .contact-form {  
+        position: relative;  
+        z-index: 1;  
+    }  
+
+    .form-input {  
+        width: 100%;  
+        padding: 1rem;  
+        margin: 1rem 0;  
+        background: rgba(255, 255, 255, 0.05);  
+        border: 1px solid rgba(255, 255, 255, 0.1);  
+        border-radius: 8px;  
+        color: white;  
+        font-size: 1rem;  
+        transition: all 0.3s ease;  
+    }  
+
+    .form-input:focus {  
+        outline: none;  
+        border-color: var(--white);  
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);  
+    }  
+
+    .submit-btn {  
+        background: linear-gradient(45deg, var(--white), var(--grey));  
+        border: none;  
+        padding: 1rem 2.5rem;  
+        color: var(--deep-space);  
+        border-radius: 8px;  
+        font-weight: 500;  
+        cursor: pointer;  
+        transition: transform 0.3s ease;  
+        text-transform: uppercase;  
+        letter-spacing: 1px;  
+    }  
+
+    .submit-btn:hover {  
+        transform: scale(1.05);  
+    }  
+
+    .floating-icons {  
+        position: fixed;  
+        bottom: 2rem;  
+        right: 2rem;  
+        display: flex;  
+        gap: 1.5rem;  
+        z-index: 100;  
+        flex-direction: column;  
+    }  
+
+    .icon-link {  
+        width: 50px;  
+        height: 50px;  
+        border-radius: 50%;  
+        background: rgba(255, 255, 255, 0.1);  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+        transition: all 0.3s ease;  
+        backdrop-filter: blur(5px);  
+        border: 1px solid rgba(255, 255, 255, 0.2);  
+    }  
+
+    .icon-link:hover {  
+        background: var(--white);  
+        transform: translateY(-3px);  
+    }  
+
+    .icon-link[href="#contact-form"] {  
+        background: rgb(8, 8,24);  
+        animation: pulse 2s infinite;  
+    }  
+
+    @keyframes pulse {  
+        0% { transform: scale(1); }  
+        50% { transform: scale(1.1); }  
+        100% { transform: scale(1); }  
+    }  
+
+    @keyframes float {  
+        0%, 100% { transform: translateY(0); }  
+        50% { transform: translateY(-10px); }  
+    }  
+
+    @keyframes rotate {  
+        from { transform: rotate(0deg); }  
+        to { transform: rotate(360deg); }  
+    }  
+
+    @media (max-width: 768px) {  
         .container {  
-            max-width: 1200px;  
-            margin: 0 auto;  
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }  
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .logo-icon {
-            font-size: 1.8rem;
-            color: var(--neon-blue);
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            background: linear-gradient(45deg, var(--white), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .nav-link {
-            color: var(--grey);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: var(--white);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: var(--neon-blue);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .hero {  
-            text-align: center;  
-            padding: 5rem 0 4rem;  
-            position: relative;  
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }  
-
-        .hero::after {  
-            content: '';  
-            position: absolute;  
-            bottom: 0;  
-            left: 50%;  
-            transform: translateX(-50%);  
-            width: 80%;  
-            height: 2px;  
-            background: linear-gradient(90deg,   
-                transparent,   
-                var(--neon-blue),   
-                transparent);  
+            padding: 1rem;  
         }  
 
         .hero-title {  
-            font-size: 4rem;  
-            background: linear-gradient(45deg, var(--white), var(--neon-blue));  
-            -webkit-background-clip: text;  
-            -webkit-text-fill-color: transparent;  
-            margin-bottom: 1rem;  
-            letter-spacing: -1px;  
-            animation: float 3s ease-in-out infinite;
-            text-shadow: var(--glow);
-        }  
-
-        .hero-subtitle {  
-            font-size: 1.3rem;  
-            color: var(--grey);  
-            margin-top: 0.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .badge {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            backdrop-filter: blur(5px);
-        }
-        
-        .badge i {
-            color: var(--neon-blue);
-        }
-        
-        .section-title {
-            text-align: center; 
-            margin-bottom: 2.5rem; 
-            font-size: 2.2rem; 
-            color: var(--white);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-        }
-
-        .pricing-section {
-            margin: 5rem 0;
-            position: relative;
-        }
-        
-        .pricing-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            color: var(--grey);
-        }
-
-        .pricing-grid {  
-            display: grid;  
-            gap: 2rem;  
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
-            margin: 2rem 0;  
+            font-size: 2.5rem;  
         }  
 
         .price-card {  
-            background: var(--card-bg);  
-            border-radius: 16px;  
-            padding: 2rem;  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            transition: all 0.3s ease;  
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            padding: 1.5rem;  
         }  
-
-        .price-card:hover {  
-            transform: translateY(-5px);  
-            box-shadow: var(--glow);
-            border-color: rgba(0, 243, 255, 0.3);
-        }
-        
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .price-card:hover::before {
-            opacity: 1;
-        }
-
-        .price-card h3 {  
-            font-size: 2rem;  
-            margin-bottom: 1.5rem;  
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .battery-icon {
-            color: var(--neon-blue);
-            font-size: 1.3rem;
-        }
-
-        .price-list {  
-            list-style: none;  
-            margin: 1.5rem 0;  
-        }  
-
-        .price-list li {  
-            padding: 0.8rem 0;  
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);  
-            display: flex;  
-            justify-content: space-between;  
-            align-items: center;
-            transition: background-color 0.2s ease;
-        }
-        
-        .price-list li:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
-        
-        .price-list li span {
-            font-weight: 700;
-            color: var(--neon-blue);
-        }
-        
-        .price-list li small {
-            display: block;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 0.2rem;
-        }
-        
-        .stand-alone-list {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-        }
-        
-        .stand-alone-list:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
-            border-color: rgba(0, 243, 255, 0.3);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        
-        .feature-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
-            border-color: rgba(0, 243, 255, 0.3);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(0, 243, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--neon-blue);
-            font-size: 1.5rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card p {
-            color: var(--grey);
-        }
 
         .form-section {  
-            background: linear-gradient(160deg,   
-                rgba(99, 102, 241, 0.05) 0%,   
-                rgba(16, 16, 24, 0.8) 100%);  
-            border-radius: 20px;  
-            padding: 3rem;  
-            margin: 5rem 0;  
-            position: relative;  
-            overflow: hidden;
-            box-shadow: var(--glow);
+            padding: 2rem;  
+            margin: 2rem 0;  
         }  
-
-        .form-section::before {  
-            content: '';  
-            position: absolute;  
-            top: -50%;  
-            left: -50%;  
-            width: 200%;  
-            height: 200%;  
-            background: conic-gradient(  
-                transparent 120deg,   
-                rgba(0, 243, 255, 0.2) 180deg,   
-                transparent 220deg  
-            );  
-            animation: rotate 20s linear infinite;  
-            opacity: 0.1;  
-        }
-        
-        .form-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .form-title {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .form-subtitle {
-            color: var(--grey);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form {  
-            position: relative;  
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        
-        .full-width {
-            grid-column: 1 / 3;
-        }
-
-        .form-input {  
-            width: 100%;  
-            padding: 1rem;  
-            background: rgba(255, 255, 255, 0.05);  
-            border: 1px solid rgba(255, 255, 255, 0.1);  
-            border-radius: 8px;  
-            color: white;  
-            font-size: 1rem;  
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }  
-
-        .form-input:focus {  
-            outline: none;  
-            border-color: var(--neon-blue);  
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);  
-        }
-        
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .submit-btn {  
-            background: linear-gradient(45deg, var(--neon-blue), var(--stellar-purple));  
-            border: none;  
-            padding: 1rem 2.5rem;  
-            color: var(--white);  
-            border-radius: 8px;  
-            font-weight: 500;  
-            cursor: pointer;  
-            transition: all 0.3s ease;  
-            text-transform: uppercase;  
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }  
-
-        .submit-btn:hover {  
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
-        }
-        
-        .faq-section {
-            margin: 5rem 0;
-        }
-        
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: var(--card-bg);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            border-color: rgba(0, 243, 255, 0.3);
-        }
-        
-        .faq-question {
-            padding: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            padding: 0 1.2rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            color: var(--grey);
-        }
-        
-        .faq-answer.active {
-            padding: 0 1.2rem 1.2rem;
-            max-height: 200px;
-        }
-        
-        footer {
-            background: rgba(10, 10, 18, 0.8);
-            padding: 3rem 0 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 5rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: var(--neon-blue);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: var(--grey);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--white);
-            transform: translateX(5px);
-        }
-        
-        .footer-links a i {
-            color: var(--neon-blue);
-            font-size: 0.9rem;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--grey);
-            font-size: 0.9rem;
-        }
 
         .floating-icons {  
-            position: fixed;  
-            bottom: 2rem;  
-            right: 2rem;  
-            display: flex;  
+            right: 1rem;  
+            bottom: 1rem;  
             gap: 1rem;  
-            z-index: 100;  
-            flex-direction: column;  
         }  
+    }  
+</style>
 
-        .icon-link {  
-            width: 50px;  
-            height: 50px;  
-            border-radius: 50%;  
-            background: rgba(10, 10, 18, 0.8);  
-            display: flex;  
-            align-items: center;  
-            justify-content: center;  
-            transition: all 0.3s ease;  
-            backdrop-filter: blur(5px);  
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            color: var(--white);
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }  
-
-        .icon-link:hover {  
-            background: var(--neon-blue);
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
-        }  
-
-        .icon-link[href="#contact-form"] {  
-            background: var(--neon-blue);  
-            animation: pulse 2s infinite;  
-        }
-        
-        .icon-link i {
-            font-size: 1.2rem;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @keyframes pulse {  
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); }  
-            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(0, 243, 255, 0); }  
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }  
-        }  
-
-        @keyframes float {  
-            0%, 100% { transform: translateY(0); }  
-            50% { transform: translateY(-10px); }  
-        }  
-
-        @keyframes rotate {  
-            from { transform: rotate(0deg); }  
-            to { transform: rotate(360deg); }  
-        }
-        
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 18, 0.95);
-            z-index: 200;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(-100%);
-            transition: transform 0.5s ease;
-        }
-        
-        .mobile-menu.active {
-            transform: translateY(0);
-        }
-        
-        .close-menu-btn {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .mobile-nav-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .mobile-nav-link {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav-link:hover {
-            color: var(--neon-blue);
-            transform: scale(1.05);
-        }
-        
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(10, 10, 18, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            color: var(--white);
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .scroll-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-to-top:hover {
-            background: var(--neon-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
-        }
-
-        @media (max-width: 768px) {  
-            .container {  
-                padding: 1rem;  
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-title {  
-                font-size: 2.5rem;  
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-badges {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .price-card {  
-                padding: 1.5rem;  
-            }
-            
-            .price-card h3 {
-                font-size: 1.7rem;
-            }
-
-            .form-section {  
-                padding: 2rem;  
-                margin: 3rem 0;  
-            }
-            
-            .contact-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .full-width {
-                grid-column: auto;
-            }
-
-            .floating-icons {  
-                right: 1rem;  
-                bottom: 1rem;  
-                gap: 0.8rem;  
-            }
-            
-            .icon-link {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .scroll-to-top {
-                left: 1rem;
-                bottom: 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .badge {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-            
-            .price-card h3 {
-                font-size: 1.5rem;
-            }
-            
-            .form-section {
-                padding: 1.5rem;
-            }
-            
-            .form-title {
-                font-size: 1.8rem;
-            }
-        }
-    </style>  
 </head>  
 <body>  
-    <div class="gradient-bg"></div>
-    <div class="particles" id="particles-js"></div>
-    
-    <div class="container">
-        <header>
-            <div class="logo">
-                <i class="fa-solid fa-bolt logo-icon"></i>
-                <div class="logo-text">IONRISE</div>
-            </div>
-            
-            <nav class="nav-links">
-                <a href="#batteries" class="nav-link">Baterie</a>
-                <a href="#features" class="nav-link">Výhody</a>
-                <a href="#contact-form" class="nav-link">Kontakt</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-            </nav>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </header>
+    <div class="gradient-bg"></div>  <div class="container">  
+    <section class="hero">  
+        <h1 class="hero-title">IONRISE</h1>  
+        <p class="hero-subtitle">profesionální repase baterií elektrokol a koloběžek</p>  
+    </section>  
 
-        <section class="hero">  
-            <h1 class="hero-title">IONRISE</h1>  
-            <p class="hero-subtitle">Profesionální repase baterií pro elektrokola a koloběžky s důrazem na kvalitu a dlouhou životnost</p>
-            <div class="hero-badges">
-                <div class="badge"><i class="fa-solid fa-check"></i> Prémiové články</div>
-                <div class="badge"><i class="fa-solid fa-bolt"></i> Rychlé dodání</div>
-                <div class="badge"><i class="fa-solid fa-shield"></i> Záruka kvality</div>
-            </div>
-        </section>
-        
-        <section class="features-section" id="features">
-            <h2 class="section-title">Proč vybrat IONRISE</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-battery-full"></i>
-                    </div>
-                    <h3>Prémiové články</h3>
-                    <p>Používáme pouze kvalitní články renomovaných výrobců jako Samsung, LG a další, které zaručují dlouhou životnost a spolehlivost.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-gear"></i>
-                    </div>
-                    <h3>Odborná montáž</h3>
-                    <p>Každá baterie je sestavena s maximální pečlivostí našimi specialisty s mnohaletými zkušenostmi v oboru.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3>Záruka kvality</h3>
-                    <p>Na všechny naše baterie poskytujeme prodlouženou záruku. Spokojenost zákazníků je pro nás na prvním místě.</p>
-                </div>
-            </div>
-        </section>
+    <!-- 36V Section -->  
+    <div class="pricing-section">  
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--white);">36V Baterie</h2>  
+        <div class="pricing-grid">  
+            <!-- Samsung 32E Card -->  
+            <div class="price-card">  
+                <h3>Samsung 32E</h3>  
+                <ul class="price-list">  
+                    <li>12.8Ah <span>6 700 Kč</span></li>  
+                    <li>16Ah <span>7 500 Kč</span></li>  
+                    <li>19.2Ah <span>8 300 Kč</span></li>  
+                    <li>22.4Ah <span>9 100 Kč</span></li>  
+                </ul>  
+            </div>  
 
-        <!-- 36V Section -->  
-        <section class="pricing-section" id="batteries">  
-            <h2 class="section-title">36V Baterie</h2>
-            <p class="pricing-intro">Nabízíme širokou škálu vysoce kvalitních 36V baterií pro elektrokola. Vyberte si z různých kapacit podle vašich potřeb a požadavků na dojezd.</p>
-            <div class="pricing-grid">  
-                <!-- Samsung 32E Card -->  
-                <div class="price-card">  
-                    <h3><i class="fa-solid fa-battery-three-quarters battery-icon"></i> Samsung 32E</h3>  
-                    <ul class="price-list">  
-                        <li>12.8Ah <small>Základní kapacita</small><span>6 700 Kč</span></li>
+            <!-- Samsung 35E Card -->  
+            <div class="price-card">  
+                <h3>Samsung 35E</h3>  
+                <ul class="price-list">  
+                    <li>14Ah <span>7 500 Kč</span></li>  
+                    <li>17.5Ah <span>8 500 Kč</span></li>  
+                    <li>21Ah <span>9 500 Kč</span></li>  
+                    <li>24.5Ah <span>10 500 Kč</span></li>  
+                </ul>  
+            </div>  
+
+            <!-- BAK CL Card -->  
+            <div class="price-card">  
+                <h3>BAK CL</h3>  
+                <ul class="price-list">  
+                    <li>11.6Ah <span>6 400 Kč</span></li>  
+                    <li>14.5Ah <span>7 100 Kč</span></li>  
+                    <li>17.4Ah <span>7 800 Kč</span></li>  
+                    <li>20.3Ah <span>8 500 Kč</span></li>  
+                </ul>  
+            </div>  
+
+            <!-- Tenpower 26ME Card -->  
+            <div class="price-card">  
+                <h3>Tenpower 26ME</h3>  
+                <ul class="price-list">  
+                    <li>10.4Ah <span>6 100 Kč</span></li>  
+                    <li>13Ah <span>6 750 Kč</span></li>  
+                    <li>15.6Ah <span>7 400 Kč</span></li>  
+                    <li>18.2Ah <span>8 200 Kč</span></li>  
+                </ul>  
+            </div>  
+
+            <!-- LG M50 Card -->  
+            <div class="price-card">  
+                <h3>LG M50</h3>  
+                <ul class="price-list">  
+                    <li>20Ah <span>8 300 Kč</span></li>  
+                    <li>25Ah <span>9 800 Kč</span></li>  
+                </ul>  
+            </div>  
+        </div>  
+    </div>  
+
+    <!-- 48V E-babeta Section -->  
+    <div class="pricing-section" style="margin-top: 4rem;">  
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--white);">48V E-babeta</h2>  
+        <ul class="price-list" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">  
+            <li>16Ah <span>9 000 Kč</span></li>  
+            <li>19.2Ah <span>10 040 Kč</span></li>  
+            <li>22.4Ah <span>11 080 Kč</span></li>  
+            <li>25.6Ah <span>12 120 Kč</span></li>  
+        </ul>  
+    </div>  
+
+    <!-- Contact Form Section -->  
+    <section class="form-section" id="contact-form">  
+        <form class="contact-form" action="https://formspree.io/f/xbldproq" method="POST">  
+            <input type="text" name="contact" class="form-input" placeholder="Váš kontakt" required>  
+            <textarea name="message" class="form-input" placeholder="Vaše poptávka" rows="4" required></textarea>  
+            <button type="submit" class="submit-btn">Odeslat poptávku</button>  
+        </form>  
+    </section>  
+</div>  
+
+<!-- Floating Icons -->  
+<div class="floating-icons">  
+    <a href="tel:720958340" class="icon-link">  
+        <i class="fas fa-phone" style="color: white;"></i>  
+    </a>  
+    <a href="mailto:info@ionrise.one" class="icon-link">  
+        <i class="fas fa-envelope" style="color: white;"></i>  
+    </a>  
+    <a href="#contact-form" class="icon-link">  
+        <i class="fas fa-comment-dots" style="color: white;"></i>  
+    </a>  
+</div>  
+
+<!-- Scripts -->  
+<script>  
+    // Add smooth scroll behavior  
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {  
+        anchor.addEventListener('click', (e) => {  
+            e.preventDefault();  
+            const target = document.querySelector(anchor.getAttribute('href'));  
+            target.scrollIntoView({  
+                behavior: 'smooth',  
+                block: 'start'  
+            });  
+
+            // Add focus to the first input when reaching the form  
+            if (anchor.getAttribute('href') === '#contact-form') {  
+                setTimeout(() => {  
+                    document.querySelector('.form-input').focus();  
+                }, 800);  
+            }  
+        });  
+    });  
+
+    // Add animation on scroll  
+    const observer = new IntersectionObserver((entries) => {  
+        entries.forEach(entry => {  
+            if (entry.isIntersecting) {  
+                entry.target.style.opacity = 1;  
+                entry.target.style.transform = 'translateY(0)';  
+            }  
+        });  
+    });  
+
+    document.querySelectorAll('.price-card, .form-section').forEach((el) => {  
+        el.style.opacity = 0;  
+        el.style.transform = 'translateY(20px)';  
+        el.style.transition = 'all 0.6s ease-out';  
+        observer.observe(el);  
+    });  
+</script>
+
+</body>  
+</html>  
+<!-- Google tag (gtag.js) -->  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T54176C62K">  
+</script>  
+<script>  
+  window.dataLayer = window.dataLayer || [];  
+  function gtag(){dataLayer.push(arguments);}  
+  gtag('js', new Date());  gtag('config', 'G-T54176C62K');
+</script>
+
