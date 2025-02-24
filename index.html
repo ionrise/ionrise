@@ -1,473 +1,420 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IONRISE | Profesionální repase baterií</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+Ano. Tady <!DOCTYPE html>
 
-    <style>
-        :root {
-            --neon-blue: #00f3ff;
-            --deep-space: #0a0a12;
-            --stellar-purple: #6366f1;
-            --electric-pink: #ec4899;
-            --white: #ffffff;
-            --grey: #cccccc;
-        }
+<html lang="cs">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>IONRISE | Profesionální repase baterií</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">  
+    <style>  
+        :root {  
+            --neon-blue: #00f3ff;  
+            --deep-space: #0a0a12;  
+            --stellar-purple: #6366f1;  
+            --electric-pink: #ec4899;  
+            --white: #ffffff;  
+            --grey: #cccccc;  
+        }  * {  
+        margin: 0;  
+        padding: 0;  
+        box-sizing: border-box;  
+    }  
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {  
+        background: var(--deep-space);  
+        color: white;  
+        font-family: 'Inter', sans-serif;  
+        line-height: 1.6;  
+        overflow-x: hidden;  
+    }  
 
-        body {
-            background: var(--deep-space);
-            color: white;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    .gradient-bg {  
+        position: fixed;  
+        top: -50%;  
+        left: -50%;  
+        width: 200%;  
+        height: 200%;  
+        background: radial-gradient(circle at 50% 50%,   
+            rgba(255, 255, 255, 0.05) 0%,   
+            rgba(16, 16, 24, 0.8) 50%);  
+        z-index: -1;  
+    }  
 
-        .gradient-bg {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 50% 50%, 
-                rgba(255, 255, 255, 0.05) 0%, 
-                rgba(16, 16, 24, 0.8) 50%);
-            z-index: -1;
-        }
+    .container {  
+        max-width: 1200px;  
+        margin: 0 auto;  
+        padding: 2rem;  
+    }  
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    .hero {  
+        text-align: center;  
+        padding: 4rem 0;  
+        position: relative;  
+        overflow: hidden;  
+    }  
 
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero::after {  
+        content: '';  
+        position: absolute;  
+        bottom: 0;  
+        left: 50%;  
+        transform: translateX(-50%);  
+        width: 80%;  
+        height: 2px;  
+        background: linear-gradient(90deg,   
+            transparent,   
+            var(--white),   
+            transparent);  
+    }  
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                var(--white), 
-                transparent);
-        }
+    .hero-title {  
+        font-size: 3.5rem;  
+        background: linear-gradient(45deg, var(--white), var(--grey));  
+        -webkit-background-clip: text;  
+        -webkit-text-fill-color: transparent;  
+        margin-bottom: 1rem;  
+        letter-spacing: -2px;  
+        animation: float 3s ease-in-out infinite;  
+    }  
 
-        .hero-title {
-            font-size: 3.5rem;
-            background: linear-gradient(45deg, var(--white), var(--grey));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-            letter-spacing: -2px;
-            animation: float 3s ease-in-out infinite;
-        }
+    .hero-subtitle {  
+        font-size: 1.2rem;  
+        color: var(--grey);  
+        margin-top: 0.5rem;  
+    }  
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--grey);
-            margin-top: 0.5rem;
-        }
+    .pricing-grid {  
+        display: grid;  
+        gap: 2rem;  
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
+        margin: 4rem 0;  
+    }  
 
-        .pricing-grid {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            margin: 4rem 0;
-        }
+    .price-card {  
+        background: rgba(255, 255, 255, 0.05);  
+        border-radius: 16px;  
+        padding: 2rem;  
+        backdrop-filter: blur(10px);  
+        border: 1px solid rgba(255, 255, 255, 0.1);  
+        transition: transform 0.3s ease, box-shadow 0.3s ease;  
+        cursor: pointer;  
+    }  
 
-        .price-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
+    .price-card:hover {  
+        transform: translateY(-5px);  
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);  
+    }  
 
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-        }
+    .price-card h3 {  
+        font-size: 2rem;  
+        margin-bottom: 1rem;  
+        color: var(--white);  
+    }  
 
-        .price-card h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
+    .price-list {  
+        list-style: none;  
+        margin: 1.5rem 0;  
+    }  
 
-        .price-list {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
+    .price-list li {  
+        padding: 0.8rem 0;  
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);  
+        display: flex;  
+        justify-content: space-between;  
+        align-items: center;  
+    }  
 
-        .price-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .form-section {  
+        background: linear-gradient(160deg,   
+            rgba(255, 255, 255, 0.05) 0%,   
+            rgba(16, 16, 24, 0.8) 100%);  
+        border-radius: 20px;  
+        padding: 3rem;  
+        margin: 4rem 0;  
+        position: relative;  
+        overflow: hidden;  
+    }  
 
-        .form-section {
-            background: linear-gradient(160deg, 
-                rgba(255, 255, 255, 0.05) 0%, 
-                rgba(16, 16, 24, 0.8) 100%);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
+    .form-section::before {  
+        content: '';  
+        position: absolute;  
+        top: -50%;  
+        left: -50%;  
+        width: 200%;  
+        height: 200%;  
+        background: conic-gradient(  
+            transparent 20deg,   
+            var(--white) 180deg,   
+            transparent 220deg  
+        );  
+        animation: rotate 20s linear infinite;  
+        opacity: 0.1;  
+    }  
 
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                transparent 20deg, 
-                var(--white) 180deg, 
-                transparent 220deg
-            );
-            animation: rotate 20s linear infinite;
-            opacity: 0.1;
-        }
+    .contact-form {  
+        position: relative;  
+        z-index: 1;  
+    }  
 
-        .contact-form {
-            position: relative;
-            z-index: 1;
-        }
+    .form-input {  
+        width: 100%;  
+        padding: 1rem;  
+        margin: 1rem 0;  
+        background: rgba(255, 255, 255, 0.05);  
+        border: 1px solid rgba(255, 255, 255, 0.1);  
+        border-radius: 8px;  
+        color: white;  
+        font-size: 1rem;  
+        transition: all 0.3s ease;  
+    }  
 
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            margin: 1rem 0;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
+    .form-input:focus {  
+        outline: none;  
+        border-color: var(--white);  
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);  
+    }  
 
-        .form-input:focus {
-            outline: none;
-            border-color: var(--white);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
+    .submit-btn {  
+        background: linear-gradient(45deg, var(--white), var(--grey));  
+        border: none;  
+        padding: 1rem 2.5rem;  
+        color: var(--deep-space);  
+        border-radius: 8px;  
+        font-weight: 500;  
+        cursor: pointer;  
+        transition: transform 0.3s ease;  
+        text-transform: uppercase;  
+        letter-spacing: 1px;  
+    }  
 
-        .submit-btn {
-            background: linear-gradient(45deg, var(--white), var(--grey));
-            border: none;
-            padding: 1rem 2.5rem;
-            color: var(--deep-space);
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .submit-btn:hover {  
+        transform: scale(1.05);  
+    }  
 
-        .submit-btn:hover {
-            transform: scale(1.05);
-        }
+    .floating-icons {  
+        position: fixed;  
+        bottom: 2rem;  
+        right: 2rem;  
+        display: flex;  
+        gap: 1.5rem;  
+        z-index: 100;  
+        flex-direction: column;  
+    }  
 
-        .floating-icons {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            gap: 1.5rem;
-            z-index: 100;
-            flex-direction: column;
-        }
+    .icon-link {  
+        width: 50px;  
+        height: 50px;  
+        border-radius: 50%;  
+        background: rgba(255, 255, 255, 0.1);  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+        transition: all 0.3s ease;  
+        backdrop-filter: blur(5px);  
+        border: 1px solid rgba(255, 255, 255, 0.2);  
+    }  
 
-        .icon-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+    .icon-link:hover {  
+        background: var(--white);  
+        transform: translateY(-3px);  
+    }  
 
-        .icon-link:hover {
-            background: var(--white);
-            transform: translateY(-3px);
-        }
+    .icon-link[href="#contact-form"] {  
+        background: rgb(8, 8,24);  
+        animation: pulse 2s infinite;  
+    }  
 
-        .icon-link[href="#contact-form"] {
-            background: rgb(8, 8,24);
-            animation: pulse 2s infinite;
-        }
+    @keyframes pulse {  
+        0% { transform: scale(1); }  
+        50% { transform: scale(1.1); }  
+        100% { transform: scale(1); }  
+    }  
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+    @keyframes float {  
+        0%, 100% { transform: translateY(0); }  
+        50% { transform: translateY(-10px); }  
+    }  
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+    @keyframes rotate {  
+        from { transform: rotate(0deg); }  
+        to { transform: rotate(360deg); }  
+    }  
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    @media (max-width: 768px) {  
+        .container {  
+            padding: 1rem;  
+        }  
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+        .hero-title {  
+            font-size: 2.5rem;  
+        }  
 
-            .hero-title {
-                font-size: 2.5rem;
-            }
+        .price-card {  
+            padding: 1.5rem;  
+        }  
 
-            .price-card {
-                padding: 1.5rem;
-            }
+        .form-section {  
+            padding: 2rem;  
+            margin: 2rem 0;  
+        }  
 
-            .form-section {
-                padding: 2rem;
-                margin: 2rem 0;
-            }
+        .floating-icons {  
+            right: 1rem;  
+            bottom: 1rem;  
+            gap: 1rem;  
+        }  
+    }  
+</style>
 
-            .floating-icons {
-                right: 1rem;
-                bottom: 1rem;
-                gap: 1rem;
-            }
-        }
-    </style>
+</head>  
+<body>  
+    <div class="gradient-bg"></div>  <div class="container">  
+    <section class="hero">  
+        <h1 class="hero-title">IONRISE</h1>  
+        <p class="hero-subtitle">profesionální repase baterií elektrokol a koloběžek</p>  
+    </section>  
 
-    <!-- STRUKTUROVANÁ DATA (JSON-LD) PRO PRODUKT (UKÁZKA) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Repase baterie elektrokola - cena dle druhu",
-      "image": "https://www.ionrise.one/images/repase-baterie-elektrokola.jpg",
-      "description": "Profesionální repase baterií elektrokol a koloběžek. Cena se odvíjí dle kapacity a typu baterie.",
-      "sku": "REP-001",
-      "brand": {
-        "@type": "Brand",
-        "name": "IONRISE"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://www.ionrise.one/#repase-baterie-elektrokol",
-        "priceCurrency": "CZK",
-        "price": "4500",
-        "priceValidUntil": "2026-01-01",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "3.3",
-        "ratingCount": "84"
-      }
-    }
-    </script>
+    <!-- 36V Section -->  
+    <div class="pricing-section">  
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--white);">36V Baterie</h2>  
+        <div class="pricing-grid">  
+            <!-- Samsung 32E Card -->  
+            <div class="price-card">  
+                <h3>Samsung 32E</h3>  
+                <ul class="price-list">  
+                    <li>12.8Ah <span>6 700 Kč</span></li>  
+                    <li>16Ah <span>7 500 Kč</span></li>  
+                    <li>19.2Ah <span>8 300 Kč</span></li>  
+                    <li>22.4Ah <span>9 100 Kč</span></li>  
+                </ul>  
+            </div>  
 
-</head>
-<body>
-    <div class="gradient-bg"></div>
-    
-    <div class="container">
-        <!-- HLAVNÍ BANNER -->
-        <section class="hero">
-            <h1 class="hero-title">IONRISE</h1>
-            <p class="hero-subtitle">profesionální repase baterií elektrokol a koloběžek</p>
-        </section>
+            <!-- Samsung 35E Card -->  
+            <div class="price-card">  
+                <h3>Samsung 35E</h3>  
+                <ul class="price-list">  
+                    <li>14Ah <span>7 500 Kč</span></li>  
+                    <li>17.5Ah <span>8 500 Kč</span></li>  
+                    <li>21Ah <span>9 500 Kč</span></li>  
+                    <li>24.5Ah <span>10 500 Kč</span></li>  
+                </ul>  
+            </div>  
 
-        <!-- UKÁZKOVÝ PRODUKTOVÝ BLOK (podobný jako na obrázku) -->
-        <section class="product-snippet" id="repase-baterie-elektrokol" style="margin-top: 4rem; text-align: center;">
-            <h2 style="font-size: 2rem; color: var(--white); margin-bottom: 1rem;">
-                Repase baterie, akumulátoru do elektrokola
-            </h2>
-            <p style="color: var(--grey); margin-bottom: 1rem;">
-                Repasujeme všechny typy baterií elektrokol. Cena dle druhu a kapacity.
-            </p>
-            <p style="color: var(--white); margin-bottom: 0.5rem;">
-                <strong>Cena již od 4 500 Kč</strong>
-            </p>
-            <p style="color: var(--white); margin-bottom: 0.5rem;">
-                <strong>Skladem</strong>
-            </p>
-            <p style="color: var(--white); margin-bottom: 0.5rem;">
-                Hodnocení: <strong>3,3 (84)</strong>
-            </p>
-        </section>
+            <!-- BAK CL Card -->  
+            <div class="price-card">  
+                <h3>BAK CL</h3>  
+                <ul class="price-list">  
+                    <li>11.6Ah <span>6 400 Kč</span></li>  
+                    <li>14.5Ah <span>7 100 Kč</span></li>  
+                    <li>17.4Ah <span>7 800 Kč</span></li>  
+                    <li>20.3Ah <span>8 500 Kč</span></li>  
+                </ul>  
+            </div>  
 
-        <!-- 36V Section -->
-        <div class="pricing-section">
-            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--white);">36V Baterie</h2>
-            <div class="pricing-grid">
-                <!-- Samsung 32E Card -->
-                <div class="price-card">
-                    <h3>Samsung 32E</h3>
-                    <ul class="price-list">
-                        <li>12.8Ah <span>6 700 Kč</span></li>
-                        <li>16Ah <span>7 500 Kč</span></li>
-                        <li>19.2Ah <span>8 300 Kč</span></li>
-                        <li>22.4Ah <span>9 100 Kč</span></li>
-                    </ul>
-                </div>
+            <!-- Tenpower 26ME Card -->  
+            <div class="price-card">  
+                <h3>Tenpower 26ME</h3>  
+                <ul class="price-list">  
+                    <li>10.4Ah <span>6 100 Kč</span></li>  
+                    <li>13Ah <span>6 750 Kč</span></li>  
+                    <li>15.6Ah <span>7 400 Kč</span></li>  
+                    <li>18.2Ah <span>8 200 Kč</span></li>  
+                </ul>  
+            </div>  
 
-                <!-- Samsung 35E Card -->
-                <div class="price-card">
-                    <h3>Samsung 35E</h3>
-                    <ul class="price-list">
-                        <li>14Ah <span>7 500 Kč</span></li>
-                        <li>17.5Ah <span>8 500 Kč</span></li>
-                        <li>21Ah <span>9 500 Kč</span></li>
-                        <li>24.5Ah <span>10 500 Kč</span></li>
-                    </ul>
-                </div>
+            <!-- LG M50 Card -->  
+            <div class="price-card">  
+                <h3>LG M50</h3>  
+                <ul class="price-list">  
+                    <li>20Ah <span>8 300 Kč</span></li>  
+                    <li>25Ah <span>9 800 Kč</span></li>  
+                </ul>  
+            </div>  
+        </div>  
+    </div>  
 
-                <!-- BAK CL Card -->
-                <div class="price-card">
-                    <h3>BAK CL</h3>
-                    <ul class="price-list">
-                        <li>11.6Ah <span>6 400 Kč</span></li>
-                        <li>14.5Ah <span>7 100 Kč</span></li>
-                        <li>17.4Ah <span>7 800 Kč</span></li>
-                        <li>20.3Ah <span>8 500 Kč</span></li>
-                    </ul>
-                </div>
+    <!-- 48V E-babeta Section -->  
+    <div class="pricing-section" style="margin-top: 4rem;">  
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--white);">48V E-babeta</h2>  
+        <ul class="price-list" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">  
+            <li>16Ah <span>9 000 Kč</span></li>  
+            <li>19.2Ah <span>10 040 Kč</span></li>  
+            <li>22.4Ah <span>11 080 Kč</span></li>  
+            <li>25.6Ah <span>12 120 Kč</span></li>  
+        </ul>  
+    </div>  
 
-                <!-- Tenpower 26ME Card -->
-                <div class="price-card">
-                    <h3>Tenpower 26ME</h3>
-                    <ul class="price-list">
-                        <li>10.4Ah <span>6 100 Kč</span></li>
-                        <li>13Ah <span>6 750 Kč</span></li>
-                        <li>15.6Ah <span>7 400 Kč</span></li>
-                        <li>18.2Ah <span>8 200 Kč</span></li>
-                    </ul>
-                </div>
+    <!-- Contact Form Section -->  
+    <section class="form-section" id="contact-form">  
+        <form class="contact-form" action="https://formspree.io/f/xbldproq" method="POST">  
+            <input type="text" name="contact" class="form-input" placeholder="Váš kontakt" required>  
+            <textarea name="message" class="form-input" placeholder="Vaše poptávka" rows="4" required></textarea>  
+            <button type="submit" class="submit-btn">Odeslat poptávku</button>  
+        </form>  
+    </section>  
+</div>  
 
-                <!-- LG M50 Card -->
-                <div class="price-card">
-                    <h3>LG M50</h3>
-                    <ul class="price-list">
-                        <li>20Ah <span>8 300 Kč</span></li>
-                        <li>25Ah <span>9 800 Kč</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- Floating Icons -->  
+<div class="floating-icons">  
+    <a href="tel:720958340" class="icon-link">  
+        <i class="fas fa-phone" style="color: white;"></i>  
+    </a>  
+    <a href="mailto:info@ionrise.one" class="icon-link">  
+        <i class="fas fa-envelope" style="color: white;"></i>  
+    </a>  
+    <a href="#contact-form" class="icon-link">  
+        <i class="fas fa-comment-dots" style="color: white;"></i>  
+    </a>  
+</div>  
 
-        <!-- 48V E-babeta Section -->
-        <div class="pricing-section" style="margin-top: 4rem;">
-            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--white);">48V E-babeta</h2>
-            <ul class="price-list" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <li>16Ah <span>9 000 Kč</span></li>
-                <li>19.2Ah <span>10 040 Kč</span></li>
-                <li>22.4Ah <span>11 080 Kč</span></li>
-                <li>25.6Ah <span>12 120 Kč</span></li>
-            </ul>
-        </div>
+<!-- Scripts -->  
+<script>  
+    // Add smooth scroll behavior  
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {  
+        anchor.addEventListener('click', (e) => {  
+            e.preventDefault();  
+            const target = document.querySelector(anchor.getAttribute('href'));  
+            target.scrollIntoView({  
+                behavior: 'smooth',  
+                block: 'start'  
+            });  
 
-        <!-- Contact Form Section -->
-        <section class="form-section" id="contact-form">
-            <form class="contact-form" action="https://formspree.io/f/xbldproq" method="POST">
-                <input type="text" name="contact" class="form-input" placeholder="Váš kontakt" required>
-                <textarea name="message" class="form-input" placeholder="Vaše poptávka" rows="4" required></textarea>
-                <button type="submit" class="submit-btn">Odeslat poptávku</button>
-            </form>
-        </section>
-    </div>
+            // Add focus to the first input when reaching the form  
+            if (anchor.getAttribute('href') === '#contact-form') {  
+                setTimeout(() => {  
+                    document.querySelector('.form-input').focus();  
+                }, 800);  
+            }  
+        });  
+    });  
 
-    <!-- Floating Icons -->
-    <div class="floating-icons">
-        <a href="tel:720958340" class="icon-link">
-            <i class="fas fa-phone" style="color: white;"></i>
-        </a>
-        <a href="mailto:info@ionrise.one" class="icon-link">
-            <i class="fas fa-envelope" style="color: white;"></i>
-        </a>
-        <a href="#contact-form" class="icon-link">
-            <i class="fas fa-comment-dots" style="color: white;"></i>
-        </a>
-    </div>
+    // Add animation on scroll  
+    const observer = new IntersectionObserver((entries) => {  
+        entries.forEach(entry => {  
+            if (entry.isIntersecting) {  
+                entry.target.style.opacity = 1;  
+                entry.target.style.transform = 'translateY(0)';  
+            }  
+        });  
+    });  
 
-    <!-- Scripts -->
-    <script>
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    document.querySelectorAll('.price-card, .form-section').forEach((el) => {  
+        el.style.opacity = 0;  
+        el.style.transform = 'translateY(20px)';  
+        el.style.transition = 'all 0.6s ease-out';  
+        observer.observe(el);  
+    });  
+</script>
 
-                // Add focus to the first input when reaching the form
-                if (anchor.getAttribute('href') === '#contact-form') {
-                    setTimeout(() => {
-                        document.querySelector('.form-input').focus();
-                    }, 800);
-                }
-            });
-        });
+</body>  
+</html>  
+<!-- Google tag (gtag.js) -->  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T54176C62K">  
+</script>  
+<script>  
+  window.dataLayer = window.dataLayer || [];  
+  function gtag(){dataLayer.push(arguments);}  
+  gtag('js', new Date());  gtag('config', 'G-T54176C62K');
+</script>
 
-        // Add animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        document.querySelectorAll('.price-card, .form-section, .product-snippet').forEach((el) => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
-        });
-    </script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T54176C62K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-T54176C62K');
-    </script>
-</body>
-</html>
