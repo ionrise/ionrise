@@ -3,95 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repase baterií | Ionrise</title>
+    <title>Ionrise - Profesionální repase baterií a energetická řešení</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Přidej toto CSS k existujícímu */
-        
-        /* Detail Page Layout */
-        .page-header {
-            padding: 80px 0 40px;
-            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-hover: rgba(0, 0, 0, 0.08);
+            --container: 1100px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
         }
-        
-        .breadcrumb {
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .header-content {
             display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
         }
-        
-        .breadcrumb a {
-            color: var(--text-muted);
-            text-decoration: none;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 44px;
             transition: var(--transition);
         }
-        
-        .breadcrumb a:hover {
-            color: var(--accent);
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
-        
-        .breadcrumb span:last-child {
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             font-weight: 500;
         }
-        
-        .content-with-sidebar {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 40px;
-            margin: 40px 0;
+
+        nav {
+            display: flex;
+            gap: 24px;
         }
-        
-        .main-content {
-            background: var(--bg-secondary);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow);
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
         }
-        
-        .sidebar {
-            background: var(--bg-secondary);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow);
-            height: fit-content;
-            position: sticky;
-            top: 100px;
+
+        nav a:hover {
+            color: var(--accent);
         }
-        
-        .sidebar-widget {
-            margin-bottom: 30px;
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
         }
-        
-        .sidebar-widget:last-child {
-            margin-bottom: 0;
+
+        nav a:hover::after {
+            width: 100%;
         }
-        
-        .sidebar-widget h3 {
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(241, 245, 249, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
             font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 16px;
             color: var(--text-primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 8px;
         }
-        
-        .feature-list {
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-hover);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--accent-dark);
+            gap: 12px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .about-features {
             list-style: none;
+            margin-top: 30px;
         }
-        
-        .feature-list li {
+
+        .about-features li {
             padding: 12px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
-        .feature-list li:last-child {
+
+        .about-features li:last-child {
             border-bottom: none;
         }
-        
+
         .feature-icon {
             width: 24px;
             height: 24px;
@@ -104,301 +367,331 @@
             font-size: 12px;
             flex-shrink: 0;
         }
-        
-        /* Steps Process */
-        .process-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin: 40px 0;
+
+        .about-image {
             position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow);
         }
-        
-        .process-steps::before {
+
+        .about-image::before {
             content: '';
             position: absolute;
-            left: 20px;
             top: 0;
+            left: 0;
+            right: 0;
             bottom: 0;
-            width: 2px;
-            background: var(--border);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(241, 245, 249, 0.05) 100%);
             z-index: 1;
         }
-        
-        .process-step {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 50%;
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-accent);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: white;
-            font-weight: 600;
-            flex-shrink: 0;
         }
-        
-        .step-content {
-            flex: 1;
-            background: var(--bg-primary);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border);
-        }
-        
-        /* Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            aspect-ratio: 1;
-            background: var(--bg-accent);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* FAQ Section */
-        .faq-item {
-            border: 1px solid var(--border);
-            border-radius: var(--border-radius);
-            margin-bottom: 16px;
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 20px;
-            background: var(--bg-primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .faq-question:hover {
-            background: var(--bg-accent);
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 500px;
-        }
-        
-        .faq-toggle {
-            transition: var(--transition);
-        }
-        
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
-        
-        /* Stats Counter */
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            margin: 40px 0;
         }
-        
+
         .stat-item {
             text-align: center;
             padding: 30px 20px;
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow);
         }
-        
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--accent);
             margin-bottom: 8px;
         }
-        
+
         .stat-label {
-            color: var(--text-secondary);
             font-weight: 500;
+            opacity: 0.9;
         }
-        
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-secondary);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-light {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-light:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 50px 0 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 900px) {
-            .content-with-sidebar {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
             
-            .sidebar {
-                position: static;
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             
-            .process-steps::before {
-                left: 15px;
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-item {
+                padding: 20px 10px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <!-- Stejný header jako v index.html -->
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <div class="logo-text">
+                        <div class="logo-title">IONRISE</div>
+                        <div class="logo-subtitle">Energetická řešení</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="index.html">Domů</a>
+                    <a href="repase.html">Repase</a>
+                    <a href="mereni.html">Měření</a>
+                    <a href="stavby.html">Stavby</a>
+                    <a href="vize.html">Vize</a>
+                    <a href="kontakty.html">Kontakty</a>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <section class="page-header">
-        <div class="container">
-            <div class="breadcrumb">
-                <a href="index.html">Domů</a>
-                <span>/</span>
-                <span>Repase baterií</span>
-            </div>
-            <h1>Profesionální repase baterií</h1>
-            <p>Vrátíme vašim bateriím druhou šanci s použitím prvotřídních článků a nejmodernějších technologií.</p>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="content-with-sidebar">
-            <div class="main-content">
-                <h2>Kompletní služby repase</h2>
-                <p>Specializujeme se na repase lithiových baterií pro elektrokola, elektroskútry, nářadí a další zařízení. Používáme pouze kvalitní články od ověřených výrobců.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="500">0</div>
-                        <div class="stat-label">Repasovaných baterií</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="98">0</div>
-                        <div class="stat-label">% Spokojených zákazníků</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="24">0</div>
-                        <div class="stat-label">Měsíců záruka</div>
-                    </div>
-                </div>
-
-                <h3>Jak probíhá repase</h3>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Diagnostika</h4>
-                            <p>Pečlivě změříme stav každého článku a identifikujeme problémové oblasti.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Demontáž</h4>
-                            <p>Bezpečně rozebíráme baterii a odstraníme nefunkční články.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Výběr článků</h4>
-                            <p>Vybereme vhodné náhradní články s ohledem na kapacitu a výkon.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Montáž a testování</h4>
-                            <p>Sestavíme nový battery pack a důkladně otestujeme jeho funkčnost.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Často kladené otázky</h3>
-                <div class="faq-section">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            Jak dlouho trvá repase baterie?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Standardní repase trvá 3-5 pracovních dnů v závislosti na složitosti a dostupnosti článků.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            Jaká je životnost repasované baterie?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Při použití kvalitních článků dosahuje repasovaná baterie 80-90% životnosti originálu.</p>
-                        </div>
-                    </div>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Inovativní řešení pro energetiku budoucnosti</h1>
+                <p>Specializujeme se na repase baterií, měření jejich stavu, stavbu energetických systémů a vývoj udržitelných technologií pro lepší zítřek.</p>
+                <div class="hero-buttons">
+                    <a href="repase.html" class="btn btn-primary">Naše služby</a>
+                    <a href="kontakty.html" class="btn btn-secondary">Kontaktujte nás</a>
                 </div>
             </div>
+        </section>
 
-            <div class="sidebar">
-                <div class="sidebar-widget">
-                    <h3>Rychlý kontakt</h3>
-                    <p>Máte dotaz ohledně repase? Neváhejte nás kontaktovat.</p>
-                    <a href="kontakty.html" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 16px;">Kontaktovat</a>
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Naše služby</h2>
+                    <p>Komplexní energetická řešení šitá na míru vašim potřebám</p>
                 </div>
-                
-                <div class="sidebar-widget">
-                    <h3>Výhody repase</h3>
-                    <ul class="feature-list">
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>Až 60% úspora oproti nové baterii</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>24měsíční záruka na práci</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>Pouze kvalitní články</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>Šetrné k životnímu prostředí</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="sidebar-widget">
-                    <h3>Podporované značky</h3>
-                    <p>Samsung, LG, BAK, Tenpower, Sony, Panasonic a další</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <!-- Stejný footer jako v index.html -->
-    </footer>
-</body>
-</html>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔋</div>
+                        <h3>Repase baterií</h3>
+                        <p>Profesionální repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Prodloužíme životnost vašich baterií až o 80% s garancí kvality.</p>
+                        <a href="repase.html" class="service-link">
+                            Více informací
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Měření a diagnostika</h3>
+                        <p>Přesná diagnostika stavu baterií pomocí nejmodernějších měřicích přístrojů. Zjistíme kapacitu, vnitřní odpor a celkový zdravotní stav vašich energetických zdrojů.</p>
+                        <a href="mereni.html" class="service-link">
+                            Více informací
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏗️</div>
+                        <h3>Energetické stavby</h3>
+                        <p>Kompletní realizace energetických systémů od návrhu po instalaci. Solární elektrárny, ostrovní systémy, UPS a záložní zdroje s důrazem na efektivitu a spolehlivost.</p>
+                        <a href="stavby.html" class="service-link">
+                            Více informací
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="servic
