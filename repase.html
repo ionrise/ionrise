@@ -1,1 +1,151 @@
-bbbbnn
+<!doctype html>
+
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ionrise — Repase baterií</title>
+  <meta name="description" content="Ceník repasí baterií pro elektrokola a koloběžky — Ionrise." />
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" />
+  <style>
+    :root{--bg:#ffffff;--muted:#6b7280;--accent:#0b74de;--dark:#0f1724;--container:1100px;font-family:Inter,system-ui,Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--dark);line-height:1.5}
+    .container{max-width:var(--container);margin:28px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    header img{height:44px}
+    nav a{color:var(--dark);text-decoration:none;font-weight:600;margin-left:16px}h1{margin:6px 0 12px}
+.muted{color:var(--muted)}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{border:1px solid #eee;padding:16px;border-radius:10px;background:#fff}
+
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{padding:10px;border-bottom:1px solid #f3f3f3;text-align:left}
+th{background:#fafafa}
+
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.cta{display:inline-block;margin-top:14px;padding:10px 14px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none}
+
+@media(max-width:900px){.cards{grid-template-columns:1fr}.hero{grid-template-columns:1fr}}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="images/logo.png" alt="Ionrise" />
+        <div>
+          <div style="font-weight:800;letter-spacing:1px">IONRISE</div>
+          <div class="muted" style="font-size:13px">Repase baterií</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Domů</a>
+        <a href="stavby.html">Stavby</a>
+        <a href="future.html">Budoucnost</a>
+        <a href="kontakty.html">Kontakty</a>
+      </nav>
+    </header><main>
+  <h1>Repase baterií — ceník</h1>
+  <p class="muted">Ceny převzaté z tvé stránky. Pro přesnou kalkulaci napiš model baterie, počet článků a požadovanou kapacitu.</p>
+
+  <section style="margin-top:18px">
+    <h2>36V — Samsung / BAK / Tenpower</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Samsung 32E</h3>
+        <table>
+          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>12.8 Ah</td><td>6 700 Kč</td></tr>
+            <tr><td>16.0 Ah</td><td>7 500 Kč</td></tr>
+            <tr><td>19.2 Ah</td><td>8 300 Kč</td></tr>
+            <tr><td>22.4 Ah</td><td>9 100 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Samsung 35E</h3>
+        <table>
+          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>14.0 Ah</td><td>7 500 Kč</td></tr>
+            <tr><td>17.5 Ah</td><td>8 500 Kč</td></tr>
+            <tr><td>21.0 Ah</td><td>9 500 Kč</td></tr>
+            <tr><td>24.5 Ah</td><td>10 500 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>BAK CL</h3>
+        <table>
+          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>11.6 Ah</td><td>6 400 Kč</td></tr>
+            <tr><td>14.5 Ah</td><td>7 100 Kč</td></tr>
+            <tr><td>17.4 Ah</td><td>7 800 Kč</td></tr>
+            <tr><td>20.3 Ah</td><td>8 500 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Tenpower 26ME</h3>
+        <table>
+          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>10.4 Ah</td><td>6 100 Kč</td></tr>
+            <tr><td>13.0 Ah</td><td>6 750 Kč</td></tr>
+            <tr><td>15.6 Ah</td><td>7 400 Kč</td></tr>
+            <tr><td>18.2 Ah</td><td>8 200 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="margin-top:18px">
+    <h2>48V — e-babeta / LG</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>48V E-babeta</h3>
+        <table>
+          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>16 Ah</td><td>9 000 Kč</td></tr>
+            <tr><td>19.2 Ah</td><td>10 040 Kč</td></tr>
+            <tr><td>22.4 Ah</td><td>11 080 Kč</td></tr>
+            <tr><td>25.6 Ah</td><td>12 120 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>LG M50</h3>
+        <table>
+          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>20 Ah</td><td>8 300 Kč</td></tr>
+            <tr><td>25 Ah</td><td>9 800 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="note">Ceny jsou orientační. Pro přesnou nabídku pošli prosím informace o baterii (model/název, počet článků, rozměry) přes formulář na stránce <a href="kontakty.html">Kontakty</a>.</p>
+    <a class="cta" href="kontakty.html">Odeslat poptávku</a>
+  </section>
+
+</main>
+
+<footer style="margin-top:26px;text-align:center;color:var(--muted)">
+  © <span id="year"></span> Ionrise
+</footer>
+
+  </div>  <script>document.getElementById('year').innerText = new Date().getFullYear();</script></body>
+</html>
