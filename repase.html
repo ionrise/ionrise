@@ -1,151 +1,417 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ionrise — Repase baterií</title>
-  <meta name="description" content="Ceník repasí baterií pro elektrokola a koloběžky — Ionrise." />
-  <link rel="icon" href="images/favicon-48.png" sizes="48x48" />
-  <style>
-    :root{--bg:#ffffff;--muted:#6b7280;--accent:#0b74de;--dark:#0f1724;--container:1100px;font-family:Inter,system-ui,Arial}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--dark);line-height:1.5}
-    .container{max-width:var(--container);margin:28px auto;padding:0 16px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    header img{height:44px}
-    nav a{color:var(--dark);text-decoration:none;font-weight:600;margin-left:16px}h1{margin:6px 0 12px}
-.muted{color:var(--muted)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ionrise — Profesionální repase baterií</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-hover: rgba(0, 0, 0, 0.08);
+            --container: 1100px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{border:1px solid #eee;padding:16px;border-radius:10px;background:#fff}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-table{width:100%;border-collapse:collapse;margin-top:10px}
-th,td{padding:10px;border-bottom:1px solid #f3f3f3;text-align:left}
-th{background:#fafafa}
+        body {
+            font-family: 'Inter', system-ui, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
 
-.note{font-size:13px;color:var(--muted);margin-top:12px}
-.cta{display:inline-block;margin-top:14px;padding:10px 14px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none}
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-@media(max-width:900px){.cards{grid-template-columns:1fr}.hero{grid-template-columns:1fr}}
+        /* Header Styles */
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.5s ease-out;
+        }
 
-  </style>
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 44px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Cards Section */
+        .section {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-hover);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: var(--bg-accent);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr {
+            transition: var(--transition);
+        }
+
+        tr:hover {
+            background-color: var(--bg-accent);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px var(--shadow);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .note {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .note a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .note a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .cta:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 30px 0;
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .hero {
+                padding: 40px 0 30px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
     <header>
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="images/logo.png" alt="Ionrise" />
-        <div>
-          <div style="font-weight:800;letter-spacing:1px">IONRISE</div>
-          <div class="muted" style="font-size:13px">Repase baterií</div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE0IDI4TDMwIDI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <div class="logo-text">
+                        <div class="logo-title">IONRISE</div>
+                        <div class="logo-subtitle">Repase baterií</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="domu.html">Domů</a>
+                    <a href="stavby.html">Stavby</a>
+                    <a href="budoucnost.html">Budoucnost</a>
+                    <a href="kontakty.html">Kontakty</a>
+                </nav>
+            </div>
         </div>
-      </div>
-      <nav>
-        <a href="index.html">Domů</a>
-        <a href="stavby.html">Stavby</a>
-        <a href="future.html">Budoucnost</a>
-        <a href="kontakty.html">Kontakty</a>
-      </nav>
-    </header><main>
-  <h1>Repase baterií — ceník</h1>
-  <p class="muted">Ceny převzaté z tvé stránky. Pro přesnou kalkulaci napiš model baterie, počet článků a požadovanou kapacitu.</p>
+    </header>
 
-  <section style="margin-top:18px">
-    <h2>36V — Samsung / BAK / Tenpower</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Samsung 32E</h3>
-        <table>
-          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>12.8 Ah</td><td>6 700 Kč</td></tr>
-            <tr><td>16.0 Ah</td><td>7 500 Kč</td></tr>
-            <tr><td>19.2 Ah</td><td>8 300 Kč</td></tr>
-            <tr><td>22.4 Ah</td><td>9 100 Kč</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <main class="container">
+        <section class="hero">
+            <h1>Repase baterií — ceník</h1>
+            <p>Ceny převzaté z tvé stránky. Pro přesnou kalkulaci napiš model baterie, počet článků a požadovanou kapacitu.</p>
+        </section>
 
-      <div class="card">
-        <h3>Samsung 35E</h3>
-        <table>
-          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>14.0 Ah</td><td>7 500 Kč</td></tr>
-            <tr><td>17.5 Ah</td><td>8 500 Kč</td></tr>
-            <tr><td>21.0 Ah</td><td>9 500 Kč</td></tr>
-            <tr><td>24.5 Ah</td><td>10 500 Kč</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card">
-        <h3>BAK CL</h3>
-        <table>
-          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>11.6 Ah</td><td>6 400 Kč</td></tr>
-            <tr><td>14.5 Ah</td><td>7 100 Kč</td></tr>
-            <tr><td>17.4 Ah</td><td>7 800 Kč</td></tr>
-            <tr><td>20.3 Ah</td><td>8 500 Kč</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card">
-        <h3>Tenpower 26ME</h3>
-        <table>
-          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>10.4 Ah</td><td>6 100 Kč</td></tr>
-            <tr><td>13.0 Ah</td><td>6 750 Kč</td></tr>
-            <tr><td>15.6 Ah</td><td>7 400 Kč</td></tr>
-            <tr><td>18.2 Ah</td><td>8 200 Kč</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
-
-  <section style="margin-top:18px">
-    <h2>48V — e-babeta / LG</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>48V E-babeta</h3>
-        <table>
-          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>16 Ah</td><td>9 000 Kč</td></tr>
-            <tr><td>19.2 Ah</td><td>10 040 Kč</td></tr>
-            <tr><td>22.4 Ah</td><td>11 080 Kč</td></tr>
-            <tr><td>25.6 Ah</td><td>12 120 Kč</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card">
-        <h3>LG M50</h3>
-        <table>
-          <thead><tr><th>Kapacita</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>20 Ah</td><td>8 300 Kč</td></tr>
-            <tr><td>25 Ah</td><td>9 800 Kč</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <p class="note">Ceny jsou orientační. Pro přesnou nabídku pošli prosím informace o baterii (model/název, počet článků, rozměry) přes formulář na stránce <a href="kontakty.html">Kontakty</a>.</p>
-    <a class="cta" href="kontakty.html">Odeslat poptávku</a>
-  </section>
-
-</main>
-
-<footer style="margin-top:26px;text-align:center;color:var(--muted)">
-  © <span id="year"></span> Ionrise
-</footer>
-
-  </div>  <script>document.getElementById('year').innerText = new Date().getFullYear();</script></body>
-</html> 
+        <section class="section">
+            <h2>36V — Samsung / BAK / Tenpower</h2>
+            <div class="cards">
+                <div class="card">
