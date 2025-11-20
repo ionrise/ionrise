@@ -372,3 +372,90 @@ footer {
         gap: 16px;
     }
 }
+
+/* Přidej k existujícímu CSS */
+
+/* Mobile Navigation */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Form States */
+input.error, textarea.error {
+    border-color: #ef4444 !important;
+}
+
+input.success, textarea.success {
+    border-color: #10b981 !important;
+}
+
+/* Loading States */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* No JavaScript fallback */
+.no-js .hamburger {
+    display: none;
+}
+
+.no-js nav {
+    display: flex !important;
+}
+
+@media (max-width: 900px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 6px var(--shadow);
+        border-top: 1px solid var(--border);
+    }
+    
+    nav.active {
+        display: flex;
+    }
+    
+    body.nav-open {
+        overflow: hidden;
+    }
+}
