@@ -643,7 +643,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyIiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
                     <div class="logo-text">
                         <div class="logo-title">IONRISE</div>
                         <div class="logo-subtitle">Energetická řešení</div>
@@ -716,7 +716,7 @@
                             </li>
                             <li>
                                 <span class="spec-name">Max. vybíjecí proud:</span>
-                                <span class="spec-value">26A</span>
+                                <span class="spec-value">15A</span>
                             </li>
                             <li>
                                 <span class="spec-name">Výrobce:</span>
@@ -733,7 +733,7 @@
                         </div>
                         
                         <div class="product-actions">
-                            <button class="btn btn-primary">Kontaktujte nás</button>
+                            <a href="kontakty.html?product=BAK%2021700%206500mAh" class="btn btn-primary">Kontaktujte nás</a>
                             <button class="btn btn-secondary">Více informací</button>
                         </div>
                     </div>
@@ -746,7 +746,7 @@
                         <!-- ZDE NAHRÁVEJTE FOTKU EBIKE -->
                         <!-- Doporučené rozlišení: 600x400px nebo větší -->
                         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--bg-accent); color: var(--text-muted);">
-                            DYU C9 městské elektrokolo<br>Foto elektrokola
+                            48V 250W Elektrokolo<br>Foto elektrokola
                         </div>
                     </div>
                     <div class="product-content">
@@ -790,7 +790,7 @@
                         </div>
                         
                         <div class="product-actions">
-                            <button class="btn btn-primary">Kontaktujte náa</button>
+                            <a href="kontakty.html?product=Elektrokolo%2048V%20250W" class="btn btn-primary">Kontaktujte nás</a>
                             <button class="btn btn-secondary">Více informací</button>
                         </div>
                     </div>
@@ -847,7 +847,7 @@
                         <li><a href="eshop.html">Eshop</a></li>
                         <li><a href="repase.html">Repase baterií</a></li>
                         <li><a href="mereni.html">Měření a diagnostika</a></li>
-                        <li><a href="stavby.html">Energetické stavby</a></li>
+                        <li><a href="stavby.html">Stavby</a></li>
                         <li><a href="vize.html">Vize a inovace</a></li>
                     </ul>
                 </div>
@@ -902,19 +902,6 @@
                     });
                 });
             }
-
-            // Add to cart functionality
-            document.querySelectorAll('.btn-primary').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productCard = this.closest('.product-card');
-                    const productName = productCard.querySelector('.product-title').textContent;
-                    
-                    // Simple cart notification
-                    alert(`Produkt "${productName}" byl přidán do košíku`);
-                    
-                    // Here you would normally add to cart logic
-                });
-            });
 
             // More info functionality
             document.querySelectorAll('.btn-secondary').forEach(button => {
