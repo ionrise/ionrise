@@ -1,5 +1,3 @@
-// main.js - Připoj k HTML: <script src="main.js" defer></script>
-
 // Mobile Navigation Toggle
 class MobileNav {
     constructor() {
@@ -55,37 +53,10 @@ class MobileNav {
     }
 }
 
-// FAQ Accordion
-class FAQAccordion {
-    constructor() {
-        this.faqItems = document.querySelectorAll('.faq-item');
-        this.init();
-    }
-    
-    init() {
-        this.faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => this.toggleItem(item));
-        });
-    }
-    
-    toggleItem(item) {
-        const isActive = item.classList.contains('active');
-        
-        // Close all items
-        this.faqItems.forEach(i => i.classList.remove('active'));
-        
-        // Open clicked item if it wasn't active
-        if (!isActive) {
-            item.classList.add('active');
-        }
-    }
-}
-
 // Animated Counter
 class Counter {
     constructor() {
-        this.counters = document.querySelectorAll('[data-count]');
+        this.counters = document.querySelectorAll('.stat-number');
         this.init();
     }
     
@@ -105,7 +76,7 @@ class Counter {
     }
     
     animateCounter(element) {
-        const target = parseInt(element.getAttribute('data-count'));
+        const target = parseInt(element.getAttribute('data-count') || element.textContent);
         const duration = 2000;
         const step = target / (duration / 16);
         let current = 0;
@@ -113,10 +84,10 @@ class Counter {
         const timer = setInterval(() => {
             current += step;
             if (current >= target) {
-                element.textContent = target;
+                element.textContent = target + (element.textContent.includes('%') ? '%' : '');
                 clearInterval(timer);
             } else {
-                element.textContent = Math.floor(current);
+                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '');
             }
         }, 16);
     }
@@ -140,6 +111,32 @@ class SmoothScroll {
                     });
                 }
             });
+        });
+    }
+}
+
+// Scroll Animations
+class ScrollAnimations {
+    constructor() {
+        this.animatedElements = document.querySelectorAll('.service-card, .about-content, .stat-item');
+        this.init();
+    }
+    
+    init() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        this.animatedElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(element);
         });
     }
 }
@@ -289,26 +286,15 @@ class LazyLoader {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize components only if they exist on the page
     if (document.querySelector('nav')) new MobileNav();
-    if (document.querySelector('.faq-item')) new FAQAccordion();
-    if (document.querySelector('[data-count]')) new Counter();
+    if (document.querySelector('.stat-number')) new Counter();
     new SmoothScroll();
+    new ScrollAnimations();
     if (document.getElementById('contact-form')) new FormValidator('contact-form');
     if (document.querySelector('img[data-src]')) new LazyLoader();
     
-    // Add loading animation to cards
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.service-card, .card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(card);
-    });
+    // Add current year to footer
+    document.getElementById('year').innerText = new Date().getFullYear();
 });
+
+// No JavaScript fallback
+document.documentElement.classList.remove('no-js');
