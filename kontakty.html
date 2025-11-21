@@ -52,7 +52,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            animation: slideDown 0.5s ease-out;
         }
 
         .header-content {
@@ -97,7 +96,7 @@
 
         nav {
             display: flex;
-            gap: 24px;
+            gap: 20px;
         }
 
         nav a {
@@ -107,6 +106,7 @@
             position: relative;
             padding: 8px 0;
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -386,6 +386,36 @@
             box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Form Messages */
+        .form-message {
+            padding: 12px 16px;
+            margin: 16px 0;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .form-message.success {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .form-message.error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .form-message.hidden {
+            display: none;
+        }
+
         /* Map Section */
         .map-section {
             padding: 0 0 80px;
@@ -490,30 +520,34 @@
             border-top: 1px solid var(--border);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
         }
 
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
         /* Responsive Design */
@@ -536,6 +570,31 @@
             
             .page-header h1 {
                 font-size: 2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px var(--shadow);
+                border-top: 1px solid var(--border);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            body.nav-open {
+                overflow: hidden;
             }
         }
 
@@ -589,12 +648,18 @@
                 </div>
                 <nav>
                     <a href="index.html">Domů</a>
+                    <a href="eshop.html">Eshop</a>
                     <a href="repase.html">Repase</a>
                     <a href="mereni.html">Měření</a>
                     <a href="stavby.html">Stavby</a>
                     <a href="vize.html">Vize</a>
                     <a href="kontakty.html">Kontakty</a>
                 </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
@@ -607,7 +672,7 @@
                 <span>Kontakty</span>
             </div>
             <h1>Kontaktujte nás</h1>
-            <p>Máte dotaz ohledně našich služeb? Neváhejte nás kontaktovat, rádi vám pomůžeme.</p>
+            <p>Máte dotaz ohledně našich služeb nebo produktů? Neváhejte nás kontaktovat, rádi vám pomůžeme.</p>
         </div>
     </section>
 
@@ -658,7 +723,7 @@
                     
                     <h3 style="margin-top: 30px;">Sledujte nás</h3>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/ionrise/" target="_blank" class="social-link">
+                        <a href="https://www.instagram.com/ionrise.one/" target="_blank" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M16 8V6C16 5.46957 16.2107 4.96086 16.5858 4.58579C16.9609 4.21071 17.4696 4 18 4H19C19.5304 4 20.0391 4.21071 20.4142 4.58579C20.7893 4.96086 21 5.46957 21 6V7C21 7.53043 20.7893 8.03914 20.4142 8.41421C20.0391 8.78929 19.5304 9 19 9H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -674,4 +739,227 @@
                                 <span class="day">Pondělí - Pátek</span>
                                 <span class="time">8:00 - 17:00</span>
                             </li>
+                            <li>
+                                <span class="day">Sobota</span>
+                                <span class="time">9:00 - 12:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Neděle</span>
+                                <span class="time">Zavřeno</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 
+                <div class="contact-form">
+                    <h2>Kontaktní formulář</h2>
+                    <form id="contactForm" action="https://formspree.io/f/xbldproq" method="POST">
+                        <div id="formMessage" class="form-message hidden"></div>
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Jméno a příjmení *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefon</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Předmět *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Vyberte předmět zprávy</option>
+                                <option value="repase">Repase baterií</option>
+                                <option value="mereni">Měření a diagnostika</option>
+                                <option value="stavby">Energetické stavby</option>
+                                <option value="eshop">Dotaz k produktu z Eshopu</option>
+                                <option value="other">Jiný</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product" class="form-label">Konkrétní produkt (pokud se týká)</label>
+                            <input type="text" id="product" name="product" class="form-control" placeholder="Např: BAK 21700 6500mAh">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Zpráva *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary">
+                            <span id="submitText">Odeslat zprávu</span>
+                            <span id="submitLoading" style="display: none;">Odesílám...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <h2 style="margin-bottom: 20px;">Kde nás najdete</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2612.783068300984!2d17.11178797678949!3d49.05310407138135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710f5977c7cd881%3A0x9e3d0b6b7c8e4d1f!2sZahradn%C3%AD%20455%2C%20747%2057%20Slavkov!5e0!3m2!1scs!2scz!4v1710861234567!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ionrise</h3>
+                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Služby</h3>
+                    <ul class="footer-links">
+                        <li><a href="eshop.html">Eshop</a></li>
+                        <li><a href="repase.html">Repase baterií</a></li>
+                        <li><a href="mereni.html">Měření a diagnostika</a></li>
+                        <li><a href="stavby.html">Energetické stavby</a></li>
+                        <li><a href="vize.html">Vize a inovace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakty</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontakty.html">Kontaktní formulář</a></li>
+                        <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
+                        <li><a href="tel:+420720958340">+420 720 958 340</a></li>
+                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>O nás</h3>
+                    <ul class="footer-links">
+                        <li><a href="o-nas.html">O společnosti</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="certifikaty.html">Certifikáty</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple functionality for contacts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update year in footer
+            document.getElementById('year').innerText = new Date().getFullYear();
+
+            // Mobile navigation
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                // Close menu when clicking on links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        document.body.classList.remove('nav-open');
+                    });
+                });
+            }
+
+            // Prefill contact form based on URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const product = urlParams.get('product');
+            if (product) {
+                const productField = document.getElementById('product');
+                const subjectField = document.getElementById('subject');
+                if (productField) {
+                    productField.value = product;
+                }
+                if (subjectField) {
+                    subjectField.value = 'eshop';
+                }
+            }
+
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitLoading = document.getElementById('submitLoading');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitText.style.display = 'none';
+                    submitLoading.style.display = 'inline';
+                    
+                    try {
+                        const formData = new FormData(this);
+                        const response = await fetch(this.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Success message
+                            formMessage.textContent = 'Děkujeme za vaši zprávu! Brzy se vám ozveme.';
+                            formMessage.className = 'form-message success';
+                            formMessage.classList.remove('hidden');
+                            contactForm.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        // Error message
+                        formMessage.textContent = 'Při odesílání zprávy došlo k chybě. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.';
+                        formMessage.className = 'form-message error';
+                        formMessage.classList.remove('hidden');
+                    } finally {
+                        // Reset loading state
+                        submitBtn.disabled = false;
+                        submitText.style.display = 'inline';
+                        submitLoading.style.display = 'none';
+                        
+                        // Scroll to message
+                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            }
+
+            // Simple scroll animations
+            const animatedElements = document.querySelectorAll('.contact-details li, .contact-form, .map-container');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
