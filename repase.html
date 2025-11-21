@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ionrise — Profesionální repase baterií</title>
+    <title>Repase baterií | Ionrise - Profesionální repase všech typů baterií</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,6 +36,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -51,7 +52,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            animation: slideDown 0.5s ease-out;
         }
 
         .header-content {
@@ -96,7 +96,7 @@
 
         nav {
             display: flex;
-            gap: 24px;
+            gap: 20px;
         }
 
         nav a {
@@ -106,6 +106,7 @@
             position: relative;
             padding: 8px 0;
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -127,14 +128,14 @@
             width: 100%;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 60px 0 40px;
+        /* Page Header */
+        .page-header {
+            padding: 80px 0 40px;
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
             text-align: center;
-            animation: fadeIn 1s ease-out;
         }
 
-        .hero h1 {
+        .page-header h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 16px;
@@ -144,209 +145,336 @@
             background-clip: text;
         }
 
-        .hero p {
+        .page-header p {
             font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 30px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Cards Section */
-        .section {
-            margin-bottom: 50px;
-            animation: fadeInUp 0.8s ease-out;
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            justify-content: center;
         }
 
-        .section h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 24px;
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb span:last-child {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             color: var(--text-primary);
             position: relative;
             display: inline-block;
         }
 
-        .section h2::after {
+        .section-title h2::after {
             content: '';
             position: absolute;
-            width: 40px;
+            width: 60px;
             height: 3px;
             background: var(--accent);
             bottom: -8px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 2px;
         }
 
-        .cards {
+        /* Service Overview */
+        .service-overview {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
         }
 
-        .card {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 24px;
-            box-shadow: 0 4px 6px var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-hover);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent);
-            transform: scaleY(0);
-            transition: var(--transition);
-        }
-
-        .card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
+        .service-text h2 {
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             color: var(--text-primary);
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        .service-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
-        th, td {
-            padding: 12px 8px;
-            text-align: left;
+        .service-features {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .service-features li {
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        th {
-            background-color: var(--bg-accent);
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        tr:last-child td {
+        .service-features li:last-child {
             border-bottom: none;
         }
 
-        tr {
-            transition: var(--transition);
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
         }
 
-        tr:hover {
-            background-color: var(--bg-accent);
+        .service-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Price Tables */
+        .pricing-section {
+            background: var(--bg-secondary);
+            padding: 60px 0;
+        }
+
+        .price-table {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .price-header {
+            background: var(--accent);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .price-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .price-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .price-content {
+            padding: 0;
+        }
+
+        .price-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table th {
+            background: var(--bg-accent);
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .price-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-table tr:hover {
+            background: var(--bg-accent);
+        }
+
+        .price-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 20px;
         }
 
         /* CTA Section */
         .cta-section {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-top: 40px;
-            box-shadow: 0 4px 6px var(--shadow);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 80px 0;
             text-align: center;
-            animation: fadeIn 1s ease-out;
         }
 
-        .note {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .note a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
-        .note a:hover {
-            color: var(--accent-dark);
-            text-decoration: underline;
-        }
-
-        .cta {
+        .btn {
             display: inline-block;
             padding: 14px 28px;
-            background: var(--accent);
-            color: white;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
-            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
-            position: relative;
-            overflow: hidden;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
         }
 
-        .cta:hover {
-            background: var(--accent-dark);
+        .btn-light {
+            background: white;
+            color: var(--accent);
+        }
+
+        .btn-light:hover {
+            background: var(--bg-accent);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
-        }
-
-        .cta:active {
-            transform: translateY(0);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
         }
 
         /* Footer */
         footer {
             background: var(--bg-secondary);
-            padding: 30px 0;
-            margin-top: 60px;
-            text-align: center;
+            padding: 50px 0 30px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
         }
 
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
         /* Responsive Design */
         @media (max-width: 900px) {
-            .cards {
+            .service-overview {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
             
             .header-content {
@@ -357,10 +485,44 @@
             nav {
                 width: 100%;
                 justify-content: center;
+                flex-wrap: wrap;
             }
             
-            .hero h1 {
+            .page-header h1 {
                 font-size: 2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px var(--shadow);
+                border-top: 1px solid var(--border);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            body.nav-open {
+                overflow: hidden;
+            }
+
+            .price-table {
+                overflow-x: auto;
+            }
+
+            .price-table table {
+                min-width: 600px;
             }
         }
 
@@ -369,17 +531,33 @@
                 padding: 0 16px;
             }
             
-            .card {
+            .service-overview {
                 padding: 20px;
             }
             
-            .hero {
-                padding: 40px 0 30px;
+            .page-header {
+                padding: 60px 0 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            nav {
+                gap: 16px;
             }
             
-            nav {
-                flex-wrap: wrap;
-                gap: 16px;
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .price-table th,
+            .price-table td {
+                padding: 12px 16px;
             }
         }
     </style>
@@ -389,33 +567,92 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE0IDI4TDMwIDI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
                     <div class="logo-text">
                         <div class="logo-title">IONRISE</div>
-                        <div class="logo-subtitle">Repase baterií</div>
+                        <div class="logo-subtitle">Energetická řešení</div>
                     </div>
                 </div>
                 <nav>
                     <a href="index.html">Domů</a>
+                    <a href="eshop.html">Eshop</a>
+                    <a href="repase.html">Repase</a>
+                    <a href="mereni.html">Měření</a>
                     <a href="stavby.html">Stavby</a>
-                    <a href="budoucnost.html">Budoucnost</a>
+                    <a href="vize.html">Vize</a>
                     <a href="kontakty.html">Kontakty</a>
                 </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero">
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Domů</a>
+                <span>/</span>
+                <span>Repase baterií</span>
+            </div>
             <h1>Repase baterií — ceník</h1>
-            <p>Ceny převzaté z tvé stránky. Pro přesnou kalkulaci napiš model baterie, počet článků a požadovanou kapacitu.</p>
-        </section>
+            <p>Ceny jsou orientační. Pro přesnou kalkulaci nám pošlete informace o baterii.</p>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>36V — Samsung / BAK / Tenpower</h2>
-            <div class="cards">
-                <div class="card">
+    <section class="content-section">
+        <div class="container">
+            <div class="service-overview">
+                <div class="service-text">
+                    <h2>Profesionální repase baterií</h2>
+                    <p>Specializujeme se na repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Prodloužíme životnost vašich baterií až o 80% s garancí kvality.</p>
+                    
+                    <ul class="service-features">
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>24měsíční záruka na práci a články</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Pouze kvalitní články Samsung, LG, BAK</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Rychlé dodací lhůty 3-5 pracovních dnů</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Bezplatná diagnostika před repasí</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <div class="image-placeholder">
+                        <!-- ZDE NAHRÁVEJTE VLASTNÍ OBRÁZEK -->
+                        Obrázek repasované baterie
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>36V — Samsung / BAK / Tenpower</h2>
+                <p>Ceny za kompletní repasi battery packu</p>
+            </div>
+
+            <!-- Samsung 32E -->
+            <div class="price-table">
+                <div class="price-header">
                     <h3>Samsung 32E</h3>
+                    <p>Vysokokapacitní články pro dlouhou výdrž</p>
+                </div>
+                <div class="price-content">
                     <table>
                         <thead>
                             <tr>
@@ -443,8 +680,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card">
+            </div>
+
+            <!-- Samsung 35E -->
+            <div class="price-table">
+                <div class="price-header">
                     <h3>Samsung 35E</h3>
+                    <p>Vyšší kapacita pro maximální dojezd</p>
+                </div>
+                <div class="price-content">
                     <table>
                         <thead>
                             <tr>
@@ -472,8 +716,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card">
+            </div>
+
+            <!-- BAK CL -->
+            <div class="price-table">
+                <div class="price-header">
                     <h3>BAK CL</h3>
+                    <p>Spolehlivé články za příznivou cenu</p>
+                </div>
+                <div class="price-content">
                     <table>
                         <thead>
                             <tr>
@@ -501,8 +752,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card">
+            </div>
+
+            <!-- Tenpower 26ME -->
+            <div class="price-table">
+                <div class="price-header">
                     <h3>Tenpower 26ME</h3>
+                    <p>Ekonomické řešení s dobrou výdrží</p>
+                </div>
+                <div class="price-content">
                     <table>
                         <thead>
                             <tr>
@@ -531,13 +789,19 @@
                     </table>
                 </div>
             </div>
-        </section>
 
-        <section class="section">
-            <h2>48V — e-babeta / LG</h2>
-            <div class="cards">
-                <div class="card">
+            <div class="section-title" style="margin-top: 60px;">
+                <h2>48V — e-babeta / LG</h2>
+                <p>Ceny za kompletní repasi battery packu</p>
+            </div>
+
+            <!-- 48V E-babeta -->
+            <div class="price-table">
+                <div class="price-header">
                     <h3>48V E-babeta</h3>
+                    <p>Kvalitní články pro elektrokola</p>
+                </div>
+                <div class="price-content">
                     <table>
                         <thead>
                             <tr>
@@ -565,8 +829,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card">
+            </div>
+
+            <!-- LG M50 -->
+            <div class="price-table">
+                <div class="price-header">
                     <h3>LG M50</h3>
+                    <p>Prémiové články s vynikající výdrží</p>
+                </div>
+                <div class="price-content">
                     <table>
                         <thead>
                             <tr>
@@ -587,26 +858,92 @@
                     </table>
                 </div>
             </div>
-        </section>
 
-        <section class="cta-section">
-            <p class="note">Ceny jsou orientační. Pro přesnou nabídku pošli prosím informace o baterii (model/název, počet článků, rozměry) přes formulář na stránce <a href="kontakty.html">Kontakty</a>.</p>
-            <a class="cta" href="kontakty.html">Odeslat poptávku</a>
-        </section>
-    </main>
+            <div class="price-note">
+                <p>Ceny jsou orientační. Pro přesnou nabídku pošli prosím informace o baterii (model/název, počet článků, rozměry) přes formulář na stránce <a href="kontakty.html">Kontakty</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Zájem o repasi baterie?</h2>
+            <p>Pošlete nám informace o vaší baterii a my vám připravíme přesnou cenovou nabídku.</p>
+            <a href="kontakty.html?subject=repase" class="btn btn-light">Kontaktovat pro cenovou nabídku</a>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>© <span id="year"></span> Ionrise</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ionrise</h3>
+                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Služby</h3>
+                    <ul class="footer-links">
+                        <li><a href="eshop.html">Eshop</a></li>
+                        <li><a href="repase.html">Repase baterií</a></li>
+                        <li><a href="mereni.html">Měření a diagnostika</a></li>
+                        <li><a href="stavby.html">Energetické stavby</a></li>
+                        <li><a href="vize.html">Vize a inovace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakty</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontakty.html">Kontaktní formulář</a></li>
+                        <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
+                        <li><a href="tel:+420720958340">+420 720 958 340</a></li>
+                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>O nás</h3>
+                    <ul class="footer-links">
+                        <li><a href="o-nas.html">O společnosti</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="certifikaty.html">Certifikáty</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('year').innerText = new Date().getFullYear();
-        
-        // Add scroll animation for cards
+        // Simple functionality for repase page
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
+            // Update year in footer
+            document.getElementById('year').innerText = new Date().getFullYear();
+
+            // Mobile navigation
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                // Close menu when clicking on links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        document.body.classList.remove('nav-open');
+                    });
+                });
+            }
+
+            // Simple scroll animations
+            const animatedElements = document.querySelectorAll('.service-overview, .price-table');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -617,11 +954,11 @@
                 });
             }, { threshold: 0.1 });
             
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
             });
         });
     </script>
