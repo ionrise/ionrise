@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* All your CSS styles remain the same */
         :root {
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
@@ -1081,6 +1082,9 @@
                 });
             });
 
+            // Initialize carousels
+            initializeCarousels();
+
             // Simple scroll animations
             const animatedElements = document.querySelectorAll('.product-card, .feature-card');
             
@@ -1099,27 +1103,36 @@
                 element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(element);
             });
+        });
 
-            // Auto-rotate carousels
+        // Initialize all carousels
+        function initializeCarousels() {
             const carousels = document.querySelectorAll('.product-carousel');
             carousels.forEach(carousel => {
+                const container = carousel.querySelector('.carousel-container');
+                container.dataset.currentIndex = '0';
+                
+                // Set initial position
+                container.style.transform = 'translateX(0%)';
+                
+                // Auto-rotate carousels
                 setInterval(() => {
                     nextSlide(carousel.id);
                 }, 5000);
             });
-        });
+        }
 
         // Carousel functionality
         function nextSlide(carouselId) {
             const carousel = document.getElementById(carouselId);
             const container = carousel.querySelector('.carousel-container');
             const dots = carousel.querySelectorAll('.carousel-dot');
-            const slides = container.children.length / 3; // Each product has 3 slides
+            const slides = 3; // Each product has 3 slides
             
             let currentIndex = parseInt(container.dataset.currentIndex) || 0;
             currentIndex = (currentIndex + 1) % slides;
             
-            container.style.transform = `translateX(-${currentIndex * 100 / slides}%)`;
+            container.style.transform = `translateX(-${currentIndex * (100 / slides)}%)`;
             container.dataset.currentIndex = currentIndex;
             
             // Update dots
@@ -1132,12 +1145,12 @@
             const carousel = document.getElementById(carouselId);
             const container = carousel.querySelector('.carousel-container');
             const dots = carousel.querySelectorAll('.carousel-dot');
-            const slides = container.children.length / 3;
+            const slides = 3;
             
             let currentIndex = parseInt(container.dataset.currentIndex) || 0;
             currentIndex = (currentIndex - 1 + slides) % slides;
             
-            container.style.transform = `translateX(-${currentIndex * 100 / slides}%)`;
+            container.style.transform = `translateX(-${currentIndex * (100 / slides)}%)`;
             container.dataset.currentIndex = currentIndex;
             
             // Update dots
@@ -1150,9 +1163,9 @@
             const carousel = document.getElementById(carouselId);
             const container = carousel.querySelector('.carousel-container');
             const dots = carousel.querySelectorAll('.carousel-dot');
-            const slides = container.children.length / 3;
+            const slides = 3;
             
-            container.style.transform = `translateX(-${slideIndex * 100 / slides}%)`;
+            container.style.transform = `translateX(-${slideIndex * (100 / slides)}%)`;
             container.dataset.currentIndex = slideIndex;
             
             // Update dots
