@@ -244,27 +244,92 @@
             z-index: 2;
         }
 
-        .product-image {
+        /* Carousel Styles */
+        .product-carousel {
             width: 100%;
             height: 250px;
-            background: var(--bg-accent);
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .carousel-container {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            width: 33.333%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-accent);
         }
 
-        .product-image img {
+        .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .carousel-arrow.prev {
+            left: 15px;
+        }
+
+        .carousel-arrow.next {
+            right: 15px;
+        }
+
+        .product-carousel:hover .carousel-arrow {
+            opacity: 1;
+        }
+
+        .carousel-arrow:hover {
+            background: white;
         }
 
         .product-content {
@@ -635,6 +700,12 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .carousel-arrow {
+                opacity: 1;
+                width: 30px;
+                height: 30px;
+            }
         }
     </style>
 </head>
@@ -643,7 +714,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyIiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
                     <div class="logo-text">
                         <div class="logo-title">IONRISE</div>
                         <div class="logo-subtitle">Energetická řešení</div>
@@ -689,11 +760,24 @@
                 <!-- Product 1: BAK 21700 6500mAh -->
                 <div class="product-card">
                     <div class="product-badge">Skladem</div>
-                    <div class="product-image">
-                        <!-- ZDE NAHRÁVEJTE FOTKU BATERIE -->
-                        <!-- Doporučené rozlišení: 600x400px nebo větší -->
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--bg-accent); color: var(--text-muted);">
-                            BAK 21700 6500mAh<br>Foto baterie
+                    <div class="product-carousel" id="carousel-battery">
+                        <div class="carousel-container">
+                            <div class="carousel-slide">
+                                <img src="cell.jpg" alt="BAK 21700 6500mAh - pohled zepředu">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="cell2.jpg" alt="BAK 21700 6500mAh - technické parametry">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="cell3.jpg" alt="BAK 21700 6500mAh - použití v zařízení">
+                            </div>
+                        </div>
+                        <div class="carousel-arrow prev" onclick="prevSlide('carousel-battery')">❮</div>
+                        <div class="carousel-arrow next" onclick="nextSlide('carousel-battery')">❯</div>
+                        <div class="carousel-controls">
+                            <div class="carousel-dot active" onclick="goToSlide('carousel-battery', 0)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('carousel-battery', 1)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('carousel-battery', 2)"></div>
                         </div>
                     </div>
                     <div class="product-content">
@@ -742,7 +826,26 @@
                 <!-- Product 2: 48V 250W Ebike -->
                 <div class="product-card">
                     <div class="product-badge">Doprava zdarma</div>
-                    <div class="product-image">"bike.jpg"</div>
+                    <div class="product-carousel" id="carousel-bike">
+                        <div class="carousel-container">
+                            <div class="carousel-slide">
+                                <img src="bike.jpg" alt="Elektrokolo 48V 250W - celkový pohled">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="bike2.jpg" alt="Elektrokolo 48V 250W - detail motoru">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="bike3.jpg" alt="Elektrokolo 48V 250W - displej a ovládání">
+                            </div>
+                        </div>
+                        <div class="carousel-arrow prev" onclick="prevSlide('carousel-bike')">❮</div>
+                        <div class="carousel-arrow next" onclick="nextSlide('carousel-bike')">❯</div>
+                        <div class="carousel-controls">
+                            <div class="carousel-dot active" onclick="goToSlide('carousel-bike', 0)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('carousel-bike', 1)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('carousel-bike', 2)"></div>
+                        </div>
+                    </div>
                     <div class="product-content">
                         <span class="product-category">Elektrokolo</span>
                         <h3 class="product-title">Elektrokolo 48V 250W</h3>
@@ -785,6 +888,76 @@
                         
                         <div class="product-actions">
                             <a href="kontakty.html?product=Elektrokolo%2048V%20250W" class="btn btn-primary">Kontaktujte nás</a>
+                            <button class="btn btn-secondary">Více informací</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Power Station 1000W -->
+                <div class="product-card">
+                    <div class="product-badge">Novinka</div>
+                    <div class="product-carousel" id="carousel-powerstation">
+                        <div class="carousel-container">
+                            <div class="carousel-slide">
+                                <img src="powerstation.jpg" alt="Power Station 1000W - celkový pohled">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="powerstation2.jpg" alt="Power Station 1000W - porty a konektory">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="powerstation3.jpg" alt="Power Station 1000W - použití v terénu">
+                            </div>
+                        </div>
+                        <div class="carousel-arrow prev" onclick="prevSlide('carousel-powerstation')">❮</div>
+                        <div class="carousel-arrow next" onclick="nextSlide('carousel-powerstation')">❯</div>
+                        <div class="carousel-controls">
+                            <div class="carousel-dot active" onclick="goToSlide('carousel-powerstation', 0)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('carousel-powerstation', 1)"></div>
+                            <div class="carousel-dot" onclick="goToSlide('carousel-powerstation', 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Power Station</span>
+                        <h3 class="product-title">Power Station 1000W</h3>
+                        <p class="product-description">Výkonná přenosná elektrárna s kapacitou 1000Wh. Ideální pro kempování, práci v terénu nebo jako záložní zdroj energie pro domácnost.</p>
+                        
+                        <ul class="product-specs">
+                            <li>
+                                <span class="spec-name">Kapacita:</span>
+                                <span class="spec-value">1000 Wh</span>
+                            </li>
+                            <li>
+                                <span class="spec-name">Výstup AC:</span>
+                                <span class="spec-value">1000W (2000W špička)</span>
+                            </li>
+                            <li>
+                                <span class="spec-name">USB-C PD:</span>
+                                <span class="spec-value">100W</span>
+                            </li>
+                            <li>
+                                <span class="spec-name">USB-A:</span>
+                                <span class="spec-value">3x 18W</span>
+                            </li>
+                            <li>
+                                <span class="spec-name">DC výstupy:</span>
+                                <span class="spec-value">12V/10A, 24V/10A</span>
+                            </li>
+                            <li>
+                                <span class="spec-name">Doba nabití:</span>
+                                <span class="spec-value">1,5 hodiny</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="product-price">
+                            <div>
+                                <span class="price-main">12 490 Kč</span>
+                                <span class="price-original">14 990 Kč</span>
+                                <span class="price-discount">-17%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="kontakty.html?product=Power%20Station%201000W" class="btn btn-primary">Kontaktujte nás</a>
                             <button class="btn btn-secondary">Více informací</button>
                         </div>
                     </div>
@@ -926,7 +1099,67 @@
                 element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(element);
             });
+
+            // Auto-rotate carousels
+            const carousels = document.querySelectorAll('.product-carousel');
+            carousels.forEach(carousel => {
+                setInterval(() => {
+                    nextSlide(carousel.id);
+                }, 5000);
+            });
         });
+
+        // Carousel functionality
+        function nextSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const slides = container.children.length / 3; // Each product has 3 slides
+            
+            let currentIndex = parseInt(container.dataset.currentIndex) || 0;
+            currentIndex = (currentIndex + 1) % slides;
+            
+            container.style.transform = `translateX(-${currentIndex * 100 / slides}%)`;
+            container.dataset.currentIndex = currentIndex;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function prevSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const slides = container.children.length / 3;
+            
+            let currentIndex = parseInt(container.dataset.currentIndex) || 0;
+            currentIndex = (currentIndex - 1 + slides) % slides;
+            
+            container.style.transform = `translateX(-${currentIndex * 100 / slides}%)`;
+            container.dataset.currentIndex = currentIndex;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToSlide(carouselId, slideIndex) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const slides = container.children.length / 3;
+            
+            container.style.transform = `translateX(-${slideIndex * 100 / slides}%)`;
+            container.dataset.currentIndex = slideIndex;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
     </script>
 </body>
 </html>
