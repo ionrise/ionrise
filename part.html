@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partneři | Ionrise - Naši partneři a spolupráce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-hover: rgba(0, 0, 0, 0.08);
+            --container: 1100px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 44px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 80px 0 40px;
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            justify-content: center;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb span:last-child {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .coming-soon-content {
+            max-width: 600px;
+        }
+
+        .construction-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            color: var(--accent);
+        }
+
+        .coming-soon-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .coming-soon-content p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .coming-soon-content .note {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 50px 0 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px var(--shadow);
+                border-top: 1px solid var(--border);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            body.nav-open {
+                overflow: hidden;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .page-header {
+                padding: 60px 0 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+            
+            .coming-soon-content h2 {
+                font-size: 2rem;
+            }
+            
+            .coming-soon-content p {
+                font-size: 1.2rem;
+            }
+            
+            .construction-icon {
+                font-size: 60px;
+            }
+            
+            .coming-soon-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <div class="logo-text">
+                        <div class="logo-title">IONRISE</div>
+                        <div class="logo-subtitle">Partneři</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="index.html">Domů</a>
+                    <a href="eshop.html">Eshop</a>
+                    <a href="repase.html">Repase</a>
+                    <a href="mereni.html">Měření</a>
+                    <a href="stavby.html">Stavby</a>
+                    <a href="part.html">Partneři</a>
+                    <a href="kontakty.html">Kontakty</a>
+                </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Domů</a>
+                <span>/</span>
+                <span>Partneři</span>
+            </div>
+            <h1>Naši partneři</h1>
+            <p>Spolupráce s předními výrobci a dodavateli v oblasti baterií a energetiky</p>
+        </div>
+    </section>
+
+    <section class="coming-soon-section">
+        <div class="container">
+            <div class="coming-soon-content">
+                <div class="construction-icon">🤝</div>
+                <h2>Připravuje se</h2>
+                <p>Web ve výstavbě</p>
+                <p class="note">Stránka "Partneři" je aktuálně ve výstavbě a brzy bude k dispozici.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ionrise</h3>
+                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Služby</h3>
+                    <ul class="footer-links">
+                        <li><a href="eshop.html">Eshop</a></li>
+                        <li><a href="repase.html">Repase baterií</a></li>
+                        <li><a href="mereni.html">Měření a diagnostika</a></li>
+                        <li><a href="stavby.html">Energetické stavby</a></li>
+                        <li><a href="partneri.html">Partneři</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakty</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontakty.html">Kontaktní formulář</a></li>
+                        <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
+                        <li><a href="tel:+420720958340">+420 720 958 340</a></li>
+                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>O nás</h3>
+                    <ul class="footer-links">
+                        <li><a href="o-nas.html">O společnosti</a></li>
+                        <li><a href="galerie.html">Galerie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple functionality for partneři page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update year in footer
+            document.getElementById('year').innerText = new Date().getFullYear();
+
+            // Mobile navigation
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                // Close menu when clicking on links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        document.body.classList.remove('nav-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
