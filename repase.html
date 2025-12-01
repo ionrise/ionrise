@@ -264,23 +264,26 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 10px 25px var(--shadow);
-        }
-
-        .image-placeholder {
-            width: 100%;
             height: 400px;
-            background: var(--bg-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 1.1rem;
         }
 
-        /* Price Tables */
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Price Tables - RESPONSIVE FIX */
         .pricing-section {
             background: var(--bg-secondary);
             padding: 60px 0;
+        }
+
+        .price-tables-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .price-table {
@@ -288,7 +291,12 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 4px 6px var(--shadow);
-            margin-bottom: 40px;
+            transition: var(--transition);
+        }
+
+        .price-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-hover);
         }
 
         .price-header {
@@ -313,32 +321,35 @@
             padding: 0;
         }
 
-        .price-table table {
-            width: 100%;
-            border-collapse: collapse;
+        .price-content ul {
+            list-style: none;
         }
 
-        .price-table th {
-            background: var(--bg-accent);
-            padding: 16px 20px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .price-table td {
+        .price-content li {
             padding: 16px 20px;
             border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .price-table tr:last-child td {
+        .price-content li:last-child {
             border-bottom: none;
         }
 
-        .price-table tr:hover {
+        .price-content li:hover {
             background: var(--bg-accent);
+        }
+
+        .capacity {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .price-note {
@@ -346,6 +357,17 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        .price-note a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .price-note a:hover {
+            text-decoration: underline;
         }
 
         /* CTA Section */
@@ -517,12 +539,19 @@
                 overflow: hidden;
             }
 
-            .price-table {
-                overflow-x: auto;
+            .service-image {
+                height: 300px;
             }
+        }
 
-            .price-table table {
-                min-width: 600px;
+        @media (max-width: 768px) {
+            .price-tables-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .price-table {
+                margin-bottom: 0;
             }
         }
 
@@ -532,7 +561,7 @@
             }
             
             .service-overview {
-                padding: 20px;
+                padding: 0;
             }
             
             .page-header {
@@ -555,9 +584,52 @@
                 font-size: 1.6rem;
             }
             
-            .price-table th,
-            .price-table td {
+            .price-content li {
                 padding: 12px 16px;
+            }
+            
+            .price-header {
+                padding: 20px;
+            }
+            
+            .service-text h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section {
+                padding: 60px 0;
+            }
+            
+            .content-section {
+                padding: 40px 0;
+            }
+            
+            .pricing-section {
+                padding: 40px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-image {
+                height: 250px;
+            }
+            
+            .price-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .capacity, .price {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -628,10 +700,9 @@
                             <span>Bezplatná diagnostika před repasí</span>
                         </li>
                     </ul>
-             </div>
-<div class="service-image">
-    <img src="cell.jpg" alt="článek baterie - Ionrise" style="width: 100%; height: 100%; object-fit: cover;">
-</div>
+                </div>
+                <div class="service-image">
+                    <img src="cell.jpg" alt="článek baterie - Ionrise">
                 </div>
             </div>
         </div>
@@ -644,147 +715,69 @@
                 <p>Ceny za kompletní repasi battery packu</p>
             </div>
 
-            <!-- Samsung 32E -->
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>Samsung 32E</h3>
-                    <p>Vysokokapacitní články pro dlouhou výdrž</p>
+            <div class="price-tables-container">
+                <!-- Samsung 32E -->
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>Samsung 32E</h3>
+                        <p>Vysokokapacitní články pro dlouhou výdrž</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li><span class="capacity">12.8 Ah</span><span class="price">6 700 Kč</span></li>
+                            <li><span class="capacity">16.0 Ah</span><span class="price">7 500 Kč</span></li>
+                            <li><span class="capacity">19.2 Ah</span><span class="price">8 300 Kč</span></li>
+                            <li><span class="capacity">22.4 Ah</span><span class="price">9 100 Kč</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="price-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kapacita</th>
-                                <th>Cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>12.8 Ah</td>
-                                <td>6 700 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>16.0 Ah</td>
-                                <td>7 500 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>19.2 Ah</td>
-                                <td>8 300 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>22.4 Ah</td>
-                                <td>9 100 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <!-- Samsung 35E -->
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>Samsung 35E</h3>
-                    <p>Vyšší kapacita pro maximální dojezd</p>
+                <!-- Samsung 35E -->
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>Samsung 35E</h3>
+                        <p>Vyšší kapacita pro maximální dojezd</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li><span class="capacity">14.0 Ah</span><span class="price">7 500 Kč</span></li>
+                            <li><span class="capacity">17.5 Ah</span><span class="price">8 500 Kč</span></li>
+                            <li><span class="capacity">21.0 Ah</span><span class="price">9 500 Kč</span></li>
+                            <li><span class="capacity">24.5 Ah</span><span class="price">10 500 Kč</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="price-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kapacita</th>
-                                <th>Cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>14.0 Ah</td>
-                                <td>7 500 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>17.5 Ah</td>
-                                <td>8 500 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>21.0 Ah</td>
-                                <td>9 500 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>24.5 Ah</td>
-                                <td>10 500 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <!-- BAK CL -->
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>BAK CL</h3>
-                    <p>Spolehlivé články za příznivou cenu</p>
+                <!-- BAK CL -->
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>BAK CL</h3>
+                        <p>Spolehlivé články za příznivou cenu</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li><span class="capacity">11.6 Ah</span><span class="price">6 400 Kč</span></li>
+                            <li><span class="capacity">14.5 Ah</span><span class="price">7 100 Kč</span></li>
+                            <li><span class="capacity">17.4 Ah</span><span class="price">7 800 Kč</span></li>
+                            <li><span class="capacity">20.3 Ah</span><span class="price">8 500 Kč</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="price-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kapacita</th>
-                                <th>Cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>11.6 Ah</td>
-                                <td>6 400 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>14.5 Ah</td>
-                                <td>7 100 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>17.4 Ah</td>
-                                <td>7 800 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>20.3 Ah</td>
-                                <td>8 500 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <!-- Tenpower 26ME -->
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>Tenpower 26ME</h3>
-                    <p>Ekonomické řešení s dobrou výdrží</p>
-                </div>
-                <div class="price-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kapacita</th>
-                                <th>Cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10.4 Ah</td>
-                                <td>6 100 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>13.0 Ah</td>
-                                <td>6 750 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>15.6 Ah</td>
-                                <td>7 400 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>18.2 Ah</td>
-                                <td>8 200 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Tenpower 26ME -->
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>Tenpower 26ME</h3>
+                        <p>Ekonomické řešení s dobrou výdrží</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li><span class="capacity">10.4 Ah</span><span class="price">6 100 Kč</span></li>
+                            <li><span class="capacity">13.0 Ah</span><span class="price">6 750 Kč</span></li>
+                            <li><span class="capacity">15.6 Ah</span><span class="price">7 400 Kč</span></li>
+                            <li><span class="capacity">18.2 Ah</span><span class="price">8 200 Kč</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -793,67 +786,35 @@
                 <p>Ceny za kompletní repasi battery packu</p>
             </div>
 
-            <!-- 48V E-babeta -->
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>48V E-babeta</h3>
-                    <p>Kvalitní články pro elektrokola</p>
+            <div class="price-tables-container">
+                <!-- 48V E-babeta -->
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>48V E-babeta</h3>
+                        <p>Kvalitní články pro elektrokola</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li><span class="capacity">16 Ah</span><span class="price">9 000 Kč</span></li>
+                            <li><span class="capacity">19.2 Ah</span><span class="price">10 040 Kč</span></li>
+                            <li><span class="capacity">22.4 Ah</span><span class="price">11 080 Kč</span></li>
+                            <li><span class="capacity">25.6 Ah</span><span class="price">12 120 Kč</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="price-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kapacita</th>
-                                <th>Cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>16 Ah</td>
-                                <td>9 000 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>19.2 Ah</td>
-                                <td>10 040 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>22.4 Ah</td>
-                                <td>11 080 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>25.6 Ah</td>
-                                <td>12 120 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <!-- LG M50 -->
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>LG M50</h3>
-                    <p>Prémiové články s vynikající výdrží</p>
-                </div>
-                <div class="price-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Kapacita</th>
-                                <th>Cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>20 Ah</td>
-                                <td>8 300 Kč</td>
-                            </tr>
-                            <tr>
-                                <td>25 Ah</td>
-                                <td>9 800 Kč</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- LG M50 -->
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>LG M50</h3>
+                        <p>Prémiové články s vynikající výdrží</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li><span class="capacity">20 Ah</span><span class="price">8 300 Kč</span></li>
+                            <li><span class="capacity">25 Ah</span><span class="price">9 800 Kč</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
