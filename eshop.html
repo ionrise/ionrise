@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* All your CSS styles remain the same */
         :root {
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
@@ -38,6 +37,9 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
@@ -178,355 +180,43 @@
             font-weight: 500;
         }
 
-        /* Products Section */
-        .products-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .product-card {
-            background: var(--bg-secondary);
-            border-radius: var(--border-radius);
-            padding: 0;
-            box-shadow: 0 4px 6px var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-hover);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
-        /* Carousel Styles */
-        .product-carousel {
-            width: 100%;
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-        }
-
-        .carousel-container {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-slide {
-            width: 33.333%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-accent);
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .carousel-controls {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .carousel-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.7);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            opacity: 0;
-            z-index: 2;
-        }
-
-        .carousel-arrow.prev {
-            left: 15px;
-        }
-
-        .carousel-arrow.next {
-            right: 15px;
-        }
-
-        .product-carousel:hover .carousel-arrow {
-            opacity: 1;
-        }
-
-        .carousel-arrow:hover {
-            background: white;
-        }
-
-        .product-content {
-            padding: 25px;
-        }
-
-        .product-category {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .product-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .product-description {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .product-specs {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .product-specs li {
-            padding: 6px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .product-specs li:last-child {
-            border-bottom: none;
-        }
-
-        .spec-name {
-            color: var(--text-secondary);
-        }
-
-        .spec-value {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .price-main {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .price-original {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            text-decoration: line-through;
-            margin-right: 10px;
-        }
-
-        .price-discount {
-            background: #10b981;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+        /* Coming Soon Section */
+        .coming-soon-section {
             flex: 1;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-accent);
-            transform: translateY(-2px);
-        }
-
-        /* Features Section */
-        .features-section {
-            background: var(--bg-secondary);
-            padding: 60px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--bg-accent);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--accent);
-            font-size: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
 
-        .cta-section h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
+        .coming-soon-content {
             max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
         }
 
-        .btn-light {
-            background: white;
+        .construction-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
             color: var(--accent);
         }
 
-        .btn-light:hover {
-            background: var(--bg-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+        .coming-soon-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .coming-soon-content p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .coming-soon-content .note {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 40px;
         }
 
         /* Footer */
@@ -535,6 +225,7 @@
             padding: 50px 0 30px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
+            margin-top: auto;
         }
 
         .footer-content {
@@ -606,17 +297,7 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1100px) {
-            nav {
-                gap: 16px;
-            }
-        }
-
         @media (max-width: 900px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .header-content {
                 flex-direction: column;
                 gap: 20px;
@@ -630,10 +311,6 @@
             
             .page-header h1 {
                 font-size: 2rem;
-            }
-
-            .product-actions {
-                flex-direction: column;
             }
 
             .hamburger {
@@ -667,10 +344,6 @@
                 padding: 0 16px;
             }
             
-            .product-content {
-                padding: 20px;
-            }
-            
             .page-header {
                 padding: 60px 0 30px;
             }
@@ -687,25 +360,20 @@
                 gap: 16px;
             }
             
-            .section-title h2 {
-                font-size: 1.6rem;
+            .coming-soon-content h2 {
+                font-size: 2rem;
             }
             
-            .product-price {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+            .coming-soon-content p {
+                font-size: 1.2rem;
             }
             
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .construction-icon {
+                font-size: 60px;
             }
             
-            .carousel-arrow {
-                opacity: 1;
-                width: 30px;
-                height: 30px;
+            .coming-soon-section {
+                padding: 60px 0;
             }
         }
     </style>
@@ -718,7 +386,7 @@
                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
                     <div class="logo-text">
                         <div class="logo-title">IONRISE</div>
-                        <div class="logo-subtitle">E-shop</div>
+                        <div class="logo-subtitle">Eshop</div>
                     </div>
                 </div>
                 <nav>
@@ -751,254 +419,14 @@
         </div>
     </section>
 
-    <section class="products-section">
+    <section class="coming-soon-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Naše produkty</h2>
-                <p>Vyberte si z naší nabídky kvalitních baterií a elektrokol</p>
+            <div class="coming-soon-content">
+                <div class="construction-icon">🛒</div>
+                <h2>Připravuje se</h2>
+                <p>Web ve výstavbě</p>
+                <p class="note">Eshop je aktuálně ve výstavbě a brzy bude k dispozici.<br>Mezitím nás můžete kontaktovat pro individuální nabídku.</p>
             </div>
-            <div class="products-grid">
-                <!-- Product 1: BAK 21700 6500mAh -->
-                <div class="product-card">
-                    <div class="product-badge">Skladem</div>
-                    <div class="product-carousel" id="carousel-battery">
-                        <div class="carousel-container">
-                            <div class="carousel-slide">
-                                <img src="bak.jpg" alt="BAK 21700 6500mAh - pohled zepředu">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="bak2.png" alt="BAK 21700 6500mAh - technické parametry">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="bak3.jpg" alt="BAK 21700 6500mAh - použití v zařízení">
-                            </div>
-                        </div>
-                        <div class="carousel-arrow prev" onclick="prevSlide('carousel-battery')">❮</div>
-                        <div class="carousel-arrow next" onclick="nextSlide('carousel-battery')">❯</div>
-                        <div class="carousel-controls">
-                            <div class="carousel-dot active" onclick="goToSlide('carousel-battery', 0)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('carousel-battery', 1)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('carousel-battery', 2)"></div>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <span class="product-category">Lithiová baterie</span>
-                        <h3 class="product-title">BAK 21700 6500mAh</h3>
-                        <p class="product-description">Vysokokapacitní lithiový článek 21700 s kapacitou 6500mAh. Ideální pro elektrokola, powerbanky a další aplikace vyžadující vysokou výdrž.</p>
-                        
-                        <ul class="product-specs">
-                            <li>
-                                <span class="spec-name">Typ:</span>
-                                <span class="spec-value">Li-ion 21700</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Kapacita:</span>
-                                <span class="spec-value">6500 mAh</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Napětí:</span>
-                                <span class="spec-value">3.7V (nominal)</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Max. vybíjecí proud:</span>
-                                <span class="spec-value">26A</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Výrobce:</span>
-                                <span class="spec-value">BAK Battery</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="product-price">
-                            <div>
-                                <span class="price-main">189 Kč</span>
-                                <span class="price-original">219 Kč</span>
-                                <span class="price-discount">-14%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <a href="kontakty.html?product=BAK%2021700%206500mAh" class="btn btn-primary">Kontaktujte nás</a>
-                            <button class="btn btn-secondary">Více informací</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2: 48V 250W Ebike -->
-                <div class="product-card">
-                    <div class="product-badge">Doprava zdarma</div>
-                    <div class="product-carousel" id="carousel-bike">
-                        <div class="carousel-container">
-                            <div class="carousel-slide">
-                                <img src="bike.jpg" alt="Elektrokolo 48V 250W - celkový pohled">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="bike2.webp" alt="Elektrokolo 48V 250W - detail motoru">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="bike3.jpg" alt="Elektrokolo 48V 250W - displej a ovládání">
-                            </div>
-                        </div>
-                        <div class="carousel-arrow prev" onclick="prevSlide('carousel-bike')">❮</div>
-                        <div class="carousel-arrow next" onclick="nextSlide('carousel-bike')">❯</div>
-                        <div class="carousel-controls">
-                            <div class="carousel-dot active" onclick="goToSlide('carousel-bike', 0)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('carousel-bike', 1)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('carousel-bike', 2)"></div>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <span class="product-category">Elektrokolo</span>
-                        <h3 class="product-title">Elektrokolo DYU C9</h3>
-                        <p class="product-description">Kvalitní městské elektrokolo s vyváženým výkonem a dlouhým dojezdem. Perfektní pro každodenní dojíždění do práce nebo rekreační jízdu.</p>
-                        
-                        <ul class="product-specs">
-                            <li>
-                                <span class="spec-name">Výkon motoru:</span>
-                                <span class="spec-value">250W</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Napětí baterie:</span>
-                                <span class="spec-value">48V</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Kapacita baterie:</span>
-                                <span class="spec-value">15,6 Ah</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Dojezd:</span>
-                                <span class="spec-value">80-120 km</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Max. rychlost:</span>
-                                <span class="spec-value">25 km/h</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Hmotnost:</span>
-                                <span class="spec-value">30 kg</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="product-price">
-                            <div>
-                                <span class="price-main">24 990 Kč</span>
-                                <span class="price-original">29 990 Kč</span>
-                                <span class="price-discount">-15%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <a href="kontakty.html?product=Elektrokolo%2048V%20250W" class="btn btn-primary">Kontaktujte nás</a>
-                            <button class="btn btn-secondary">Více informací</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3: Power Station 1000W -->
-                <div class="product-card">
-                    <div class="product-badge">Novinka</div>
-                    <div class="product-carousel" id="carousel-powerstation">
-                        <div class="carousel-container">
-                            <div class="carousel-slide">
-                                <img src="powerstation.jpg" alt="Power Station 1000W - celkový pohled">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="powerstation2.jpg" alt="Power Station 1000W - porty a konektory">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="powerstation3.jpg" alt="Power Station 1000W - použití v terénu">
-                            </div>
-                        </div>
-                        <div class="carousel-arrow prev" onclick="prevSlide('carousel-powerstation')">❮</div>
-                        <div class="carousel-arrow next" onclick="nextSlide('carousel-powerstation')">❯</div>
-                        <div class="carousel-controls">
-                            <div class="carousel-dot active" onclick="goToSlide('carousel-powerstation', 0)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('carousel-powerstation', 1)"></div>
-                            <div class="carousel-dot" onclick="goToSlide('carousel-powerstation', 2)"></div>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <span class="product-category">Power Station</span>
-                        <h3 class="product-title">Power Station 1000W</h3>
-                        <p class="product-description">Výkonná přenosná elektrárna s kapacitou 1000Wh. Ideální pro kempování, práci v terénu nebo jako záložní zdroj energie pro domácnost.</p>
-                        
-                        <ul class="product-specs">
-                            <li>
-                                <span class="spec-name">Kapacita:</span>
-                                <span class="spec-value">1000 Wh</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Výstup AC:</span>
-                                <span class="spec-value">1000W (2000W špička)</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">USB-C PD:</span>
-                                <span class="spec-value">100W</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">USB-A:</span>
-                                <span class="spec-value">3x 18W</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">DC výstupy:</span>
-                                <span class="spec-value">12V/10A, 24V/10A</span>
-                            </li>
-                            <li>
-                                <span class="spec-name">Doba nabití:</span>
-                                <span class="spec-value">1,5 hodiny</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="product-price">
-                            <div>
-                                <span class="price-main">12 490 Kč</span>
-                                <span class="price-original">14 990 Kč</span>
-                                <span class="price-discount">-17%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <a href="kontakty.html?product=Power%20Station%201000W" class="btn btn-primary">Kontaktujte nás</a>
-                            <button class="btn btn-secondary">Více informací</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Doprava zdarma</h3>
-                    <p>Pro objednávky nad 2 000 Kč doprava zdarma po celé ČR</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Odborná podpora</h3>
-                    <p>Technická podpora a poradenství zdarma s každým nákupem</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Záruka 24 měsíců</h3>
-                    <p>Na veškeré naše produkty poskytujeme 24měsíční záruku</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💳</div>
-                    <h3>Možnosti platby</h3>
-                    <p>Prozatím pouze převodem a na dobírku.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2>Máte dotaz k produktům?</h2>
-            <p>Neváhejte nás kontaktovat, rádi vám poradíme s výběrem toho správného řešení.</p>
-            <a href="kontakty.html" class="btn btn-light">Kontaktovat odborníka</a>
         </div>
     </section>
 
@@ -1033,7 +461,6 @@
                     <ul class="footer-links">
                         <li><a href="o-nas.html">O společnosti</a></li>
                         <li><a href="galerie.html">Galerie</a></li>
-                        <li><a
                     </ul>
                 </div>
             </div>
@@ -1044,7 +471,6 @@
     </footer>
 
     <script>
-        // Simple functionality for eshop
         document.addEventListener('DOMContentLoaded', function() {
             // Update year in footer
             document.getElementById('year').innerText = new Date().getFullYear();
@@ -1069,109 +495,7 @@
                     });
                 });
             }
-
-            // More info functionality
-            document.querySelectorAll('.btn-secondary').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productCard = this.closest('.product-card');
-                    const productName = productCard.querySelector('.product-title').textContent;
-                    
-                    // Simple info notification
-                    alert(`Více informací o produktu: ${productName}\n\nPro kompletní specifikace nás kontaktujte.`);
-                });
-            });
-
-            // Initialize carousels
-            initializeCarousels();
-
-            // Simple scroll animations
-            const animatedElements = document.querySelectorAll('.product-card, .feature-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(element);
-            });
         });
-
-        // Initialize all carousels
-        function initializeCarousels() {
-            const carousels = document.querySelectorAll('.product-carousel');
-            carousels.forEach(carousel => {
-                const container = carousel.querySelector('.carousel-container');
-                container.dataset.currentIndex = '0';
-                
-                // Set initial position
-                container.style.transform = 'translateX(0%)';
-                
-                // Auto-rotate carousels
-                setInterval(() => {
-                    nextSlide(carousel.id);
-                }, 5000);
-            });
-        }
-
-        // Carousel functionality
-        function nextSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const dots = carousel.querySelectorAll('.carousel-dot');
-            const slides = 3; // Each product has 3 slides
-            
-            let currentIndex = parseInt(container.dataset.currentIndex) || 0;
-            currentIndex = (currentIndex + 1) % slides;
-            
-            container.style.transform = `translateX(-${currentIndex * (100 / slides)}%)`;
-            container.dataset.currentIndex = currentIndex;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function prevSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const dots = carousel.querySelectorAll('.carousel-dot');
-            const slides = 3;
-            
-            let currentIndex = parseInt(container.dataset.currentIndex) || 0;
-            currentIndex = (currentIndex - 1 + slides) % slides;
-            
-            container.style.transform = `translateX(-${currentIndex * (100 / slides)}%)`;
-            container.dataset.currentIndex = currentIndex;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function goToSlide(carouselId, slideIndex) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const dots = carousel.querySelectorAll('.carousel-dot');
-            const slides = 3;
-            
-            container.style.transform = `translateX(-${slideIndex * (100 / slides)}%)`;
-            container.dataset.currentIndex = slideIndex;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === slideIndex);
-            });
-        }
     </script>
 </body>
 </html>
