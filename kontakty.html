@@ -474,6 +474,48 @@
             color: var(--text-secondary);
         }
 
+        /* Location Blocks */
+        .location-blocks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .location-block {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .location-block h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-block h4 i {
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        .location-address {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .location-address strong {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
         /* Footer */
         footer {
             background: var(--bg-secondary);
@@ -552,7 +594,8 @@
 
         /* Responsive Design */
         @media (max-width: 900px) {
-            .contact-grid {
+            .contact-grid,
+            .location-blocks {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -632,6 +675,10 @@
             .contact-icon {
                 align-self: center;
             }
+            
+            .location-block {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -685,9 +732,22 @@
                         <li>
                             <div class="contact-icon">🏠</div>
                             <div class="contact-text">
-                                <h3>Adresa</h3>
-                                <p>Zahradní 455, Slavkov 74757</p>
-                                <a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank" class="contact-link">
+                                <h3>Sídlo firmy</h3>
+                                <p>Bílov 137, 743 01 Bílov</p>
+                                <a href="https://maps.google.com/?q=Bílov 137, 743 01 Bílov" target="_blank" class="contact-link">
+                                    Zobrazit na mapě
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">🏭</div>
+                            <div class="contact-text">
+                                <h3>Provozovna</h3>
+                                <p>Lesní Albrechtice 2, 74744 Březová</p>
+                                <a href="https://maps.google.com/?q=Lesní Albrechtice 2, 74744 Březová" target="_blank" class="contact-link">
                                     Zobrazit na mapě
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -707,89 +767,86 @@
                             <div class="contact-icon">✉️</div>
                             <div class="contact-text">
                                 <h3>E-mail</h3>
-                                <p>info@ionrise.one</p>
-                                <a href="mailto:info@ionrise.one" class="contact-link">Napsat e-mail</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">💬</div>
-                            <div class="contact-text">
-                                <h3>WhatsApp</h3>
-                                <p>+420 720 958 340</p>
-                                <a href="https://wa.me/420720958340" target="_blank" class="contact-link">Otevřít chat</a>
+                                <p>info@beigl.cz</p>
+                                <a href="mailto:info@beigl.cz" class="contact-link">Napsat e-mail</a>
                             </div>
                         </li>
                     </ul>
-                    
-                    <h3 style="margin-top: 30px;">Sledujte nás</h3>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/ionrise.one/" target="_blank" class="social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 8V6C16 5.46957 16.2107 4.96086 16.5858 4.58579C16.9609 4.21071 17.4696 4 18 4H19C19.5304 4 20.0391 4.21071 20.4142 4.58579C20.7893 4.96086 21 5.46957 21 6V7C21 7.53043 20.7893 8.03914 20.4142 8.41421C20.0391 8.78929 19.5304 9 19 9H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                        </a>
-                    </div>
                     
                     <div class="business-hours">
                         <h3>Otevírací doba</h3>
                         <ul class="hours-list">
                             <li>
-                                <span class="day">Pondělí - Pátek</span>
-                                <span class="time">8:00 - 17:00</span>
+                                <span class="day">Pondělí</span>
+                                <span class="time">8:00 - 16:00</span>
                             </li>
                             <li>
-                                <span class="day">Sobota</span>
-                                <span class="time">9:00 - 12:00</span>
+                                <span class="day">Úterý</span>
+                                <span class="time">8:00 - 16:00</span>
                             </li>
                             <li>
-                                <span class="day">Neděle</span>
+                                <span class="day">Středa</span>
+                                <span class="time">8:00 - 16:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Čtvrtek</span>
+                                <span class="time">8:00 - 16:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Pátek</span>
+                                <span class="time">8:00 - 14:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Sobota - Neděle</span>
                                 <span class="time">Zavřeno</span>
                             </li>
                         </ul>
+                        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">
+                            <strong>Poznámka:</strong> Po předchozí domluvě je možné návštěvu individuálně upravit.
+                        </p>
                     </div>
                 </div>
-                
+
+                <!-- Kontaktní formulář -->
                 <div class="contact-form">
-                    <h2>Kontaktní formulář</h2>
-                    <form id="contactForm" action="https://formspree.io/f/xbldproq" method="POST">
+                    <h2>Rychlý kontakt</h2>
+                    <form id="contactForm">
                         <div id="formMessage" class="form-message hidden"></div>
                         
                         <div class="form-group">
                             <label for="name" class="form-label">Jméno a příjmení *</label>
                             <input type="text" id="name" name="name" class="form-control" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="email" class="form-label">E-mail *</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="phone" class="form-label">Telefon</label>
                             <input type="tel" id="phone" name="phone" class="form-control">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="subject" class="form-label">Předmět *</label>
-                            <select id="subject" name="subject" class="form-control" required>
-                                <option value="">Vyberte předmět zprávy</option>
+                            <label for="subject" class="form-label">Předmět zprávy</label>
+                            <select id="subject" name="subject" class="form-control">
                                 <option value="repase">Repase baterií</option>
-                                <option value="mereni">Měření a diagnostika</option>
-                                <option value="stavby">Energetické stavby</option>
-                                <option value="eshop">Dotaz k produktu z Eshopu</option>
-                                <option value="other">Jiný</option>
+                                <option value="mereni">Měření článků</option>
+                                <option value="stavby">Stavba na míru</option>
+                                <option value="dotaz">Obecný dotaz</option>
+                                <option value="reklamace">Reklamace</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="product" class="form-label">Konkrétní produkt (pokud se týká)</label>
-                            <input type="text" id="product" name="product" class="form-control" placeholder="Např: BAK 21700 6500mAh">
-                        </div>
+                        
                         <div class="form-group">
                             <label for="message" class="form-label">Zpráva *</label>
                             <textarea id="message" name="message" class="form-control" required></textarea>
                         </div>
-                        <button type="submit" id="submitBtn" class="btn btn-primary">
+                        
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
                             <span id="submitText">Odeslat zprávu</span>
-                            <span id="submitLoading" style="display: none;">Odesílám...</span>
+                            <span id="loadingSpinner" style="display: none;">Odesílám...</span>
                         </button>
                     </form>
                 </div>
@@ -799,9 +856,38 @@
 
     <section class="map-section">
         <div class="container">
-            <h2 style="margin-bottom: 20px;">Kde nás najdete</h2>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2612.783068300984!2d17.11178797678949!3d49.05310407138135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710f5977c7cd881%3A0x9e3d0b6b7c8e4d1f!2sZahradn%C3%AD%20455%2C%20747%2057%20Slavkov!5e0!3m2!1scs!2scz!4v1710861234567!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem; color: var(--text-primary);">Naše lokace</h2>
+            
+            <div class="location-blocks">
+                <div class="location-block">
+                    <h4><i>📍</i> Sídlo firmy</h4>
+                    <div class="location-address">
+                        <strong>Bílov 137</strong>
+                        743 01 Bílov<br>
+                        Česká republika
+                    </div>
+                    <div style="background: var(--bg-accent); border-radius: var(--border-radius); padding: 20px; text-align: center; margin-top: 20px;">
+                        <div style="font-size: 2rem; color: var(--accent); margin-bottom: 10px;">📍</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong>Poznámka:</strong> Mapa bude zobrazena po implementaci Google Maps API
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="location-block">
+                    <h4><i>🏭</i> Provozovna</h4>
+                    <div class="location-address">
+                        <strong>Lesní Albrechtice 2</strong>
+                        74744 Březová<br>
+                        Česká republika
+                    </div>
+                    <div style="background: var(--bg-accent); border-radius: var(--border-radius); padding: 20px; text-align: center; margin-top: 20px;">
+                        <div style="font-size: 2rem; color: var(--accent); margin-bottom: 10px;">🏭</div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            <strong>Poznámka:</strong> Mapa bude zobrazena po implementaci Google Maps API
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -811,152 +897,98 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Ionrise</h3>
-                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
+                    <p>Profesionální repase a servis baterií s 24měsíční zárukou.</p>
                 </div>
                 <div class="footer-column">
-                    <h3>Služby</h3>
+                    <h3>Pobočky</h3>
                     <ul class="footer-links">
-                        <li><a href="eshop.html">Eshop</a></li>
-                        <li><a href="repase.html">Repase baterií</a></li>
-                        <li><a href="mereni.html">Měření a diagnostika</a></li>
-                        <li><a href="stavby.html">Energetické stavby</a></li>
-                        <li><a href="part.html">Naši partneři</a></li>
+                        <li><strong>Sídlo:</strong> Bílov 137, 743 01 Bílov</li>
+                        <li><strong>Provozovna:</strong> Lesní Albrechtice 2, 74744 Březová</li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Kontakty</h3>
                     <ul class="footer-links">
-                        <li><a href="kontakty.html">Kontaktní formulář</a></li>
-                        <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
+                        <li><a href="mailto:info@beigl.cz">info@beigl.cz</a></li>
                         <li><a href="tel:+420720958340">+420 720 958 340</a></li>
-                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>O nás</h3>
-                    <ul class="footer-links">
-                        <li><a href="o-nas.html">O společnosti</a></li>
-                        <li><a href="galerie.html">Galerie</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+                <p>&copy; 2024 Ionrise. Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple functionality for contacts
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update year in footer
-            document.getElementById('year').innerText = new Date().getFullYear();
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const body = document.body;
 
-            // Mobile navigation
-            const hamburger = document.querySelector('.hamburger');
-            const nav = document.querySelector('nav');
-            
-            if (hamburger && nav) {
-                hamburger.addEventListener('click', function() {
-                    nav.classList.toggle('active');
-                    hamburger.classList.toggle('active');
-                    document.body.classList.toggle('nav-open');
-                });
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            body.classList.toggle('nav-open');
+        });
 
-                // Close menu when clicking on links
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        hamburger.classList.remove('active');
-                        document.body.classList.remove('nav-open');
-                    });
-                });
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                body.classList.remove('nav-open');
             }
+        });
 
-            // Prefill contact form based on URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const product = urlParams.get('product');
-            if (product) {
-                const productField = document.getElementById('product');
-                const subjectField = document.getElementById('subject');
-                if (productField) {
-                    productField.value = product;
-                }
-                if (subjectField) {
-                    subjectField.value = 'eshop';
-                }
-            }
-
-            // Form submission handling
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const submitLoading = document.getElementById('submitLoading');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    // Show loading state
-                    submitBtn.disabled = true;
-                    submitText.style.display = 'none';
-                    submitLoading.style.display = 'inline';
-                    
-                    try {
-                        const formData = new FormData(this);
-                        const response = await fetch(this.action, {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        });
-                        
-                        if (response.ok) {
-                            // Success message
-                            formMessage.textContent = 'Děkujeme za vaši zprávu! Brzy se vám ozveme.';
-                            formMessage.className = 'form-message success';
-                            formMessage.classList.remove('hidden');
-                            contactForm.reset();
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    } catch (error) {
-                        // Error message
-                        formMessage.textContent = 'Při odesílání zprávy došlo k chybě. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.';
-                        formMessage.className = 'form-message error';
-                        formMessage.classList.remove('hidden');
-                    } finally {
-                        // Reset loading state
-                        submitBtn.disabled = false;
-                        submitText.style.display = 'inline';
-                        submitLoading.style.display = 'none';
-                        
-                        // Scroll to message
-                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                });
-            }
-
-            // Simple scroll animations
-            const animatedElements = document.querySelectorAll('.contact-details li, .contact-form, .map-container');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(element);
+        // Close menu on link click
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                body.classList.remove('nav-open');
             });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitText.style.display = 'none';
+            loadingSpinner.style.display = 'inline';
+            submitBtn.disabled = true;
+            formMessage.classList.add('hidden');
+            
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                // Reset form
+                contactForm.reset();
+                
+                // Show success message
+                formMessage.textContent = 'Děkujeme za vaši zprávu! Brzy se vám ozveme zpět.';
+                formMessage.className = 'form-message success';
+                formMessage.classList.remove('hidden');
+                
+                // Reset button state
+                submitText.style.display = 'inline';
+                loadingSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }, 1500);
         });
     </script>
 </body>
