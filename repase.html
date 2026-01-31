@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repase baterií | Ionrise - Profesionální repase všech typů baterií</title>
+    <title>Repase baterií | Ionrise</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-primary: #f8fafc;
@@ -20,34 +22,27 @@
             --border: #e2e8f0;
             --shadow: rgba(0, 0, 0, 0.05);
             --shadow-hover: rgba(0, 0, 0, 0.08);
-            --container: 1100px;
             --border-radius: 12px;
             --transition: all 0.3s ease;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', system-ui, Arial, sans-serif;
-            background-color: var(--bg-primary);
+            background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: var(--container);
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header Styles */
         header {
-            background-color: var(--bg-secondary);
+            background: var(--bg-secondary);
             box-shadow: 0 2px 10px var(--shadow);
             position: sticky;
             top: 0;
@@ -56,8 +51,8 @@
 
         .header-content {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             padding: 18px 0;
         }
 
@@ -67,32 +62,7 @@
             gap: 12px;
         }
 
-        .logo img {
-            height: 44px;
-            transition: var(--transition);
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.2;
-        }
-
-        .logo-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+        .logo img { height: 44px; }
 
         nav {
             display: flex;
@@ -100,180 +70,46 @@
         }
 
         nav a {
-            color: var(--text-primary);
             text-decoration: none;
+            color: var(--text-primary);
             font-weight: 500;
-            position: relative;
-            padding: 8px 0;
-            transition: var(--transition);
-            white-space: nowrap;
         }
 
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Page Header */
         .page-header {
-            padding: 80px 0 40px;
-            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
+            padding: 70px 0 40px;
+            background: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
             text-align: center;
         }
 
         .page-header h1 {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 700;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 10px;
         }
 
         .page-header p {
-            font-size: 1.1rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        /* Breadcrumb */
-        .breadcrumb {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            justify-content: center;
-        }
+        .content-section { padding: 60px 0; }
 
-        .breadcrumb a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-
-        .breadcrumb span:last-child {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        /* Content Sections */
-        .content-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        /* Service Overview */
         .service-overview {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .service-text h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .service-text p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
         }
 
         .service-features {
             list-style: none;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .service-features li {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
-        .service-features li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
-
-        .service-image {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 10px 25px var(--shadow);
-            height: 400px;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Price Tables */
         .pricing-section {
             background: var(--bg-secondary);
             padding: 60px 0;
@@ -281,47 +117,22 @@
 
         .price-tables-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 40px;
         }
 
         .price-table {
             background: var(--bg-primary);
             border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px var(--shadow);
             overflow: hidden;
-            box-shadow: 0 4px 6px var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .price-table:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-hover);
         }
 
         .price-header {
             background: var(--accent);
-            color: white;
-            padding: 25px 30px;
+            color: #fff;
+            padding: 24px;
             text-align: center;
-        }
-
-        .price-header h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .price-header p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        .price-content {
-            padding: 0;
-            flex-grow: 1;
         }
 
         .price-content ul {
@@ -329,554 +140,154 @@
         }
 
         .price-content li {
-            padding: 18px 25px;
-            border-bottom: 1px solid var(--border);
+            padding: 18px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-
-        .price-content li:last-child {
-            border-bottom: none;
-        }
-
-        .price-content li:hover {
-            background: var(--bg-accent);
-        }
-
-        .capacity {
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 1.05rem;
+            border-bottom: 1px solid var(--border);
         }
 
         .price {
-            color: var(--accent-dark);
             font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-        }
-
-        .btn-light {
-            background: white;
             color: var(--accent);
         }
 
-        .btn-light:hover {
-            background: var(--bg-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+        .price-note {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-muted);
         }
 
-        /* Price Disclaimer */
-        .price-disclaimer {
-            background: var(--bg-accent);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin: 30px 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .price-disclaimer h4 {
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .price-disclaimer p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Footer */
         footer {
             background: var(--bg-secondary);
-            padding: 50px 0 30px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .footer-bottom {
+            padding: 40px 0;
             text-align: center;
-            padding-top: 30px;
+            color: var(--text-muted);
             border-top: 1px solid var(--border);
         }
 
-        /* Mobile Navigation */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            gap: 4px;
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: var(--transition);
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Responsive Design */
         @media (max-width: 900px) {
-            .service-overview {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            nav {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-            
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-secondary);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 4px 6px var(--shadow);
-                border-top: 1px solid var(--border);
-            }
-            
-            nav.active {
-                display: flex;
-            }
-            
-            body.nav-open {
-                overflow: hidden;
-            }
-
-            .service-image {
-                height: 300px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .price-tables-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .price-table {
-                margin-bottom: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 0 16px;
-            }
-            
-            .service-overview {
-                padding: 0;
-            }
-            
-            .page-header {
-                padding: 60px 0 30px;
-            }
-
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .page-header p {
-                font-size: 1rem;
-            }
-
-            nav {
-                gap: 16px;
-            }
-            
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-            
-            .price-content li {
-                padding: 12px 16px;
-            }
-            
-            .price-header {
-                padding: 20px;
-            }
-            
-            .service-text h2 {
-                font-size: 1.6rem;
-            }
-            
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-section {
-                padding: 60px 0;
-            }
-            
-            .content-section {
-                padding: 40px 0;
-            }
-            
-            .pricing-section {
-                padding: 40px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .service-image {
-                height: 250px;
-            }
-            
-            .price-header h3 {
-                font-size: 1.2rem;
-            }
-            
-            .capacity, .price {
-                font-size: 0.9rem;
-            }
-            
-            .btn {
-                padding: 12px 24px;
-                width: 100%;
-                max-width: 300px;
-            }
+            .service-overview { grid-template-columns: 1fr; }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
-                    <div class="logo-text">
-                        <div class="logo-title">IONRISE</div>
-                        <div class="logo-subtitle">Repase baterií</div>
-                    </div>
-                </div>
-                <nav id="main-nav">
-                    <a href="index.html">Domů</a>
-                    <a href="eshop.html">Eshop</a>
-                    <a href="repase.html">Repase</a>
-                    <a href="mereni.html">Měření</a>
-                    <a href="stavby.html">Stavby</a>
-                    <a href="part.html">Partneři</a>
-                    <a href="kontakty.html">Kontakty</a>
-                </nav>
-                <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
 
-    <section class="page-header">
-        <div class="container">
-            <div class="breadcrumb">
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPC9zdmc+" alt="">
+                <strong>IONRISE</strong>
+            </div>
+            <nav>
                 <a href="index.html">Domů</a>
-                <span>/</span>
-                <span>Repase baterií</span>
-            </div>
-            <h1>Repase baterií — ceník</h1>
-            <p>Přehled cen repase dle napětí a kapacity. Ceny zahrnují práci, materiál a diagnostiku.</p>
+                <a href="eshop.html">Eshop</a>
+                <a href="repase.html">Repase</a>
+                <a href="kontakty.html">Kontakty</a>
+            </nav>
         </div>
-    </section>
+    </div>
+</header>
 
-    <section class="content-section">
-        <div class="container">
-            <div class="service-overview">
-                <div class="service-text">
-                    <h2>Profesionální repase baterií</h2>
-                    <p>Specializujeme se na repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Prodloužíme životnost vašich baterií a zvýšíme jejich dojezd.</p>
-                    
-                    <ul class="service-features">
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>24měsíční záruka na práci a články</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>Pouze ověřené vysokokapacitní články</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>Rychlé dodací lhůty</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
-                            <span>Bezplatná diagnostika při repasi</span>
-                        </li>
-                    </ul>
+<section class="page-header">
+    <div class="container">
+        <h1>Repase baterií – ceník</h1>
+        <p>Ceny jsou orientační, finální cena dle konkrétní baterie</p>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <div class="container">
+
+        <div class="price-tables-container">
+
+            <div class="price-table">
+                <div class="price-header">
+                    <h3>24 V baterie</h3>
+                    <p>Všechny typy</p>
                 </div>
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop" alt="článek baterie - Ionrise">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing-section">
-        <div class="container">
-            
-            <div class="section-title">
-                <h2>Ceník repase dle napětí</h2>
-            </div>
-
-            <div class="price-tables-container">
-                
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>24V Systém</h3>
-                        <p>Elektrokola a starší systémy</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <span class="capacity">8.8 Ah</span>
-                                <span class="price">4 500 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">10.4 Ah</span>
-                                <span class="price">5 200 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">14.0 Ah</span>
-                                <span class="price">6 500 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">17.5 Ah</span>
-                                <span class="price">7 900 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">21.0 Ah</span>
-                                <span class="price">9 200 Kč</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>36V Systém</h3>
-                        <p>Standardní elektrokola</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <span class="capacity">10.4 Ah</span>
-                                <span class="price">6 900 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">14.0 Ah</span>
-                                <span class="price">7 800 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">17.5 Ah</span>
-                                <span class="price">9 500 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">21.0 Ah</span>
-                                <span class="price">10 900 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">24.5 Ah</span>
-                                <span class="price">12 500 Kč</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>48V Systém</h3>
-                        <p>Výkonná elektrokola a skútry</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <span class="capacity">10.4 Ah</span>
-                                <span class="price">8 500 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">14.0 Ah</span>
-                                <span class="price">9 900 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">17.5 Ah</span>
-                                <span class="price">11 500 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">21.0 Ah</span>
-                                <span class="price">13 500 Kč</span>
-                            </li>
-                            <li>
-                                <span class="capacity">24.5 Ah</span>
-                                <span class="price">15 900 Kč</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="price-disclaimer">
-                <h4>Důležité informace k cenám</h4>
-                <p>Ceny jsou orientační a mohou se lišit dle typu obalu baterie a náročnosti montáže. Konečnou cenu vám vždy potvrdíme před zahájením práce. U atypických baterií se může cena lišit.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2>Máte atypickou baterii?</h2>
-            <p>Nevadí. Kontaktujte nás a my vám zdarma vypracujeme cenovou nabídku přesně pro váš typ baterie.</p>
-            <a href="kontakty.html" class="btn btn-light">Nezávazná poptávka</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Ionrise</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Domů</a></li>
-                        <li><a href="o-nas.html">O nás</a></li>
-                        <li><a href="kariera.html">Kariéra</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Služby</h3>
-                    <ul class="footer-links">
-                        <li><a href="repase.html">Repase baterií</a></li>
-                        <li><a href="mereni.html">Diagnostika</a></li>
-                        <li><a href="stavby.html">Výroba na zakázku</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Kontakt</h3>
-                    <ul class="footer-links">
-                        <li>+420 123 456 789</li>
-                        <li>info@ionrise.cz</li>
-                        <li>Praha, Česká republika</li>
+                <div class="price-content">
+                    <ul>
+                        <li><span>Repase 24 V</span><span class="price">od 6 900 Kč</span></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Ionrise. Všechna práva vyhrazena.</p>
-            </div>
-        </div>
-    </footer>
 
-    <script>
-        function toggleMenu() {
-            const nav = document.getElementById('main-nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            document.body.classList.toggle('nav-open');
-        }
-    </script>
+            <div class="price-table">
+                <div class="price-header">
+                    <h3>36 V baterie</h3>
+                    <p>Všechny typy</p>
+                </div>
+                <div class="price-content">
+                    <ul>
+                        <li><span>Repase 36 V</span><span class="price">od 9 900 Kč</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="price-table">
+                <div class="price-header">
+                    <h3>48 V baterie</h3>
+                    <p>Všechny typy</p>
+                </div>
+                <div class="price-content">
+                    <ul>
+                        <li><span>Repase 48 V</span><span class="price">od 13 900 Kč</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="price-table">
+                <div class="price-header">
+                    <h3>52 V baterie</h3>
+                    <p>Všechny typy</p>
+                </div>
+                <div class="price-content">
+                    <ul>
+                        <li><span>Repase 52 V</span><span class="price">od 15 900 Kč</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="price-table">
+                <div class="price-header">
+                    <h3>60 V baterie</h3>
+                    <p>Všechny typy</p>
+                </div>
+                <div class="price-content">
+                    <ul>
+                        <li><span>Repase 60 V</span><span class="price">od 18 900 Kč</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="price-table">
+                <div class="price-header">
+                    <h3>72 V baterie</h3>
+                    <p>Všechny typy</p>
+                </div>
+                <div class="price-content">
+                    <ul>
+                        <li><span>Repase 72 V</span><span class="price">od 22 900 Kč</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="price-note">
+            Pro přesnou cenu nás kontaktujte – záleží na kapacitě, rozměrech a použití baterie.
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        © Ionrise – Repase baterií
+    </div>
+</footer>
+
 </body>
 </html>
