@@ -273,7 +273,7 @@
             object-fit: cover;
         }
 
-        /* Price Tables - RESPONSIVE FIX */
+        /* Price Tables */
         .pricing-section {
             background: var(--bg-secondary);
             padding: 60px 0;
@@ -292,6 +292,8 @@
             overflow: hidden;
             box-shadow: 0 4px 6px var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .price-table:hover {
@@ -307,18 +309,19 @@
         }
 
         .price-header h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .price-header p {
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .price-content {
             padding: 0;
+            flex-grow: 1;
         }
 
         .price-content ul {
@@ -326,7 +329,7 @@
         }
 
         .price-content li {
-            padding: 16px 20px;
+            padding: 18px 25px;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -343,46 +346,14 @@
 
         .capacity {
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.05rem;
         }
 
         .price {
-            color: var(--accent);
+            color: var(--accent-dark);
             font-weight: 700;
             font-size: 1.1rem;
-        }
-
-        .price.highlight {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-        }
-
-        .config-details {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-            display: block;
-        }
-
-        .price-note {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            padding: 0 20px;
-        }
-
-        .price-note a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .price-note a:hover {
-            text-decoration: underline;
         }
 
         /* CTA Section */
@@ -681,7 +652,7 @@
                         <div class="logo-subtitle">Repase baterií</div>
                     </div>
                 </div>
-                <nav>
+                <nav id="main-nav">
                     <a href="index.html">Domů</a>
                     <a href="eshop.html">Eshop</a>
                     <a href="repase.html">Repase</a>
@@ -690,7 +661,7 @@
                     <a href="part.html">Partneři</a>
                     <a href="kontakty.html">Kontakty</a>
                 </nav>
-                <button class="hamburger" aria-label="Toggle menu">
+                <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -707,7 +678,7 @@
                 <span>Repase baterií</span>
             </div>
             <h1>Repase baterií — ceník</h1>
-            <p>Ceny jsou orientační. Pro přesnou kalkulaci nám pošlete informace o baterii.</p>
+            <p>Přehled cen repase dle napětí a kapacity. Ceny zahrnují práci, materiál a diagnostiku.</p>
         </div>
     </section>
 
@@ -716,7 +687,7 @@
             <div class="service-overview">
                 <div class="service-text">
                     <h2>Profesionální repase baterií</h2>
-                    <p>Specializujeme se na repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Prodloužíme životnost vašich baterií.</p>
+                    <p>Specializujeme se na repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Prodloužíme životnost vašich baterií a zvýšíme jejich dojezd.</p>
                     
                     <ul class="service-features">
                         <li>
@@ -725,7 +696,7 @@
                         </li>
                         <li>
                             <div class="feature-icon">✓</div>
-                            <span>Pouze kvalitní články předních výrobců</span>
+                            <span>Pouze ověřené vysokokapacitní články</span>
                         </li>
                         <li>
                             <div class="feature-icon">✓</div>
@@ -733,12 +704,12 @@
                         </li>
                         <li>
                             <div class="feature-icon">✓</div>
-                            <span>Bezplatná diagnostika při repasí</span>
+                            <span>Bezplatná diagnostika při repasi</span>
                         </li>
                     </ul>
                 </div>
                 <div class="service-image">
-                    <img src="cell.jpg" alt="článek baterie - Ionrise">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop" alt="článek baterie - Ionrise">
                 </div>
             </div>
         </div>
@@ -746,683 +717,121 @@
 
     <section class="pricing-section">
         <div class="container">
-            <!-- Price Disclaimer -->
+            
+            <div class="section-title">
+                <h2>Ceník repase dle napětí</h2>
+            </div>
+
+            <div class="price-tables-container">
+                
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>24V Systém</h3>
+                        <p>Elektrokola a starší systémy</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <span class="capacity">8.8 Ah</span>
+                                <span class="price">4 500 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">10.4 Ah</span>
+                                <span class="price">5 200 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">14.0 Ah</span>
+                                <span class="price">6 500 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">17.5 Ah</span>
+                                <span class="price">7 900 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">21.0 Ah</span>
+                                <span class="price">9 200 Kč</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>36V Systém</h3>
+                        <p>Standardní elektrokola</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <span class="capacity">10.4 Ah</span>
+                                <span class="price">6 900 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">14.0 Ah</span>
+                                <span class="price">7 800 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">17.5 Ah</span>
+                                <span class="price">9 500 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">21.0 Ah</span>
+                                <span class="price">10 900 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">24.5 Ah</span>
+                                <span class="price">12 500 Kč</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>48V Systém</h3>
+                        <p>Výkonná elektrokola a skútry</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <span class="capacity">10.4 Ah</span>
+                                <span class="price">8 500 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">14.0 Ah</span>
+                                <span class="price">9 900 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">17.5 Ah</span>
+                                <span class="price">11 500 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">21.0 Ah</span>
+                                <span class="price">13 500 Kč</span>
+                            </li>
+                            <li>
+                                <span class="capacity">24.5 Ah</span>
+                                <span class="price">15 900 Kč</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="price-disclaimer">
-                <h4>Upozornění k cenám</h4>
-                <p><strong>Všechny ceny jsou uvedeny včetně DPH a jsou orientační.</strong> Nabízíme velkoobchodní slevy pro větší zakázky a pravidelné zákazníky. Pro přesnou cenovou nabídku nás prosím kontaktujte.</p>
+                <h4>Důležité informace k cenám</h4>
+                <p>Ceny jsou orientační a mohou se lišit dle typu obalu baterie a náročnosti montáže. Konečnou cenu vám vždy potvrdíme před zahájením práce. U atypických baterií se může cena lišit.</p>
             </div>
 
-            <!-- 24V Baterie - 2600 mAh -->
-            <div class="section-title">
-                <h2>24V — Samsung 2600 mAh</h2>
-            </div>
-            <div class="price-tables-container">
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>24V 7sXp</h3>
-                        <p>7 sérií - různé paralelní kombinace</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    7s3p (21 článků)
-                                    <span class="config-details">24V | 7.8Ah</span>
-                                </div>
-                                <div class="price highlight">6 300 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s4p (28 článků)
-                                    <span class="config-details">24V | 10.4Ah</span>
-                                </div>
-                                <div class="price highlight">6 550 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s5p (35 článků)
-                                    <span class="config-details">24V | 13Ah</span>
-                                </div>
-                                <div class="price highlight">7 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s6p (42 článků)
-                                    <span class="config-details">24V | 15.6Ah</span>
-                                </div>
-                                <div class="price highlight">7 990 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 36V Baterie - 2600 mAh -->
-            <div class="section-title">
-                <h2>36V — Samsung 2600 mAh</h2>
-            </div>
-            <div class="price-tables-container">
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>36V 10sXp</h3>
-                        <p>10 sérií - různé paralelní kombinace</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    10s2p (20 článků)
-                                    <span class="config-details">36V | 5.2Ah</span>
-                                </div>
-                                <div class="price highlight">6 350 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s3p (30 článků)
-                                    <span class="config-details">36V | 7.8Ah</span>
-                                </div>
-                                <div class="price highlight">6 950 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s4p (40 článků)
-                                    <span class="config-details">36V | 10.4Ah</span>
-                                </div>
-                                <div class="price highlight">7 600 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s5p (50 článků)
-                                    <span class="config-details">36V | 13Ah</span>
-                                </div>
-                                <div class="price highlight">8 650 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s6p (60 článků)
-                                    <span class="config-details">36V | 15.6Ah</span>
-                                </div>
-                                <div class="price highlight">9 800 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s7p (70 článků)
-                                    <span class="config-details">36V | 18.2Ah</span>
-                                </div>
-                                <div class="price highlight">10 500 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 48V Baterie - 2600 mAh -->
-            <div class="section-title">
-                <h2>48V — Samsung 2600 mAh</h2>
-            </div>
-            <div class="price-tables-container">
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>48V 13sXp</h3>
-                        <p>13 sérií - různé paralelní kombinace</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    13s3p (39 článků)
-                                    <span class="config-details">48V | 7.8Ah</span>
-                                </div>
-                                <div class="price highlight">8 050 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s4p (52 článků)
-                                    <span class="config-details">48V | 10.4Ah</span>
-                                </div>
-                                <div class="price highlight">8 900 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s5p (65 článků)
-                                    <span class="config-details">48V | 13Ah</span>
-                                </div>
-                                <div class="price highlight">10 600 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s6p (78 článků)
-                                    <span class="config-details">48V | 15.6Ah</span>
-                                </div>
-                                <div class="price highlight">12 100 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s7p (91 článků)
-                                    <span class="config-details">48V | 18.2Ah</span>
-                                </div>
-                                <div class="price highlight">13 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s8p (104 článků)
-                                    <span class="config-details">48V | 20.8Ah</span>
-                                </div>
-                                <div class="price highlight">15 700 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 60V Baterie - 2600 mAh -->
-            <div class="section-title">
-                <h2>60V — Samsung 2600 mAh</h2>
-            </div>
-            <div class="price-tables-container">
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>60V 16sXp</h3>
-                        <p>16 sérií - různé paralelní kombinace</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    16s4p (64 článků)
-                                    <span class="config-details">60V | 10.4Ah</span>
-                                </div>
-                                <div class="price highlight">10 600 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s5p (80 článků)
-                                    <span class="config-details">60V | 13Ah</span>
-                                </div>
-                                <div class="price highlight">12 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s6p (96 článků)
-                                    <span class="config-details">60V | 15.6Ah</span>
-                                </div>
-                                <div class="price highlight">13 400 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s7p (112 článků)
-                                    <span class="config-details">60V | 18.2Ah</span>
-                                </div>
-                                <div class="price highlight">16 000 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s8p (128 článků)
-                                    <span class="config-details">60V | 20.8Ah</span>
-                                </div>
-                                <div class="price highlight">17 000 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s9p (144 článků)
-                                    <span class="config-details">60V | 23.4Ah</span>
-                                </div>
-                                <div class="price highlight">17 900 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s10p (160 článků)
-                                    <span class="config-details">60V | 26Ah</span>
-                                </div>
-                                <div class="price highlight">19 600 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2900 mAh Baterie -->
-            <div class="section-title">
-                <h2>Samsung 2900 mAh</h2>
-            </div>
-            <div class="price-tables-container">
-                <!-- 24V 2900 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>24V 7sXp</h3>
-                        <p>2900 mAh | Vyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    7s3p (21 článků)
-                                    <span class="config-details">24V | 8.7Ah</span>
-                                </div>
-                                <div class="price highlight">5 750 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s4p (28 článků)
-                                    <span class="config-details">24V | 11.6Ah</span>
-                                </div>
-                                <div class="price highlight">6 300 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s5p (35 článků)
-                                    <span class="config-details">24V | 14.5Ah</span>
-                                </div>
-                                <div class="price highlight">6 750 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s6p (42 článků)
-                                    <span class="config-details">24V | 17.4Ah</span>
-                                </div>
-                                <div class="price highlight">7 700 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 36V 2900 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>36V 10sXp</h3>
-                        <p>2900 mAh | Vyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    10s2p (20 článků)
-                                    <span class="config-details">36V | 5.8Ah</span>
-                                </div>
-                                <div class="price highlight">6 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s3p (30 článků)
-                                    <span class="config-details">36V | 8.7Ah</span>
-                                </div>
-                                <div class="price highlight">6 900 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s4p (40 článků)
-                                    <span class="config-details">36V | 11.6Ah</span>
-                                </div>
-                                <div class="price highlight">7 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s5p (50 článků)
-                                    <span class="config-details">36V | 14.5Ah</span>
-                                </div>
-                                <div class="price highlight">8 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s6p (60 článků)
-                                    <span class="config-details">36V | 17.4Ah</span>
-                                </div>
-                                <div class="price highlight">9 850 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s7p (70 článků)
-                                    <span class="config-details">36V | 20.3Ah</span>
-                                </div>
-                                <div class="price highlight">10 750 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 48V 2900 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>48V 13sXp</h3>
-                        <p>2900 mAh | Vyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    13s3p (39 článků)
-                                    <span class="config-details">48V | 8.7Ah</span>
-                                </div>
-                                <div class="price highlight">7 900 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s4p (52 článků)
-                                    <span class="config-details">48V | 11.6Ah</span>
-                                </div>
-                                <div class="price highlight">8 750 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s5p (65 článků)
-                                    <span class="config-details">48V | 14.5Ah</span>
-                                </div>
-                                <div class="price highlight">10 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s6p (78 článků)
-                                    <span class="config-details">48V | 17.4Ah</span>
-                                </div>
-                                <div class="price highlight">12 100 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s7p (91 článků)
-                                    <span class="config-details">48V | 20.3Ah</span>
-                                </div>
-                                <div class="price highlight">13 700 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s8p (104 článků)
-                                    <span class="config-details">48V | 23.2Ah</span>
-                                </div>
-                                <div class="price highlight">15 900 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 60V 2900 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>60V 16sXp</h3>
-                        <p>2900 mAh | Vyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    16s4p (64 článků)
-                                    <span class="config-details">60V | 11.6Ah</span>
-                                </div>
-                                <div class="price highlight">10 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s5p (80 článků)
-                                    <span class="config-details">60V | 14.5Ah</span>
-                                </div>
-                                <div class="price highlight">12 300 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s6p (96 článků)
-                                    <span class="config-details">60V | 17.4Ah</span>
-                                </div>
-                                <div class="price highlight">13 100 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s7p (112 článků)
-                                    <span class="config-details">60V | 20.3Ah</span>
-                                </div>
-                                <div class="price highlight">15 700 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s8p (128 článků)
-                                    <span class="config-details">60V | 23.2Ah</span>
-                                </div>
-                                <div class="price highlight">16 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s9p (144 článků)
-                                    <span class="config-details">60V | 26.1Ah</span>
-                                </div>
-                                <div class="price highlight">17 350 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s10p (160 článků)
-                                    <span class="config-details">60V | 29Ah</span>
-                                </div>
-                                <div class="price highlight">18 500 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3500 mAh Baterie -->
-            <div class="section-title">
-                <h2>Samsung 3500 mAh</h2>
-            </div>
-            <div class="price-tables-container">
-                <!-- 24V 3500 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>24V 7sXp</h3>
-                        <p>3500 mAh | Nejvyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    7s3p (21 článků)
-                                    <span class="config-details">24V | 10.5Ah</span>
-                                </div>
-                                <div class="price highlight">6 900 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s4p (28 článků)
-                                    <span class="config-details">24V | 14Ah</span>
-                                </div>
-                                <div class="price highlight">8 250 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s5p (35 článků)
-                                    <span class="config-details">24V | 17.5Ah</span>
-                                </div>
-                                <div class="price highlight">8 750 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    7s6p (42 článků)
-                                    <span class="config-details">24V | 21Ah</span>
-                                </div>
-                                <div class="price highlight">10 500 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 36V 3500 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>36V 10sXp</h3>
-                        <p>3500 mAh | Nejvyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    10s2p (20 článků)
-                                    <span class="config-details">36V | 7Ah</span>
-                                </div>
-                                <div class="price highlight">7 750 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s3p (30 článků)
-                                    <span class="config-details">36V | 10.5Ah</span>
-                                </div>
-                                <div class="price highlight">8 550 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s4p (40 článků)
-                                    <span class="config-details">36V | 14Ah</span>
-                                </div>
-                                <div class="price highlight">9 350 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s5p (50 článků)
-                                    <span class="config-details">36V | 17.5Ah</span>
-                                </div>
-                                <div class="price highlight">10 950 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s6p (60 článků)
-                                    <span class="config-details">36V | 21Ah</span>
-                                </div>
-                                <div class="price highlight">12 150 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    10s7p (70 článků)
-                                    <span class="config-details">36V | 24.5Ah</span>
-                                </div>
-                                <div class="price highlight">13 700 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 48V 3500 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>48V 13sXp</h3>
-                        <p>3500 mAh | Nejvyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    13s3p (39 článků)
-                                    <span class="config-details">48V | 10.5Ah</span>
-                                </div>
-                                <div class="price highlight">9 700 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s4p (52 článků)
-                                    <span class="config-details">48V | 14Ah</span>
-                                </div>
-                                <div class="price highlight">11 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s5p (65 článků)
-                                    <span class="config-details">48V | 17.5Ah</span>
-                                </div>
-                                <div class="price highlight">13 100 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s6p (78 článků)
-                                    <span class="config-details">48V | 21Ah</span>
-                                </div>
-                                <div class="price highlight">14 750 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s7p (91 článků)
-                                    <span class="config-details">48V | 24.5Ah</span>
-                                </div>
-                                <div class="price highlight">16 100 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    13s8p (104 článků)
-                                    <span class="config-details">48V | 28Ah</span>
-                                </div>
-                                <div class="price highlight">17 300 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 60V 3500 mAh -->
-                <div class="price-table">
-                    <div class="price-header">
-                        <h3>60V 16sXp</h3>
-                        <p>3500 mAh | Nejvyšší kapacita</p>
-                    </div>
-                    <div class="price-content">
-                        <ul>
-                            <li>
-                                <div class="capacity">
-                                    16s4p (64 článků)
-                                    <span class="config-details">60V | 14Ah</span>
-                                </div>
-                                <div class="price highlight">13 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s5p (80 článků)
-                                    <span class="config-details">60V | 17.5Ah</span>
-                                </div>
-                                <div class="price highlight">15 300 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s6p (96 článků)
-                                    <span class="config-details">60V | 21Ah</span>
-                                </div>
-                                <div class="price highlight">16 900 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s7p (112 článků)
-                                    <span class="config-details">60V | 24.5Ah</span>
-                                </div>
-                                <div class="price highlight">19 000 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s8p (128 článků)
-                                    <span class="config-details">60V | 28Ah</span>
-                                </div>
-                                <div class="price highlight">20 250 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s9p (144 článků)
-                                    <span class="config-details">60V | 31.5Ah</span>
-                                </div>
-                                <div class="price highlight">21 500 Kč</div>
-                            </li>
-                            <li>
-                                <div class="capacity">
-                                    16s10p (160 článků)
-                                    <span class="config-details">60V | 35Ah</span>
-                                </div>
-                                <div class="price highlight">23 350 Kč</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="price-note">
-                <p><strong>Vysvětlivka:</strong> Konfigurace např. "7s3p" znamená 7 článků v sérii a 3 paralelně.</p>
-                <p>Máte specifické požadavky? <a href="kontakty.html">Kontaktujte nás</a> pro individuální cenovou nabídku.</p>
-            </div>
         </div>
     </section>
 
     <section class="cta-section">
         <div class="container">
-            <h2>Potřebujete repasi baterie?</h2>
-            <p>Kontaktujte nás a získejte bezplatnou konzultaci. Rádi vám poradíme s výběrem nejvhodnějšího řešení.</p>
-            <a href="kontakty.html" class="btn btn-light">Kontaktovat odborníka</a>
+            <h2>Máte atypickou baterii?</h2>
+            <p>Nevadí. Kontaktujte nás a my vám zdarma vypracujeme cenovou nabídku přesně pro váš typ baterie.</p>
+            <a href="kontakty.html" class="btn btn-light">Nezávazná poptávka</a>
         </div>
     </section>
 
@@ -1431,22 +840,26 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Ionrise</h3>
-                    <p>Profesionální repase a servis baterií s 24měsíční zárukou.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Sluzby</h3>
                     <ul class="footer-links">
-                        <li><a href="repase.html">Repase baterií</a></li>
-                        <li><a href="mereni.html">Měření článků</a></li>
-                        <li><a href="stavby.html">Stavby na míru</a></li>
-                        <li><a href="eshop.html">Prodej baterií</a></li>
+                        <li><a href="index.html">Domů</a></li>
+                        <li><a href="o-nas.html">O nás</a></li>
+                        <li><a href="kariera.html">Kariéra</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Kontakty</h3>
+                    <h3>Služby</h3>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@beigl.cz">info@beigl.cz</a></li>
-                        <li><a href="tel:+420720958340">+420720958340</a></li>
+                        <li><a href="repase.html">Repase baterií</a></li>
+                        <li><a href="mereni.html">Diagnostika</a></li>
+                        <li><a href="stavby.html">Výroba na zakázku</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-links">
+                        <li>+420 123 456 789</li>
+                        <li>info@ionrise.cz</li>
+                        <li>Praha, Česká republika</li>
                     </ul>
                 </div>
             </div>
@@ -1457,34 +870,13 @@
     </footer>
 
     <script>
-        // Mobile navigation toggle
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-        const body = document.body;
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            const hamburger = document.querySelector('.hamburger');
             nav.classList.toggle('active');
-            body.classList.toggle('nav-open');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-                body.classList.remove('nav-open');
-            }
-        });
-
-        // Close menu on link click
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-                body.classList.remove('nav-open');
-            });
-        });
+            hamburger.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        }
     </script>
 </body>
 </html>
