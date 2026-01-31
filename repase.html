@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repase baterií | Ionrise</title>
-
+    <title>Repase baterií | Ionrise - Profesionální repase všech typů baterií</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --bg-primary: #f8fafc;
@@ -22,27 +20,34 @@
             --border: #e2e8f0;
             --shadow: rgba(0, 0, 0, 0.05);
             --shadow-hover: rgba(0, 0, 0, 0.08);
+            --container: 1100px;
             --border-radius: 12px;
             --transition: all 0.3s ease;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Inter', system-ui, Arial, sans-serif;
-            background: var(--bg-primary);
+            background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: var(--container);
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* Header Styles */
         header {
-            background: var(--bg-secondary);
+            background-color: var(--bg-secondary);
             box-shadow: 0 2px 10px var(--shadow);
             position: sticky;
             top: 0;
@@ -51,8 +56,8 @@
 
         .header-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             padding: 18px 0;
         }
 
@@ -62,7 +67,32 @@
             gap: 12px;
         }
 
-        .logo img { height: 44px; }
+        .logo img {
+            height: 44px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
 
         nav {
             display: flex;
@@ -70,46 +100,180 @@
         }
 
         nav a {
-            text-decoration: none;
             color: var(--text-primary);
+            text-decoration: none;
             font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            white-space: nowrap;
         }
 
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
         .page-header {
-            padding: 70px 0 40px;
-            background: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
+            padding: 80px 0 40px;
+            background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
             text-align: center;
         }
 
         .page-header h1 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .page-header p {
+            font-size: 1.1rem;
             color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .content-section { padding: 60px 0; }
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            justify-content: center;
+        }
 
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb span:last-child {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Service Overview */
         .service-overview {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .service-text h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .service-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
         .service-features {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .service-features li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .service-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow);
+            height: 400px;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Price Tables - RESPONSIVE FIX */
         .pricing-section {
             background: var(--bg-secondary);
             padding: 60px 0;
@@ -117,22 +281,44 @@
 
         .price-tables-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 40px;
         }
 
         .price-table {
             background: var(--bg-primary);
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 8px var(--shadow);
             overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .price-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-hover);
         }
 
         .price-header {
             background: var(--accent);
-            color: #fff;
-            padding: 24px;
+            color: white;
+            padding: 25px 30px;
             text-align: center;
+        }
+
+        .price-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .price-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .price-content {
+            padding: 0;
         }
 
         .price-content ul {
@@ -140,154 +326,1193 @@
         }
 
         .price-content li {
-            padding: 18px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .price-content li:last-child {
+            border-bottom: none;
+        }
+
+        .price-content li:hover {
+            background: var(--bg-accent);
+        }
+
+        .capacity {
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         .price {
-            font-weight: 700;
             color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .price.highlight {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .config-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            display: block;
         }
 
         .price-note {
             text-align: center;
-            margin-top: 25px;
             color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding: 0 20px;
         }
 
+        .price-note a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .price-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--accent);
+        }
+
+        .btn-light:hover {
+            background: var(--bg-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Price Disclaimer */
+        .price-disclaimer {
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .price-disclaimer h4 {
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .price-disclaimer p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
         footer {
             background: var(--bg-secondary);
-            padding: 40px 0;
-            text-align: center;
+            padding: 50px 0 30px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
         }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Responsive Design */
         @media (max-width: 900px) {
-            .service-overview { grid-template-columns: 1fr; }
+            .service-overview {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px var(--shadow);
+                border-top: 1px solid var(--border);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            body.nav-open {
+                overflow: hidden;
+            }
+
+            .service-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .price-tables-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .price-table {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .service-overview {
+                padding: 0;
+            }
+            
+            .page-header {
+                padding: 60px 0 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .price-content li {
+                padding: 12px 16px;
+            }
+            
+            .price-header {
+                padding: 20px;
+            }
+            
+            .service-text h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section {
+                padding: 60px 0;
+            }
+            
+            .content-section {
+                padding: 40px 0;
+            }
+            
+            .pricing-section {
+                padding: 40px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-image {
+                height: 250px;
+            }
+            
+            .price-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .capacity, .price {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
-
 <body>
-
-<header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPC9zdmc+" alt="">
-                <strong>IONRISE</strong>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <div class="logo-text">
+                        <div class="logo-title">IONRISE</div>
+                        <div class="logo-subtitle">Repase baterií</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="index.html">Domů</a>
+                    <a href="eshop.html">Eshop</a>
+                    <a href="repase.html">Repase</a>
+                    <a href="mereni.html">Měření</a>
+                    <a href="stavby.html">Stavby</a>
+                    <a href="part.html">Partneři</a>
+                    <a href="kontakty.html">Kontakty</a>
+                </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
                 <a href="index.html">Domů</a>
-                <a href="eshop.html">Eshop</a>
-                <a href="repase.html">Repase</a>
-                <a href="kontakty.html">Kontakty</a>
-            </nav>
+                <span>/</span>
+                <span>Repase baterií</span>
+            </div>
+            <h1>Repase baterií — ceník</h1>
+            <p>Ceny jsou orientační. Pro přesnou kalkulaci nám pošlete informace o baterii.</p>
         </div>
-    </div>
-</header>
+    </section>
 
-<section class="page-header">
-    <div class="container">
-        <h1>Repase baterií – ceník</h1>
-        <p>Ceny jsou orientační, finální cena dle konkrétní baterie</p>
-    </div>
-</section>
-
-<section class="pricing-section">
-    <div class="container">
-
-        <div class="price-tables-container">
-
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>24 V baterie</h3>
-                    <p>Všechny typy</p>
-                </div>
-                <div class="price-content">
-                    <ul>
-                        <li><span>Repase 24 V</span><span class="price">od 6 900 Kč</span></li>
+    <section class="content-section">
+        <div class="container">
+            <div class="service-overview">
+                <div class="service-text">
+                    <h2>Profesionální repase baterií</h2>
+                    <p>Specializujeme se na repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Prodloužíme životnost vašich baterií.</p>
+                    
+                    <ul class="service-features">
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>24měsíční záruka na práci a články</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Pouze kvalitní články předních výrobců</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Rychlé dodací lhůty</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Bezplatná diagnostika při repasí</span>
+                        </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>36 V baterie</h3>
-                    <p>Všechny typy</p>
-                </div>
-                <div class="price-content">
-                    <ul>
-                        <li><span>Repase 36 V</span><span class="price">od 9 900 Kč</span></li>
-                    </ul>
+                <div class="service-image">
+                    <img src="cell.jpg" alt="článek baterie - Ionrise">
                 </div>
             </div>
-
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>48 V baterie</h3>
-                    <p>Všechny typy</p>
-                </div>
-                <div class="price-content">
-                    <ul>
-                        <li><span>Repase 48 V</span><span class="price">od 13 900 Kč</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>52 V baterie</h3>
-                    <p>Všechny typy</p>
-                </div>
-                <div class="price-content">
-                    <ul>
-                        <li><span>Repase 52 V</span><span class="price">od 15 900 Kč</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>60 V baterie</h3>
-                    <p>Všechny typy</p>
-                </div>
-                <div class="price-content">
-                    <ul>
-                        <li><span>Repase 60 V</span><span class="price">od 18 900 Kč</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-table">
-                <div class="price-header">
-                    <h3>72 V baterie</h3>
-                    <p>Všechny typy</p>
-                </div>
-                <div class="price-content">
-                    <ul>
-                        <li><span>Repase 72 V</span><span class="price">od 22 900 Kč</span></li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
+    </section>
 
-        <div class="price-note">
-            Pro přesnou cenu nás kontaktujte – záleží na kapacitě, rozměrech a použití baterie.
+    <section class="pricing-section">
+        <div class="container">
+            <!-- Price Disclaimer -->
+            <div class="price-disclaimer">
+                <h4>Upozornění k cenám</h4>
+                <p><strong>Všechny ceny jsou uvedeny včetně DPH a jsou orientační.</strong> Nabízíme velkoobchodní slevy pro větší zakázky a pravidelné zákazníky. Pro přesnou cenovou nabídku nás prosím kontaktujte.</p>
+            </div>
+
+            <!-- 24V Baterie - 2600 mAh -->
+            <div class="section-title">
+                <h2>24V baterie - 2600 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>24V - 7sXp</h3>
+                        <p>7 sérií - různé paralelní kombinace</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    7s3p (21 článků)
+                                    <span class="config-details">24V | 7.8Ah</span>
+                                </div>
+                                <div class="price highlight">6 300 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s4p (28 článků)
+                                    <span class="config-details">24V | 10.4Ah</span>
+                                </div>
+                                <div class="price highlight">6 550 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s5p (35 článků)
+                                    <span class="config-details">24V | 13Ah</span>
+                                </div>
+                                <div class="price highlight">7 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s6p (42 článků)
+                                    <span class="config-details">24V | 15.6Ah</span>
+                                </div>
+                                <div class="price highlight">7 990 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 24V Baterie - 2900 mAh -->
+            <div class="section-title">
+                <h2>24V baterie - 2900 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>24V - 7sXp</h3>
+                        <p>Vyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    7s3p (21 článků)
+                                    <span class="config-details">24V | 8.7Ah</span>
+                                </div>
+                                <div class="price highlight">5 750 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s4p (28 článků)
+                                    <span class="config-details">24V | 11.6Ah</span>
+                                </div>
+                                <div class="price highlight">6 300 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s5p (35 článků)
+                                    <span class="config-details">24V | 14.5Ah</span>
+                                </div>
+                                <div class="price highlight">6 750 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s6p (42 článků)
+                                    <span class="config-details">24V | 17.4Ah</span>
+                                </div>
+                                <div class="price highlight">7 700 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 24V Baterie - 3500 mAh -->
+            <div class="section-title">
+                <h2>24V baterie - 3500 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>24V - 7sXp</h3>
+                        <p>Nejvyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    7s3p (21 článků)
+                                    <span class="config-details">24V | 10.5Ah</span>
+                                </div>
+                                <div class="price highlight">6 900 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s4p (28 článků)
+                                    <span class="config-details">24V | 14Ah</span>
+                                </div>
+                                <div class="price highlight">8 250 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s5p (35 článků)
+                                    <span class="config-details">24V | 17.5Ah</span>
+                                </div>
+                                <div class="price highlight">8 750 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    7s6p (42 článků)
+                                    <span class="config-details">24V | 21Ah</span>
+                                </div>
+                                <div class="price highlight">10 500 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 36V Baterie - 2600 mAh -->
+            <div class="section-title">
+                <h2>36V baterie - 2600 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>36V - 10sXp</h3>
+                        <p>10 sérií - různé paralelní kombinace</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    10s2p (20 článků)
+                                    <span class="config-details">36V | 5.2Ah</span>
+                                </div>
+                                <div class="price highlight">6 350 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s3p (30 článků)
+                                    <span class="config-details">36V | 7.8Ah</span>
+                                </div>
+                                <div class="price highlight">6 950 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s4p (40 článků)
+                                    <span class="config-details">36V | 10.4Ah</span>
+                                </div>
+                                <div class="price highlight">7 600 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s5p (50 článků)
+                                    <span class="config-details">36V | 13Ah</span>
+                                </div>
+                                <div class="price highlight">8 650 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s6p (60 článků)
+                                    <span class="config-details">36V | 15.6Ah</span>
+                                </div>
+                                <div class="price highlight">9 800 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s7p (70 článků)
+                                    <span class="config-details">36V | 18.2Ah</span>
+                                </div>
+                                <div class="price highlight">10 500 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 36V Baterie - 2900 mAh -->
+            <div class="section-title">
+                <h2>36V baterie - 2900 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>36V - 10sXp</h3>
+                        <p>Vyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    10s2p (20 článků)
+                                    <span class="config-details">36V | 5.8Ah</span>
+                                </div>
+                                <div class="price highlight">6 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s3p (30 článků)
+                                    <span class="config-details">36V | 8.7Ah</span>
+                                </div>
+                                <div class="price highlight">6 900 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s4p (40 článků)
+                                    <span class="config-details">36V | 11.6Ah</span>
+                                </div>
+                                <div class="price highlight">7 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s5p (50 článků)
+                                    <span class="config-details">36V | 14.5Ah</span>
+                                </div>
+                                <div class="price highlight">8 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s6p (60 článků)
+                                    <span class="config-details">36V | 17.4Ah</span>
+                                </div>
+                                <div class="price highlight">9 850 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s7p (70 článků)
+                                    <span class="config-details">36V | 20.3Ah</span>
+                                </div>
+                                <div class="price highlight">10 750 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 36V Baterie - 3500 mAh -->
+            <div class="section-title">
+                <h2>36V baterie - 3500 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>36V - 10sXp</h3>
+                        <p>Nejvyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    10s2p (20 článků)
+                                    <span class="config-details">36V | 7Ah</span>
+                                </div>
+                                <div class="price highlight">7 750 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s3p (30 článků)
+                                    <span class="config-details">36V | 10.5Ah</span>
+                                </div>
+                                <div class="price highlight">8 550 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s4p (40 článků)
+                                    <span class="config-details">36V | 14Ah</span>
+                                </div>
+                                <div class="price highlight">9 350 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s5p (50 článků)
+                                    <span class="config-details">36V | 17.5Ah</span>
+                                </div>
+                                <div class="price highlight">10 950 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s6p (60 článků)
+                                    <span class="config-details">36V | 21Ah</span>
+                                </div>
+                                <div class="price highlight">12 150 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    10s7p (70 článků)
+                                    <span class="config-details">36V | 24.5Ah</span>
+                                </div>
+                                <div class="price highlight">13 700 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 48V Baterie - 2600 mAh -->
+            <div class="section-title">
+                <h2>48V baterie - 2600 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>48V - 13sXp</h3>
+                        <p>13 sérií - různé paralelní kombinace</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    13s3p (39 článků)
+                                    <span class="config-details">48V | 7.8Ah</span>
+                                </div>
+                                <div class="price highlight">8 050 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s4p (52 článků)
+                                    <span class="config-details">48V | 10.4Ah</span>
+                                </div>
+                                <div class="price highlight">8 900 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s5p (65 článků)
+                                    <span class="config-details">48V | 13Ah</span>
+                                </div>
+                                <div class="price highlight">10 600 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s6p (78 článků)
+                                    <span class="config-details">48V | 15.6Ah</span>
+                                </div>
+                                <div class="price highlight">12 100 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s7p (91 článků)
+                                    <span class="config-details">48V | 18.2Ah</span>
+                                </div>
+                                <div class="price highlight">13 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s8p (104 článků)
+                                    <span class="config-details">48V | 20.8Ah</span>
+                                </div>
+                                <div class="price highlight">15 700 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 48V Baterie - 2900 mAh -->
+            <div class="section-title">
+                <h2>48V baterie - 2900 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>48V - 13sXp</h3>
+                        <p>Vyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    13s3p (39 článků)
+                                    <span class="config-details">48V | 8.7Ah</span>
+                                </div>
+                                <div class="price highlight">7 900 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s4p (52 článků)
+                                    <span class="config-details">48V | 11.6Ah</span>
+                                </div>
+                                <div class="price highlight">8 750 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s5p (65 článků)
+                                    <span class="config-details">48V | 14.5Ah</span>
+                                </div>
+                                <div class="price highlight">10 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s6p (78 článků)
+                                    <span class="config-details">48V | 17.4Ah</span>
+                                </div>
+                                <div class="price highlight">12 100 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s7p (91 článků)
+                                    <span class="config-details">48V | 20.3Ah</span>
+                                </div>
+                                <div class="price highlight">13 700 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s8p (104 článků)
+                                    <span class="config-details">48V | 23.2Ah</span>
+                                </div>
+                                <div class="price highlight">15 900 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 48V Baterie - 3500 mAh -->
+            <div class="section-title">
+                <h2>48V baterie - 3500 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>48V - 13sXp</h3>
+                        <p>Nejvyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    13s3p (39 článků)
+                                    <span class="config-details">48V | 10.5Ah</span>
+                                </div>
+                                <div class="price highlight">9 700 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s4p (52 článků)
+                                    <span class="config-details">48V | 14Ah</span>
+                                </div>
+                                <div class="price highlight">11 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s5p (65 článků)
+                                    <span class="config-details">48V | 17.5Ah</span>
+                                </div>
+                                <div class="price highlight">13 100 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s6p (78 článků)
+                                    <span class="config-details">48V | 21Ah</span>
+                                </div>
+                                <div class="price highlight">14 750 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s7p (91 článků)
+                                    <span class="config-details">48V | 24.5Ah</span>
+                                </div>
+                                <div class="price highlight">16 100 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    13s8p (104 článků)
+                                    <span class="config-details">48V | 28Ah</span>
+                                </div>
+                                <div class="price highlight">17 300 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 60V Baterie - 2600 mAh -->
+            <div class="section-title">
+                <h2>60V baterie - 2600 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>60V - 16sXp</h3>
+                        <p>16 sérií - různé paralelní kombinace</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    16s4p (64 článků)
+                                    <span class="config-details">60V | 10.4Ah</span>
+                                </div>
+                                <div class="price highlight">10 600 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s5p (80 článků)
+                                    <span class="config-details">60V | 13Ah</span>
+                                </div>
+                                <div class="price highlight">12 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s6p (96 článků)
+                                    <span class="config-details">60V | 15.6Ah</span>
+                                </div>
+                                <div class="price highlight">13 400 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s7p (112 článků)
+                                    <span class="config-details">60V | 18.2Ah</span>
+                                </div>
+                                <div class="price highlight">16 000 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s8p (128 článků)
+                                    <span class="config-details">60V | 20.8Ah</span>
+                                </div>
+                                <div class="price highlight">17 000 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s9p (144 článků)
+                                    <span class="config-details">60V | 23.4Ah</span>
+                                </div>
+                                <div class="price highlight">17 900 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s10p (160 článků)
+                                    <span class="config-details">60V | 26Ah</span>
+                                </div>
+                                <div class="price highlight">19 600 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 60V Baterie - 2900 mAh -->
+            <div class="section-title">
+                <h2>60V baterie - 2900 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>60V - 16sXp</h3>
+                        <p>Vyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    16s4p (64 článků)
+                                    <span class="config-details">60V | 11.6Ah</span>
+                                </div>
+                                <div class="price highlight">10 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s5p (80 článků)
+                                    <span class="config-details">60V | 14.5Ah</span>
+                                </div>
+                                <div class="price highlight">12 300 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s6p (96 článků)
+                                    <span class="config-details">60V | 17.4Ah</span>
+                                </div>
+                                <div class="price highlight">13 100 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s7p (112 článků)
+                                    <span class="config-details">60V | 20.3Ah</span>
+                                </div>
+                                <div class="price highlight">15 700 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s8p (128 článků)
+                                    <span class="config-details">60V | 23.2Ah</span>
+                                </div>
+                                <div class="price highlight">16 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s9p (144 článků)
+                                    <span class="config-details">60V | 26.1Ah</span>
+                                </div>
+                                <div class="price highlight">17 350 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s10p (160 článků)
+                                    <span class="config-details">60V | 29Ah</span>
+                                </div>
+                                <div class="price highlight">18 500 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 60V Baterie - 3500 mAh -->
+            <div class="section-title">
+                <h2>60V baterie - 3500 mAh</h2>
+            </div>
+            <div class="price-tables-container">
+                <div class="price-table">
+                    <div class="price-header">
+                        <h3>60V - 16sXp</h3>
+                        <p>Nejvyšší kapacita</p>
+                    </div>
+                    <div class="price-content">
+                        <ul>
+                            <li>
+                                <div class="capacity">
+                                    16s4p (64 článků)
+                                    <span class="config-details">60V | 14Ah</span>
+                                </div>
+                                <div class="price highlight">13 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s5p (80 článků)
+                                    <span class="config-details">60V | 17.5Ah</span>
+                                </div>
+                                <div class="price highlight">15 300 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s6p (96 článků)
+                                    <span class="config-details">60V | 21Ah</span>
+                                </div>
+                                <div class="price highlight">16 900 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s7p (112 článků)
+                                    <span class="config-details">60V | 24.5Ah</span>
+                                </div>
+                                <div class="price highlight">19 000 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s8p (128 článků)
+                                    <span class="config-details">60V | 28Ah</span>
+                                </div>
+                                <div class="price highlight">20 250 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s9p (144 článků)
+                                    <span class="config-details">60V | 31.5Ah</span>
+                                </div>
+                                <div class="price highlight">21 500 Kč</div>
+                            </li>
+                            <li>
+                                <div class="capacity">
+                                    16s10p (160 článků)
+                                    <span class="config-details">60V | 35Ah</span>
+                                </div>
+                                <div class="price highlight">23 350 Kč</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-note">
+                <p><strong>Vysvětlivka:</strong> Konfigurace např. "7s3p" znamená 7 článků v sérii a 3 paralelně.</p>
+                <p>Máte specifické požadavky? <a href="kontakty.html">Kontaktujte nás</a> pro individuální cenovou nabídku.</p>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Potřebujete repasi baterie?</h2>
+            <p>Kontaktujte nás a získejte bezplatnou konzultaci. Rádi vám poradíme s výběrem nejvhodnějšího řešení.</p>
+            <a href="kontakty.html" class="btn btn-light">Kontaktovat odborníka</a>
+        </div>
+    </section>
 
-<footer>
-    <div class="container">
-        © Ionrise – Repase baterií
-    </div>
-</footer>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ionrise</h3>
+                    <p>Profesionální repase a servis baterií s 24měsíční zárukou.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Sluzby</h3>
+                    <ul class="footer-links">
+                        <li><a href="repase.html">Repase baterií</a></li>
+                        <li><a href="mereni.html">Měření článků</a></li>
+                        <li><a href="stavby.html">Stavby na míru</a></li>
+                        <li><a href="eshop.html">Prodej baterií</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakty</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
+                        <li><a href="tel:+420123456789">+420 123 456 789</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ionrise. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const body = document.body;
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            body.classList.toggle('nav-open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                body.classList.remove('nav-open');
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                body.classList.remove('nav-open');
+            });
+        });
+    </script>
 </body>
 </html>
