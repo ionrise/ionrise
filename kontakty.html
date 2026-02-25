@@ -177,26 +177,26 @@
             font-weight: 500;
         }
 
-        /* Contact Section */
+        /* Contact Section - NEW LAYOUT */
         .contact-section {
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
-        .contact-grid {
+        .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
+            margin-bottom: 60px;
         }
 
-        .contact-info {
+        .contact-form-wrapper {
             background: var(--bg-secondary);
             padding: 40px;
             border-radius: var(--border-radius);
             box-shadow: 0 4px 6px var(--shadow);
-            height: fit-content;
         }
 
-        .contact-info h2 {
+        .contact-form-wrapper h2 {
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 30px;
@@ -205,117 +205,7 @@
             display: inline-block;
         }
 
-        .contact-info h2::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -8px;
-            left: 0;
-            border-radius: 2px;
-        }
-
-        .contact-details {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .contact-details li {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .contact-details li:last-child {
-            border-bottom: none;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--bg-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .contact-text h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-
-        .contact-text p {
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .contact-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .contact-link:hover {
-            color: var(--accent-dark);
-            gap: 8px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-            margin-top: 10px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: var(--bg-secondary);
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow);
-        }
-
-        .contact-form h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .contact-form h2::after {
+        .contact-form-wrapper h2::after {
             content: '';
             position: absolute;
             width: 40px;
@@ -392,61 +282,128 @@
             transform: none !important;
         }
 
-        /* Form Messages */
-        .form-message {
-            padding: 12px 16px;
-            margin: 16px 0;
-            border-radius: 8px;
-            font-weight: 500;
+        /* Company Info Section */
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        .form-message.success {
-            background: #f0fdf4;
-            color: #16a34a;
-            border: 1px solid #bbf7d0;
-        }
-
-        .form-message.error {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-        }
-
-        .form-message.hidden {
-            display: none;
-        }
-
-        /* Map Section */
-        .map-section {
-            padding: 0 0 80px;
-        }
-
-        .map-container {
+        .company-card {
+            background: var(--bg-secondary);
+            padding: 40px;
             border-radius: var(--border-radius);
-            overflow: hidden;
             box-shadow: 0 4px 6px var(--shadow);
-            height: 400px;
         }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .company-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+
+        .company-details {
+            list-style: none;
+        }
+
+        .company-details li {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .company-details li:last-child {
+            border-bottom: none;
+        }
+
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .detail-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .detail-content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-content a:hover {
+            color: var(--accent-dark);
+            gap: 8px;
+        }
+
+        .company-legal {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid var(--accent);
+        }
+
+        .company-legal p {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .beigl-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--bg-accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .beigl-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Business Hours */
         .business-hours {
-            background: var(--bg-secondary);
-            padding: 30px;
+            background: var(--bg-accent);
+            padding: 25px;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px var(--shadow);
-            margin-top: 40px;
+            margin-top: 25px;
         }
 
-        .business-hours h3 {
-            font-size: 1.3rem;
+        .business-hours h4 {
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--text-primary);
         }
 
@@ -457,7 +414,7 @@
         .hours-list li {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -552,7 +509,7 @@
 
         /* Responsive Design */
         @media (max-width: 900px) {
-            .contact-grid {
+            .contact-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -603,7 +560,8 @@
                 padding: 0 16px;
             }
             
-            .contact-info, .contact-form {
+            .contact-form-wrapper,
+            .company-card {
                 padding: 30px 20px;
             }
             
@@ -623,14 +581,26 @@
                 gap: 16px;
             }
             
-            .contact-details li {
+            .company-details li {
                 flex-direction: column;
                 text-align: center;
                 gap: 12px;
             }
             
-            .contact-icon {
+            .detail-icon {
                 align-self: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form-wrapper h2,
+            .company-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
             }
         }
     </style>
@@ -678,130 +648,129 @@
 
     <section class="contact-section">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Kontaktní údaje</h2>
-                    <ul class="contact-details">
-                        <li>
-                            <div class="contact-icon">🏠</div>
-                            <div class="contact-text">
-                                <h3>Adresa</h3>
-                                <p>Zahradní 455, Slavkov 74757</p>
-                                <a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank" class="contact-link">
-                                    Zobrazit na mapě
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-text">
-                                <h3>Telefon</h3>
-                                <p>+420 720 958 340</p>
-                                <a href="tel:+420720958340" class="contact-link">Zavolat</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">✉️</div>
-                            <div class="contact-text">
-                                <h3>E-mail</h3>
-                                <p>info@ionrise.one</p>
-                                <a href="mailto:info@ionrise.one" class="contact-link">Napsat e-mail</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">💬</div>
-                            <div class="contact-text">
-                                <h3>WhatsApp</h3>
-                                <p>+420 720 958 340</p>
-                                <a href="https://wa.me/420720958340" target="_blank" class="contact-link">Otevřít chat</a>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <h3 style="margin-top: 30px;">Sledujte nás</h3>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/ionrise.one/" target="_blank" class="social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 8V6C16 5.46957 16.2107 4.96086 16.5858 4.58579C16.9609 4.21071 17.4696 4 18 4H19C19.5304 4 20.0391 4.21071 20.4142 4.58579C20.7893 4.96086 21 5.46957 21 6V7C21 7.53043 20.7893 8.03914 20.4142 8.41421C20.0391 8.78929 19.5304 9 19 9H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                        </a>
-                    </div>
-                    
-                    <div class="business-hours">
-                        <h3>Otevírací doba</h3>
-                        <ul class="hours-list">
-                            <li>
-                                <span class="day">Pondělí - Pátek</span>
-                                <span class="time">8:00 - 17:00</span>
-                            </li>
-                            <li>
-                                <span class="day">Sobota</span>
-                                <span class="time">9:00 - 12:00</span>
-                            </li>
-                            <li>
-                                <span class="day">Neděle</span>
-                                <span class="time">Zavřeno</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h2>Kontaktní formulář</h2>
-                    <form id="contactForm" action="https://formspree.io/f/xbldproq" method="POST">
-                        <div id="formMessage" class="form-message hidden"></div>
-                        
+            <div class="contact-container">
+                <!-- Kontaktní formulář -->
+                <div class="contact-form-wrapper">
+                    <h2>Rychlý kontakt</h2>
+                    <form action="https://formspree.io/f/xbldproq" method="POST" id="contactForm">
                         <div class="form-group">
                             <label for="name" class="form-label">Jméno a příjmení *</label>
                             <input type="text" id="name" name="name" class="form-control" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="email" class="form-label">E-mail *</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="phone" class="form-label">Telefon</label>
                             <input type="tel" id="phone" name="phone" class="form-control">
                         </div>
+                        
                         <div class="form-group">
-                            <label for="subject" class="form-label">Předmět *</label>
-                            <select id="subject" name="subject" class="form-control" required>
-                                <option value="">Vyberte předmět zprávy</option>
+                            <label for="subject" class="form-label">Předmět zprávy</label>
+                            <select id="subject" name="subject" class="form-control">
                                 <option value="repase">Repase baterií</option>
-                                <option value="mereni">Měření a diagnostika</option>
-                                <option value="stavby">Energetické stavby</option>
-                                <option value="eshop">Dotaz k produktu z Eshopu</option>
-                                <option value="other">Jiný</option>
+                                <option value="mereni">Měření článků</option>
+                                <option value="stavby">Stavba na míru</option>
+                                <option value="dotaz">Obecný dotaz</option>
+                                <option value="reklamace">Reklamace</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="product" class="form-label">Konkrétní produkt (pokud se týká)</label>
-                            <input type="text" id="product" name="product" class="form-control" placeholder="Např: BAK 21700 6500mAh">
-                        </div>
+                        
                         <div class="form-group">
                             <label for="message" class="form-label">Zpráva *</label>
                             <textarea id="message" name="message" class="form-control" required></textarea>
                         </div>
-                        <button type="submit" id="submitBtn" class="btn btn-primary">
-                            <span id="submitText">Odeslat zprávu</span>
-                            <span id="submitLoading" style="display: none;">Odesílám...</span>
-                        </button>
+                        
+                        <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="map-section">
-        <div class="container">
-            <h2 style="margin-bottom: 20px;">Kde nás najdete</h2>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2612.783068300984!2d17.11178797678949!3d49.05310407138135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710f5977c7cd881%3A0x9e3d0b6b7c8e4d1f!2sZahradn%C3%AD%20455%2C%20747%2057%20Slavkov!5e0!3m2!1scs!2scz!4v1710861234567!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- Společnost a kontaktní informace -->
+                <div class="company-info">
+                    <div class="company-card">
+                        <h3>Kontaktní informace</h3>
+                        <ul class="company-details">
+                            <li>
+                                <div class="detail-icon">🏠</div>
+                                <div class="detail-content">
+                                    <h4>Sídlo společnosti</h4>
+                                    <p>Bílov 137, 743 01 Bílov</p>
+                                    <a href="https://maps.google.com/?q=Bílov 137, 743 01 Bílov" target="_blank">
+                                        Zobrazit na mapě
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-icon">📞</div>
+                                <div class="detail-content">
+                                    <h4>Telefon</h4>
+                                    <p>+420 720 958 340</p>
+                                    <a href="tel:+420720958340">Zavolat</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-icon">✉️</div>
+                                <div class="detail-content">
+                                    <h4>E-mail</h4>
+                                    <p>info@ionrise.one</p>
+                                    <a href="mailto:info@ionrise.one">Napsat e-mail</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- Firemní údaje -->
+                        <div class="company-legal">
+                            <p><strong>beigl based s.r.o.</strong></p>
+                            <p>IČ: 23271299</p>
+                            <p>DIČ: CZ23271299</p>
+                            <a href="https://www.beigl.cz" target="_blank" class="beigl-link">
+                                Navštivte www.beigl.cz
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Otevírací doba -->
+                    <div class="company-card">
+                        <h3>Otevírací doba</h3>
+                        <div class="business-hours">
+                            <ul class="hours-list">
+                                <li>
+                                    <span class="day">Pondělí</span>
+                                    <span class="time">8:00 - 16:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Úterý</span>
+                                    <span class="time">8:00 - 16:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Středa</span>
+                                    <span class="time">8:00 - 16:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Čtvrtek</span>
+                                    <span class="time">8:00 - 16:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Pátek</span>
+                                    <span class="time">8:00 - 14:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sobota - Neděle</span>
+                                    <span class="time">Zavřeno</span>
+                                </li>
+                            </ul>
+                            <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">
+                                <strong>Poznámka:</strong> Po předchozí domluvě je možné návštěvu individuálně upravit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -811,152 +780,67 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Ionrise</h3>
-                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Služby</h3>
-                    <ul class="footer-links">
-                        <li><a href="eshop.html">Eshop</a></li>
-                        <li><a href="repase.html">Repase baterií</a></li>
-                        <li><a href="mereni.html">Měření a diagnostika</a></li>
-                        <li><a href="stavby.html">Energetické stavby</a></li>
-                        <li><a href="part.html">Naši partneři</a></li>
-                    </ul>
+                    <p>Profesionální repase a servis baterií s 24měsíční zárukou.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Kontakty</h3>
                     <ul class="footer-links">
-                        <li><a href="kontakty.html">Kontaktní formulář</a></li>
+                        <li><strong>Sídlo:</strong> Bílov 137, 743 01 Bílov</li>
                         <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
                         <li><a href="tel:+420720958340">+420 720 958 340</a></li>
-                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>O nás</h3>
+                    <h3>Partneři</h3>
                     <ul class="footer-links">
-                        <li><a href="o-nas.html">O společnosti</a></li>
-                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="https://www.beigl.cz" target="_blank">www.beigl.cz</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+                <p>&copy; 2024 Ionrise. Všechna práva vyhrazena.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted);">
+                    beigl based s.r.o. | IČ: 23271299 | DIČ: CZ23271299
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple functionality for contacts
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update year in footer
-            document.getElementById('year').innerText = new Date().getFullYear();
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const body = document.body;
 
-            // Mobile navigation
-            const hamburger = document.querySelector('.hamburger');
-            const nav = document.querySelector('nav');
-            
-            if (hamburger && nav) {
-                hamburger.addEventListener('click', function() {
-                    nav.classList.toggle('active');
-                    hamburger.classList.toggle('active');
-                    document.body.classList.toggle('nav-open');
-                });
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            body.classList.toggle('nav-open');
+        });
 
-                // Close menu when clicking on links
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        hamburger.classList.remove('active');
-                        document.body.classList.remove('nav-open');
-                    });
-                });
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                body.classList.remove('nav-open');
             }
+        });
 
-            // Prefill contact form based on URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const product = urlParams.get('product');
-            if (product) {
-                const productField = document.getElementById('product');
-                const subjectField = document.getElementById('subject');
-                if (productField) {
-                    productField.value = product;
-                }
-                if (subjectField) {
-                    subjectField.value = 'eshop';
-                }
-            }
-
-            // Form submission handling
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const submitLoading = document.getElementById('submitLoading');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    // Show loading state
-                    submitBtn.disabled = true;
-                    submitText.style.display = 'none';
-                    submitLoading.style.display = 'inline';
-                    
-                    try {
-                        const formData = new FormData(this);
-                        const response = await fetch(this.action, {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        });
-                        
-                        if (response.ok) {
-                            // Success message
-                            formMessage.textContent = 'Děkujeme za vaši zprávu! Brzy se vám ozveme.';
-                            formMessage.className = 'form-message success';
-                            formMessage.classList.remove('hidden');
-                            contactForm.reset();
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    } catch (error) {
-                        // Error message
-                        formMessage.textContent = 'Při odesílání zprávy došlo k chybě. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.';
-                        formMessage.className = 'form-message error';
-                        formMessage.classList.remove('hidden');
-                    } finally {
-                        // Reset loading state
-                        submitBtn.disabled = false;
-                        submitText.style.display = 'inline';
-                        submitLoading.style.display = 'none';
-                        
-                        // Scroll to message
-                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                });
-            }
-
-            // Simple scroll animations
-            const animatedElements = document.querySelectorAll('.contact-details li, .contact-form, .map-container');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(element);
+        // Close menu on link click
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                body.classList.remove('nav-open');
             });
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            // Form will be submitted to Formspree
+            // You can add additional validation here if needed
         });
     </script>
 </body>
