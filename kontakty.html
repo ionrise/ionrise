@@ -780,7 +780,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Ionrise</h3>
-                    <p>Profesionální repase a servis baterií s 24měsíční zárukou.</p>
+                    <p>Značka vlastněná společností beigl based s.r.o.<br>10 let zkušeností v repasi baterií a servisu elektrokol</p>
                 </div>
                 <div class="footer-column">
                     <h3>Kontakty</h3>
@@ -798,49 +798,54 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Ionrise. Všechna práva vyhrazena.</p>
+                <p>© <span id="year"></span> Ionrise (beigl based s.r.o.). Všechna práva vyhrazena.</p>
                 <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-muted);">
-                    beigl based s.r.o. | IČ: 23271299 | DIČ: CZ23271299
+                    Sídlo: Bílov 137, 743 01 Bílov | IČ: 23271299 | DIČ: CZ23271299
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile navigation toggle
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-        const body = document.body;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update year in footer
+            document.getElementById('year').innerText = new Date().getFullYear();
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
-            body.classList.toggle('nav-open');
-        });
+            // Mobile navigation toggle
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            const body = document.body;
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-                body.classList.remove('nav-open');
-            }
-        });
-
-        // Close menu on link click
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-                body.classList.remove('nav-open');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+                body.classList.toggle('nav-open');
             });
-        });
 
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            // Form will be submitted to Formspree
-            // You can add additional validation here if needed
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    body.classList.remove('nav-open');
+                }
+            });
+
+            // Close menu on link click
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    body.classList.remove('nav-open');
+                });
+            });
+
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                // Form will be submitted to Formspree
+                // You can add additional validation here if needed
+            });
         });
     </script>
 </body>
