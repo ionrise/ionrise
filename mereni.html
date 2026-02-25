@@ -244,17 +244,22 @@
             border-radius: var(--border-radius);
             display: inline-block;
             font-weight: 600;
-            margin: 20px 0;
+            margin: 20px 0 10px;
             box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+        }
+
+        .price-badge.secondary {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            margin-top: 5px;
         }
 
         .service-features {
             list-style: none;
-            margin-top: 30px;
+            margin: 20px 0 30px;
         }
 
         .service-features li {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -357,6 +362,13 @@
 
         .step-content p {
             color: var(--text-secondary);
+        }
+
+        .step-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: italic;
         }
 
         /* Equipment Section */
@@ -736,10 +748,6 @@
                         </li>
                         <li>
                             <div class="feature-icon">✓</div>
-                            <span>Stanovení vnitřního odporu článků</span>
-                        </li>
-                        <li>
-                            <div class="feature-icon">✓</div>
                             <span>Analýza stavu BMS (Battery Management System)</span>
                         </li>
                         <li>
@@ -751,6 +759,38 @@
                             <span>Doporučení dalšího postupu - repase nebo oprava</span>
                         </li>
                     </ul>
+
+                    <div class="price-badge secondary">
+                        Kompletní měření: 650 Kč vč. DPH
+                    </div>
+                    
+                    <ul class="service-features">
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Přesné měření kapacity a výkonu</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Stanovení vnitřního odporu článků *</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Analýza stavu BMS (Battery Management System)</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Zhodnocení celkového zdravotního stavu baterie</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Písemný report s výsledky měření *</span>
+                        </li>
+                        <li>
+                            <div class="feature-icon">✓</div>
+                            <span>Doporučení dalšího postupu - repase nebo oprava</span>
+                        </li>
+                    </ul>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: -15px;"><em>* pouze v kompletním měření</em></p>
                 </div>
                 <div class="service-image">
                     <img src="mereni1.jpg" alt="Měření baterií - Ionrise">
@@ -786,6 +826,7 @@
                     <div class="step-content">
                         <h3>Analýza článků</h3>
                         <p>Detailní test jednotlivých článků baterie. Identifikace slabých nebo poškozených článků ovlivňujících celkový výkon.</p>
+                        <p class="step-note">* pouze v kompletním měření</p>
                     </div>               
                 </div>
                 <div class="process-step">
@@ -800,6 +841,7 @@
                     <div class="step-content">
                         <h3>Závěrečná zpráva</h3>
                         <p>Kompletní report s výsledky měření a grafickými výstupy.</p>
+                        <p class="step-note">* pouze v kompletním měření</p>
                      </div>
                 </div>
             </div>
@@ -841,7 +883,7 @@
     <section class="cta-section">
         <div class="container">
             <h2>Potřebujete změřit stav baterie?</h2>
-            <p>Objednejte si základní měření kapacity od 390 Kč vč. DPH nebo nás kontaktujte pro konzultaci.</p>
+            <p>Objednejte si základní měření od 390 Kč nebo kompletní diagnostiku od 650 Kč vč. DPH.</p>
             <a href="kontakty.html?subject=mereni" class="btn btn-light">Objednat měření</a>
         </div>
     </section>
