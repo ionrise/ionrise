@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eshop | Ionrise - Baterie a elektrokola</title>
+    <title>Eshop | Ionrise - Kvalitní baterie a příslušenství</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,9 +37,6 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
         .container {
@@ -180,43 +177,61 @@
             font-weight: 500;
         }
 
-        /* Coming Soon Section */
-        .coming-soon-section {
-            flex: 1;
+        /* Store Section */
+        .store-section {
+            padding: 60px 0;
+            background: var(--bg-primary);
+        }
+
+        .store-container {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: 0 4px 6px var(--shadow);
+            min-height: 600px;
+        }
+
+        /* Ecwid Store Customization */
+        .ecwid-store {
+            width: 100%;
+        }
+
+        /* Ensure Ecwid elements look good */
+        .ecwid-productBrowser {
+            background: transparent !important;
+        }
+
+        .ecwid-productBrowser .ecwid-title {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .coming-soon-content {
-            max-width: 600px;
-        }
-
-        .construction-icon {
-            font-size: 80px;
+            gap: 10px;
             margin-bottom: 30px;
-            color: var(--accent);
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
         }
 
-        .coming-soon-content h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+        .category-tab {
+            padding: 10px 20px;
+            background: var(--bg-accent);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
             color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
         }
 
-        .coming-soon-content p {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        .coming-soon-content .note {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-top: 40px;
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
         }
 
         /* Footer */
@@ -225,7 +240,6 @@
             padding: 50px 0 30px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
-            margin-top: auto;
         }
 
         .footer-content {
@@ -337,6 +351,10 @@
             body.nav-open {
                 overflow: hidden;
             }
+            
+            .store-container {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -360,20 +378,9 @@
                 gap: 16px;
             }
             
-            .coming-soon-content h2 {
-                font-size: 2rem;
-            }
-            
-            .coming-soon-content p {
-                font-size: 1.2rem;
-            }
-            
-            .construction-icon {
-                font-size: 60px;
-            }
-            
-            .coming-soon-section {
-                padding: 60px 0;
+            .category-tab {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -415,17 +422,42 @@
                 <span>Eshop</span>
             </div>
             <h1>Ionrise Eshop</h1>
-            <p>Kvalitní baterie, komponenty a elektrokola s garancí kvality a odbornou podporou</p>
+            <p>Kvalitní baterie, komponenty a příslušenství pro vaše projekty</p>
         </div>
     </section>
 
-    <section class="coming-soon-section">
+    <section class="store-section">
         <div class="container">
-            <div class="coming-soon-content">
-                <div class="construction-icon">🛒</div>
-                <h2>Připravuje se</h2>
-                <p>Web ve výstavbě</p>
-                <p class="note">Eshop je aktuálně ve výstavbě a brzy bude k dispozici.<br>Mezitím nás můžete kontaktovat pro individuální nabídku.</p>
+            <!-- Quick category navigation - will work after you create categories in Ecwid -->
+            <div class="category-tabs">
+                <a href="#" class="category-tab active" onclick="showCategory(0); return false;">Všechny produkty</a>
+                <a href="#" class="category-tab" onclick="showCategory(12345678); return false;">Baterie 24V</a>
+                <a href="#" class="category-tab" onclick="showCategory(12345679); return false;">Baterie 36V</a>
+                <a href="#" class="category-tab" onclick="showCategory(12345680); return false;">Baterie 48V</a>
+                <a href="#" class="category-tab" onclick="showCategory(12345681); return false;">Baterie 60V</a>
+                <a href="#" class="category-tab" onclick="showCategory(12345682); return false;">BMS</a>
+                <a href="#" class="category-tab" onclick="showCategory(12345683); return false;">Nabíječky</a>
+            </div>
+
+            <div class="store-container">
+                <div class="ecwid-store">
+                    <!-- Ecwid store integration with your store ID 131954760 -->
+                    <div id="my-store-131954760"></div>
+                    <div>
+                        <script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?131954760&data_platform=code&data_date=2026-02-25" charset="utf-8"></script>
+                        <script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-131954760");</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--bg-accent); padding: 60px 0;">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--text-primary);">Máte dotaz k produktům?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">Neváhejte nás kontaktovat. Rádi vám poradíme s výběrem.</p>
+                <a href="kontakty.html" class="btn" style="background: var(--accent); color: white; text-decoration: none; padding: 14px 28px; border-radius: 8px; display: inline-block;">Kontaktujte nás</a>
             </div>
         </div>
     </section>
@@ -435,7 +467,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Ionrise</h3>
-                    <p>Poskytujeme špičková řešení v oblasti repase baterií s důrazem na kvalitu a inovace.</p>
+                    <p>Značka vlastněná společností beigl based s.r.o.<br>10 let zkušeností v repasi baterií a servisu elektrokol</p>
                 </div>
                 <div class="footer-column">
                     <h3>Služby</h3>
@@ -443,7 +475,7 @@
                         <li><a href="eshop.html">Eshop</a></li>
                         <li><a href="repase.html">Repase baterií</a></li>
                         <li><a href="mereni.html">Měření a diagnostika</a></li>
-                        <li><a href="stavby.html">Stavby</a></li>
+                        <li><a href="stavby.html">Zakázkové stavby</a></li>
                         <li><a href="part.html">Naši partneři</a></li>
                     </ul>
                 </div>
@@ -453,19 +485,22 @@
                         <li><a href="kontakty.html">Kontaktní formulář</a></li>
                         <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
                         <li><a href="tel:+420720958340">+420 720 958 340</a></li>
-                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
+                        <li><a href="https://maps.google.com/?q=Bílov 137, 743 01 Bílov" target="_blank">Naše lokace</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>O nás</h3>
                     <ul class="footer-links">
                         <li><a href="o-nas.html">O společnosti</a></li>
-                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="gdpr.pdf">GDPR</a></li>
+                        <li><a href="podminky.pdf">Obchodní podmínky</a></li>
+                        <li><a href="reklam.pdf">Reklamační řád</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+                <p>© <span id="year"></span> Ionrise (beigl based s.r.o.). Všechna práva vyhrazena.</p>
+                <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-muted);">Sídlo: Bílov 137, 743 01 Bílov | IČ: 23271299 | DIČ: CZ23271299</p>
             </div>
         </div>
     </footer>
@@ -495,7 +530,58 @@
                     });
                 });
             }
+
+            // Highlight active nav item
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
         });
+
+        // Category switching function (will work after you create categories in Ecwid)
+        function showCategory(categoryId) {
+            if (categoryId === 0) {
+                // Show all products - reload default view
+                if (window.Ecwid && window.Ecwid.OnAPILoaded) {
+                    window.Ecwid.OnAPILoaded.add(function() {
+                        window.Ecwid.showCategory(0);
+                    });
+                }
+            } else {
+                // Show specific category (replace with your actual category IDs)
+                if (window.Ecwid && window.Ecwid.OnAPILoaded) {
+                    window.Ecwid.OnAPILoaded.add(function() {
+                        window.Ecwid.showCategory(categoryId);
+                    });
+                }
+            }
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            return false;
+        }
+    </script>
+
+    <!-- 
+        Ecwid JavaScript API for advanced functionality
+        This enables category switching and other features
+    -->
+    <script>
+        // Wait for Ecwid to load, then enable category switching
+        if (window.Ecwid) {
+            window.Ecwid.OnAPILoaded.add(function() {
+                console.log('Ecwid API loaded - store ready');
+                
+                // Optional: Pre-load categories
+                // You can add custom logic here
+            });
+        }
     </script>
 </body>
 </html>
