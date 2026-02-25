@@ -283,66 +283,16 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 10px 25px var(--shadow);
-            height: 400px;
+            aspect-ratio: 832 / 1248;
+            max-width: 100%;
+            background: var(--bg-accent);
         }
 
         .service-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            background: var(--bg-secondary);
-            padding: 60px 0;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            background: var(--bg-accent);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow-hover);
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.05);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+            display: block;
         }
 
         /* Process Section */
@@ -664,6 +614,11 @@
             body.nav-open {
                 overflow: hidden;
             }
+
+            .service-image {
+                height: auto;
+                max-height: 600px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -705,12 +660,18 @@
             }
 
             .service-image {
-                height: 300px;
+                max-height: 500px;
             }
 
             .price-badge {
                 padding: 10px 20px;
                 font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-image {
+                max-height: 400px;
             }
         }
     </style>
@@ -720,7 +681,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4 IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
                     <div class="logo-text">
                         <div class="logo-title">IONRISE</div>
                         <div class="logo-subtitle">Měření kapacity</div>
@@ -792,7 +753,7 @@
                     </ul>
                 </div>
                 <div class="service-image">
-                    <img src="mereni.jpg" alt="Měření baterií - Ionrise">
+                    <img src="mereni1.jpg" alt="Měření baterií - Ionrise">
                 </div>
             </div>
         </div>
@@ -890,7 +851,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Ionrise</h3>
-                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
+                    <p>Značka vlastněná společností beigl based s.r.o.<br>10 let zkušeností v repasi baterií a servisu elektrokol</p>
                 </div>
                 <div class="footer-column">
                     <h3>Služby</h3>
@@ -898,7 +859,7 @@
                         <li><a href="eshop.html">Eshop</a></li>
                         <li><a href="repase.html">Repase baterií</a></li>
                         <li><a href="mereni.html">Měření a diagnostika</a></li>
-                        <li><a href="stavby.html">Energetické stavby</a></li>
+                        <li><a href="stavby.html">Zakázkové stavby</a></li>
                         <li><a href="part.html">Naši partneři</a></li>
                     </ul>
                 </div>
@@ -908,19 +869,22 @@
                         <li><a href="kontakty.html">Kontaktní formulář</a></li>
                         <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
                         <li><a href="tel:+420720958340">+420 720 958 340</a></li>
-                        <li><a href="https://maps.google.com/?q=Zahradní 455, Slavkov 74757" target="_blank">Naše lokace</a></li>
+                        <li><a href="https://maps.google.com/?q=Bílov 137, 743 01 Bílov" target="_blank">Naše lokace</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>O nás</h3>
                     <ul class="footer-links">
                         <li><a href="o-nas.html">O společnosti</a></li>
-                        <li><a href="galerie.html">Galerie</a></li>
+                        <li><a href="gdpr.pdf">GDPR</a></li>
+                        <li><a href="podminky.pdf">Obchodní podmínky</a></li>
+                        <li><a href="reklam.pdf">Reklamační řád</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Ionrise. Všechna práva vyhrazena.</p>
+                <p>© <span id="year"></span> Ionrise (beigl based s.r.o.). Všechna práva vyhrazena.</p>
+                <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-muted);">Sídlo: Bílov 137, 743 01 Bílov | IČ: 23271299 | DIČ: CZ23271299</p>
             </div>
         </div>
     </footer>
