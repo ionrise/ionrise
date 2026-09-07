@@ -3,242 +3,962 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ionrise - Profesionální repase baterií, měření a diagnostika. Specialisté na baterie elektrokol a elektrických vozidel.">
-    <meta name="theme-color" content="#0ea5e9">
-    <title>Ionrise | Repase baterií & Diagnostika | Energie budoucnosti</title>
+    <title>Ionrise - Profesionální repase baterií, servis a diagnostika.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="redesign-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-hover: rgba(0, 0, 0, 0.08);
+            --container: 1100px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 44px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(241, 245, 249, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-hover);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--accent-dark);
+            gap: 12px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .about-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .about-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-secondary);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-light:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 50px 0 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            nav {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons, .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px var(--shadow);
+                border-top: 1px solid var(--border);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            body.nav-open {
+                overflow: hidden;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                gap: 16px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-item {
+                padding: 20px 10px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="logo">
-                <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <rect x="4" y="4" width="10" height="10" rx="2" fill="#0ea5e9"/>
-                    <rect x="18" y="4" width="10" height="10" rx="2" fill="#22d3ee"/>
-                    <rect x="4" y="18" width="10" height="10" rx="2" fill="#22d3ee"/>
-                    <rect x="18" y="18" width="10" height="10" rx="2" fill="#0ea5e9"/>
-                </svg>
-                <span class="logo-text">IONRISE</span>
-            </a>
-            
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link active">Domů</a>
-                <a href="repase.html" class="nav-link">Repase</a>
-                <a href="mereni.html" class="nav-link">Měření</a>
-                <a href="stavby.html" class="nav-link">Stavby</a>
-                <a href="eshop.html" class="nav-link">Eshop</a>
-                <a href="kontakty.html" class="nav-link">Kontakt</a>
-            </nav>
-            
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMjAiIGZpbGw9IiMwZWE1ZTkiLz4KPHBhdGggZD0iTTE0IDE2TDMwIDE2TTE0IDIyTDMwIDIyTTE4IDE2VjI4TTI2IDE2VjI4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Ionrise Logo">
+                    <div class="logo-text">
+                        <div class="logo-title">IONRISE</div>
+                        <div class="logo-subtitle">Energie budoucnosti</div>
+                    </div>
+                </div>
+                <nav>
+                    <a href="index.html">Domů</a>
+                    <a href="eshop.html">Eshop</a>
+                    <a href="repase.html">Repase</a>
+                    <a href="mereni.html">Měření</a>
+                    <a href="stavby.html">Stavby</a>
+                    <a href="part.html">Partneři</a>
+                    <a href="kontakty.html">Kontakty</a>
+                </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Budoucnost energetiky<br><span class="gradient-text">začíná zde</span></h1>
-                    <p class="hero-description">Profesionální repase baterií s 10+ lety zkušeností. Specialisté na elektrokola, skútry a elektrická vozidla.</p>
-                    <div class="hero-buttons">
-                        <a href="repase.html" class="btn btn-primary">Zjistit více</a>
-                        <a href="#services" class="btn btn-secondary">Naše služby</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-shape shape-1"></div>
-                    <div class="hero-shape shape-2"></div>
-                    <div class="hero-badge">🔋 10+ let zkušeností</div>
+            <div class="container">
+                <h1>Inovativní řešení pro energetiku budoucnosti</h1>
+                <p>Specializujeme se na repase baterií, měření jejich stavu, stavby a úpravy elektrických vozidel.</p>
+                <div class="hero-buttons">
+                    <a href="repase.html" class="btn btn-primary">Naše služby</a>
+                    <a href="eshop.html" class="btn btn-secondary">Nakupovat v Eshopu</a>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services">
+        <section class="services">
             <div class="container">
-                <div class="section-header">
+                <div class="section-title">
                     <h2>Naše služby</h2>
-                    <p>Kompletní řešení pro energetiku vašich vozidel</p>
+                    <p>Komplexní řešení šitá na míru vašim potřebám</p>
                 </div>
-                
                 <div class="services-grid">
-                    <article class="service-card">
+                    <div class="service-card">
                         <div class="service-icon">🔋</div>
                         <h3>Repase baterií</h3>
-                        <p>Profesionální repase lithiových baterií všech typů. Zvýšíme kapacitu, prodloužíme životnost a zajistíme maximální výkon.</p>
-                        <a href="repase.html" class="service-cta">Více informací →</a>
-                    </article>
-                    
-                    <article class="service-card">
+                        <p>Profesionální repase všech typů lithiových baterií s použitím prvotřídních článků od předních výrobců. Dokážeme zvýšit kapacitu či prodloužit životnost vaší stávající baterie přechodem na novější technologii článků a ochranné elektroniky BMS.</p>
+                        <a href="repase.html" class="service-link">
+                            Více informací
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
                         <div class="service-icon">📊</div>
-                        <h3>Měření & Diagnostika</h3>
-                        <p>Přesná diagnostika stavu vašich baterií s nejmodernějšími přístroji. Kapacita, odpor, zdravotní stav - vše jasně.</p>
-                        <a href="mereni.html" class="service-cta">Více informací →</a>
-                    </article>
-                    
-                    <article class="service-card">
-                        <div class="service-icon">⚙️</div>
-                        <h3>Stavby na míru</h3>
-                        <p>Kompletní stavby a úpravy elektrokol, koloběžek a motorek. Přesně podle vašich představ a potřeb.</p>
-                        <a href="stavby.html" class="service-cta">Více informací →</a>
-                    </article>
-                    
-                    <article class="service-card">
+                        <h3>Měření a diagnostika</h3>
+                        <p>Přesná diagnostika stavu baterií pomocí nejmodernějších měřicích přístrojů. Zjistíme kapacitu, vnitřní odpor a celkový zdravotní stav vašich energetických zdrojů.</p>
+                        <a href="mereni.html" class="service-link">
+                            Více informací
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏗️</div>
+                        <h3>Zakázkové stavby</h3>
+                        <p>Kompletní stavby a úpravy elektrokol, koloběžek a motorek přesně na míru zákazníka </p>
+                        <a href="stavby.html" class="service-link">
+                            Více informací
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
                         <div class="service-icon">🛒</div>
-                        <h3>Kvalitní Eshop</h3>
-                        <p>Baterie, komponenty a příslušenství od top výrobců. Originální díly s garancí, rychlým doručením a podporou.</p>
-                        <a href="eshop.html" class="service-cta">Navštívit →</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat">
-                        <div class="stat-number">200+</div>
-                        <div class="stat-label">Spokojení zákazníci</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">300+</div>
-                        <div class="stat-label">Repasovaných baterií</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Úspěšnost repase</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24</div>
-                        <div class="stat-label">Měsíců záruka</div>
+                        <h3>Eshop</h3>
+                        <p>Prodej kvalitních baterií, komponentů a příslušenství. Nabízíme originální díly i ověřené náhrady s garancí kvality a rychlým doručením.</p>
+                        <a href="eshop.html" class="service-link">
+                            Navštívit Eshop
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us -->
         <section class="about">
             <div class="container">
-                <div class="about-grid">
-                    <div class="about-content">
-                        <h2>Proč jsme vaší nejlepší volbou</h2>
-                        <p>Máme desítky let zkušeností a specialisty, kteří znají každý detail baterií. Vaše vozidlo je v nejlepších rukou.</p>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Proč zvolit Ionrise?</h2>
+                        <p>Jsme tým odborníků s více než 10 lety zkušeností v oblasti energetiky a repase baterií. Naše práce je založena na preciznosti, kvalitě a inovacích.</p>
+                        <p>Spolupracujeme s předními výrobci bateriových článků a využíváme nejmodernější technologie pro diagnostiku a repase.</p>
                         
-                        <ul class="features-list">
+                        <ul class="about-features">
                             <li>
-                                <span class="feature-check">✓</span>
-                                <span>Certifikovaní specialisté s dlouhými roky praxe</span>
+                                <div class="feature-icon">✓</div>
+                                <span>10+ let zkušeností v oboru</span>
                             </li>
                             <li>
-                                <span class="feature-check">✓</span>
-                                <span>Pouze komponenty od top výrobců a ověřených dodavatelů</span>
+                                <div class="feature-icon">✓</div>
+                                <span>Pouze kvalitní komponenty od ověřených dodavatelů</span>
                             </li>
                             <li>
-                                <span class="feature-check">✓</span>
-                                <span>24měsíční záruka na všechny práce</span>
+                                <div class="feature-icon">✓</div>
+                                <span>24měsíční záruka na veškeré práce</span>
                             </li>
                             <li>
-                                <span class="feature-check">✓</span>
-                                <span>Rychlá diagnostika a profesionální poradenství</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">✓</span>
-                                <span>Ekologické a udržitelné řešení</span>
+                                <div class="feature-icon">✓</div>
+                                <span>Rychlé a spolehlivé služby</span>
                             </li>
                         </ul>
-                        
-                        <a href="o-nas.html" class="btn btn-secondary">O nás více</a>
                     </div>
-                    
                     <div class="about-image">
-                        <div class="image-placeholder">
-                            <img src="bike2.webp" alt="Naš tým a pracoviště" loading="lazy">
+                        <div class="about-image-placeholder">
+                            Obrázek našeho týmu nebo pracoviště
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta">
+        <section class="stats">
             <div class="container">
-                <div class="cta-content">
-                    <h2>Připraveni na revoluci v energetice?</h2>
-                    <p>Kontaktujte nás a nechte si provést diagnostiku vašich baterií. Konzultace je zdarma!</p>
-                    <div class="cta-buttons">
-                        <a href="kontakty.html" class="btn btn-primary-light">Napsat zprávu</a>
-                        <a href="tel:+420720958340" class="btn btn-ghost">Zavolat</a>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="200+">0</div>
+                        <div class="stat-label">Spokojených zákazníků</div>
                     </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="300+">0</div>
+                        <div class="stat-label">Repasovaných baterií</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="98">0</div>
+                        <div class="stat-label">% Úspěšnost repase</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="24">0</div>
+                        <div class="stat-label">Měsíců záruka</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Máte zájem o naše služby?</h2>
+                <p>Kontaktujte nás a společně najdeme optimální řešení pro vaše potřeby.</p>
+                <div class="cta-buttons">
+                    <a href="kontakty.html" class="btn btn-primary">Kontaktujte nás</a>
+                    <a href="eshop.html" class="btn btn-secondary">Prohlédnout Eshop</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div class="footer-column">
-                    <h4>IONRISE</h4>
-                    <p>Specialisté na repase baterií s více než 10 lety zkušeností. Vozidla se zelenou energií.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">f</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                    </div>
+                    <h3>Ionrise</h3>
+                    <p>Poskytujeme špičková řešení v oblasti energetiky a repase baterií s důrazem na kvalitu a inovace.</p>
                 </div>
-                
                 <div class="footer-column">
-                    <h4>Služby</h4>
-                    <ul>
+                    <h3>Služby</h3>
+                    <ul class="footer-links">
+                        <li><a href="eshop.html">Eshop</a></li>
                         <li><a href="repase.html">Repase baterií</a></li>
                         <li><a href="mereni.html">Měření a diagnostika</a></li>
-                        <li><a href="stavby.html">Stavby na míru</a></li>
-                        <li><a href="eshop.html">Eshop</a></li>
+                        <li><a href="stavby.html">Zakázkové stavby</a></li>
+                        <li><a href="part.html">Naši partneři</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
-                    <h4>Odkazy</h4>
-                    <ul>
-                        <li><a href="o-nas.html">O nás</a></li>
-                        <li><a href="part.html">Partneři</a></li>
-                        <li><a href="kontakty.html">Kontakt</a></li>
-                        <li><a href="podminky.pdf">Podmínky</a></li>
+                    <h3>Kontakty</h3>
+                    <ul class="footer-links">
+                        <li><a href="kontakty.html">Kontaktní formulář</a></li>
+                        <li><a href="mailto:info@ionrise.one">info@ionrise.one</a></li>
+                        <li><a href="tel:+420720958340">+420 720 958 340</a></li>
+                        <li><a href="https://maps.google.com/?q=Bílov 137, 743 01 Bílov" target="_blank">Naše lokace</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
-                    <h4>Kontakt</h4>
-                    <ul>
-                        <li><a href="mailto:info@ionrise.one">📧 info@ionrise.one</a></li>
-                        <li><a href="tel:+420720958340">📞 +420 720 958 340</a></li>
-                        <li>Bílov 137, 743 01 Bílov</li>
-                        <li><a href="https://maps.google.com/?q=Bílov 137, 743 01 Bílov" target="_blank">Mapa →</a></li>
+                    <h3>O nás</h3>
+                    <ul class="footer-links">
+                        <li><a href="o-nas.html">O společnosti</a></li>
+                        <li><a href="gdpr.pdf">GDPR</a></li>
+                        <li><a href="podminky.pdf">Obchodní podmínky</a></li>
+                        <li><a href="reklam.pdf">Reklamační řád</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> IONRISE (beigl based s.r.o.). IČ: 23271299</p>
-                <div class="footer-links-bottom">
-                    <a href="gdpr.pdf">GDPR</a>
-                    <a href="podminky.pdf">Obchodní podmínky</a>
-                    <a href="reklam.pdf">Reklamační řád</a>
-                </div>
+                <p>© <span id="year"></span> Ionrise (beigl based s.r.o.). Všechna práva vyhrazena.</p>
+                <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-muted);">Sídlo: Bílov 137, 743 01 Bílov | IČ: 23271299 | DIČ: CZ23271299</p>
             </div>
         </div>
     </footer>
 
-    <script src="redesign-script.js"></script>
+
+    <script>
+        // Simple animation system
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update year in footer
+            document.getElementById('year').innerText = new Date().getFullYear();
+
+            // Mobile navigation
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                // Close menu when clicking on links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        document.body.classList.remove('nav-open');
+                    });
+                });
+            }
+
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.service-card, .about-content, .stat-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Animated counters
+            const counterElements = document.querySelectorAll('.stat-number[data-count]');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const target = parseInt(element.getAttribute('data-count'));
+                        const duration = 2000;
+                        let current = 0;
+                        const increment = target / (duration / 16);
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                element.textContent = target + (element.textContent.includes('%') ? '%' : '+');
+                                clearInterval(timer);
+                            } else {
+                                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+                            }
+                        }, 16);
+                        
+                        counterObserver.unobserve(element);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counterElements.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        });
+    </script>
 </body>
 </html>
