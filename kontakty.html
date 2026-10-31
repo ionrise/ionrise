@@ -604,6 +604,12 @@
             }
         }
     </style>
+<style>
+        .inquiry-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+        .inquiry-status { margin: 12px 0; color: #116147; }
+        .inquiry-status.is-error { color: #9b3333; }
+        #inquiry-form button:disabled { opacity: .55; cursor: not-allowed; }
+    </style>
 </head>
 <body>
     <header>
@@ -652,25 +658,25 @@
                 <!-- Kontaktní formulář -->
                 <div class="contact-form-wrapper">
                     <h2>Rychlý kontakt</h2>
-                    <form action="https://formspree.io/f/xbldproq" method="POST" id="contactForm">
+                    <form id="inquiry-form" data-api-base="https://ionrise-poptavky.honza-j-96.workers.dev">
                         <div class="form-group">
                             <label for="name" class="form-label">Jméno a příjmení *</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <input type="text" id="name" name="name" class="form-control" autocomplete="name" minlength="2" maxlength="100" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email" class="form-label">E-mail *</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" autocomplete="email" maxlength="254" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="phone" class="form-label">Telefon</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
+                            <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" maxlength="40">
                         </div>
                         
                         <div class="form-group">
                             <label for="subject" class="form-label">Předmět zprávy</label>
-                            <select id="subject" name="subject" class="form-control">
+                            <select id="subject" name="service" class="form-control">
                                 <option value="repase">Repase baterií</option>
                                 <option value="mereni">Měření článků</option>
                                 <option value="stavby">Stavba na míru</option>
@@ -681,10 +687,15 @@
                         
                         <div class="form-group">
                             <label for="message" class="form-label">Zpráva *</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <textarea id="message" name="message" class="form-control" minlength="10" maxlength="5000" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
+                        <div class="inquiry-trap" aria-hidden="true"><label for="inquiry-website">Web</label><input id="inquiry-website" name="website" tabindex="-1" autocomplete="off"></div>
+                        <p>Údaje použijeme k vyřízení vaší poptávky. <a href="gdpr.pdf">Ochrana osobních údajů</a>.</p>
+                        <div id="turnstile-widget"></div>
+                        <p id="inquiry-status" class="inquiry-status" role="status" aria-live="polite">Připravuji zabezpečený formulář…</p>
+                        <button type="submit" class="btn btn-primary" disabled>Odeslat zprávu</button>
+                        <noscript><p>Pro odeslání formuláře zapněte JavaScript nebo napište na <a href="mailto:info@ionrise.one">info@ionrise.one</a>.</p></noscript>
                     </form>
                 </div>
 
@@ -852,13 +863,8 @@
                 });
             });
 
-            // Form submission handling
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                // Form will be submitted to Formspree
-                // You can add additional validation here if needed
-            });
         });
     </script>
+    <script src="poptavka.js" defer></script>
 </body>
 </html>
