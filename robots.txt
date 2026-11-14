@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ionrise.one/sitemap.xml
