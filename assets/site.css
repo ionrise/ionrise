@@ -75,7 +75,7 @@ ul{padding:0;margin:0;list-style:none}
 
 /* --- hero --- */
 .hero{position:relative;background:linear-gradient(180deg,#f6f9fc 0%,#f5f8fc 70%,#fff 100%);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:center;padding:64px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:40px}
 .hero h1{margin-bottom:20px}
 .hero h1 span{color:var(--deep)}
 .hero-lead{font-size:1.15rem;max-width:520px;color:var(--muted)}
