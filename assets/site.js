@@ -1,4 +1,4 @@
-// IONRISE – menu a rozbalovací nabídky
+// IONRISE – menu, rozbalovací nabídky a volba jazyka
 document.documentElement.classList.add('js');
 
 (function () {
@@ -9,7 +9,7 @@ document.documentElement.classList.add('js');
 
   function setMenu(open) {
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.querySelector('.menu-label').textContent = open ? 'Zavřít' : 'Menu';
+    toggle.querySelector('.menu-label').textContent = open ? (toggle.dataset.close || 'Zavřít') : (toggle.dataset.open || 'Menu');
     nav.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
   }
@@ -41,6 +41,10 @@ document.documentElement.classList.add('js');
     if (open && !mobile()) { setDrop(open, false); open.querySelector('.drop-toggle').focus(); }
     else if (nav.classList.contains('open')) { setMenu(false); toggle.focus(); }
   });
+  // Přepínač jazyka: zapamatovat volbu (pak už se neřídí jazykem prohlížeče)
+  document.querySelectorAll('[data-lang]').forEach(a => a.addEventListener('click', () => {
+    try { localStorage.setItem('lang', a.dataset.lang); } catch { /* bez úložiště */ }
+  }));
   window.addEventListener('resize', () => { if (!mobile() && nav.classList.contains('open')) setMenu(false); });
 
 })();

@@ -326,3 +326,13 @@ a.card:hover .more .ico{transform:translateX(3px)}
 .inquiry-form .btn{justify-self:start}
 .inquiry-form .btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
 @media (max-width:640px){.form-row{grid-template-columns:1fr}.form-card{padding:22px}.inquiry-form .btn{justify-self:stretch}}
+
+/* --- přepínač jazyka CZ / EN --- */
+.lang-switch{display:flex;gap:2px;border:1px solid var(--line-2);border-radius:9px;padding:2px;order:5;flex:none}
+.lang-switch a{font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:5px 8px;border-radius:7px;color:var(--muted);text-decoration:none;line-height:1}
+.lang-switch a:hover{color:var(--ink);background:var(--bg-soft)}
+.lang-switch a[aria-current]{background:var(--ink);color:#fff}
+@media (max-width:960px){
+  .lang-switch{order:0;margin-left:auto}
+  .lang-switch + .menu-toggle{margin-left:8px}
+}
